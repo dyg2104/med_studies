@@ -7,5 +7,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "Daniel Gonzalez",
-  "license": "ISC"
+  "license": "ISC",
+  "devDependencies": {
+    "exports-loader": "^0.6.2",
+    "expose-loader": "^0.7.0",
+    "imports-loader": "^0.6.4",
+    "node-libs-browser": "^0.5.2",
+    "webpack": "^1.9.10"
+  }
 }
