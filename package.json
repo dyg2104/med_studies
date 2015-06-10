@@ -9,10 +9,15 @@
   "author": "Daniel Gonzalez",
   "license": "ISC",
   "devDependencies": {
+    "chunk-manifest-webpack-plugin": "0.0.1",
     "exports-loader": "^0.6.2",
     "expose-loader": "^0.7.0",
     "imports-loader": "^0.6.4",
     "node-libs-browser": "^0.5.2",
     "webpack": "^1.9.10"
+  },
+  "dependencies": {
+    "lodash": "^3.9.3",
+    "underscore": "^1.8.3"
   }
 }
