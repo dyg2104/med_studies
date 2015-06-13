@@ -10,7 +10,7 @@ module ApplicationHelper
       filename = manifest[bundle]
       src = "#{compute_asset_host}/assets/#{filename}"
     else
-      src = "app/assets/#{bundle}-bundle"
+      src = "#{bundle}-bundle"
     end
 
     javascript_include_tag(src)

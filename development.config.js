@@ -11,6 +11,6 @@ config = _.extend(config, {
 
 config.plugins = [
   new webpack.optimize.CommonsChunkPlugin('common', 'common-bundle.js')
-]
+];
 
 module.exports = config;
