@@ -4,11 +4,17 @@ var Methodology  = require('./MethodologySubForm.jsx');
 var Measurement  = require('./MeasurementSubForm.jsx');
 var Conclusion   = require('./ConclusionSubForm.jsx');
 
+var study = window.study = {};
+
 var NewForm = React.createClass({
 	getInitialState: function () {
 		return {
 			step: 1
 		}
+	},
+	
+	getStudy: function () {
+		return study;	
 	},
 	
 	goToBackground: function () {
@@ -27,21 +33,41 @@ var NewForm = React.createClass({
 		this.setState({step: 4});
 	},
 	
+	nextStep: function () {
+	  this.setState({
+	    step : this.state.step + 1
+	  })
+	},
+	
+	previousStep: function() {
+	  this.setState({
+	    step : this.state.step - 1
+	  })
+	},
+	
 	render: function () {
 		var subForm;
 		
 		switch(this.state.step) {
 			case 1:
-				subForm = <Background />;
+				subForm = <Background nextStep={this.nextStep} 
+					previousStep={this.previousStep} 
+					getStudy={this.getStudy} />;
 				break;
 			case 2:
-				subForm = <Methodology />;
+				subForm = <Methodology nextStep={this.nextStep} 
+					previousStep={this.previousStep} 
+					getStudy={this.getStudy} />;
 				break;
 			case 3:
-				subForm = <Measurement />;
+				subForm = <Measurement nextStep={this.nextStep} 
+					previousStep={this.previousStep} 
+					getStudy={this.getStudy} />;
 				break;
 			case 4:
-				subForm = <Conclusion />;
+				subForm = <Conclusion nextStep={this.nextStep} 
+					previousStep={this.previousStep} 
+					getStudy={this.getStudy} />;
 				break; 
 		}
 		
