@@ -1,10 +1,18 @@
 var StudyDispatcher = require('../dispatchers/StudyDispatcher');
 
 var StudyActions = {
-	updateField: function(keys, values) {
+	updateField: function(keys, value) {
 		StudyDispatcher.dispatch({
+			type: 'UPDATE_FIELD',
 			keys: keys,
-			values: values
+			value: value
+		});
+	},
+	
+	updateArraySize: function(keys) {
+		StudyDispatcher.dispatch({
+			type: 'UPDATE_ARRAY_SIZE',
+			keys: keys
 		});
 	}
 };

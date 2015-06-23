@@ -1,44 +1,29 @@
-var React      = require('react');
-var TextField  = require('./TextFieldArrayValue.jsx');
+var React         = require('react');
+var StudyActions  = require('../actions/StudyActions');
+var TextField     = require('./TextFieldArrayValue.jsx');
 
-var TextFields = React.createClass({
-	getInitialState: function () {
-		var array = this.getValue();
-		
-		if (!array) {
-			array = [''];
-			this.setValue(array);
-		}
-		
-		return {length: array.length};
-	},
-	
-	setValue: function (value) {
-		var formObj = this.props.getFormObj();
-		var key = this.props.keyName;
-		formObj[key] = value;
-	},
-	
+var TextFields = React.createClass({	
 	getValue: function () {
-		var formObj = this.props.getFormObj();
-		var key = this.props.keyName;
-		return formObj[key];
+		var formObj = this.props.formObj;
+		return formObj[this.props.keys];	
 	},
 	
 	handleClick: function (e) {
 		e.preventDefault();
-		var array = this.getValue();
-		array.push('');
-		this.setState({length: array.length});
+		var keys = this.props.keys;
+		StudyActions.updateArraySize(keys);
 	},
 	
 	render: function () {
-		var array = this.getValue();
 		var nodes = [];
+		var array = this.getValue();
 		var i;
 		
-		for(i = 0; i < this.state.length; i++) {
-			nodes.push(<TextField getFormArray={this.getValue} key={i} keyPosition={i} />);
+		for(i = 0; i < array.length; i++) {
+			nodes.push(<TextField 
+							key={i} 
+							keys={this.props.keys + ':' + i} 
+							arrayValue={array[i]} />);
 		}
 		
 		return (

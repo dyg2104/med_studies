@@ -6,19 +6,19 @@ var CHANGE_EVENT = 'change';
 
 var _study = window.study = {
 	title: undefined,
-	authors: [],
+	authors: [''],
 	description: undefined,
 	diseaseName: undefined,
-	complications: [],
-	currentTreatments: [],
-	trials: undefined,
-	involvedParties: [],
-	references: [],
+	complications: [''],
+	currentTreatments: [''],
+	trials: [''],
+	involvedParties: [''],
+	references: [''],
 	methodology: {
 		design: undefined,
 		diagnosis: undefined,
 		primaryEndpoint: undefined,
-		secondaryEndpoints: []
+		secondaryEndpoints: ['']
 	},
 	measurement: {
 		statisticalAnalysis: undefined
@@ -29,19 +29,48 @@ var _study = window.study = {
 	controlGroups: [],
 	totalData: {
 		methodology: {
-			eligibilityCriteria: [],
-			patientCharacteristics: [],
+			eligibilityCriteria: [{}],
+			patientCharacteristics: [{}],
 		},
 		measurement: {
-			medications: [],
-			adverseEvents: [],
-			patientData: []
+			medications: [{}],
+			adverseEvents: [{}],
+			patientData: [{}]
 		},
 		result: {
 			primaryEndpoint: undefined
 		}
 	}
 };
+
+function storeValue(keys, value, store) {
+	var key = keys.shift();
+	var storeHolder;
+	
+	if (keys.length === 0) {
+		if (/\d+/.test(key)) {
+			key = parseInt(key);
+		}
+		store[key] = value;
+	} else {
+		storeHolder = store[key];
+		storeValue(keys, value, storeHolder);
+	}
+}
+
+function pushValue(keys, store) {
+	var key = keys.shift();
+	var array;
+	var storeHolder;
+	
+	if (keys.length === 0) {
+		array = store[key];
+		array.push('');
+	} else {
+		storeHolder = store[key];
+		storeValue(keys, value, storeHolder);
+	}
+}
 
 var StudyStore = _.extend({}, Backbone.Events, {
 	getStudy: function() {
@@ -62,9 +91,23 @@ var StudyStore = _.extend({}, Backbone.Events, {
 });
 
 StudyDispatcher.register(function(payload) {
-	var keys = payload.keys;
-	var values = payload.values;
-	_study[keys] = values;
+	var keys;
+	var value;
+	
+	switch(payload.type) {
+		case 'UPDATE_FIELD':
+			keys = payload.keys.split(':');
+			value = payload.value;
+			storeValue(keys, value, _study);
+			StudyStore.triggerChange();
+			break;
+		case 'UPDATE_ARRAY_SIZE':
+			keys = payload.keys.split(':');
+			pushValue(keys, _study);
+			StudyStore.triggerChange();
+			break;
+	}
+	
 });
 
 module.exports = StudyStore;
