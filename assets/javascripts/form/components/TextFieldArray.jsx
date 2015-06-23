@@ -38,7 +38,7 @@ var TextFields = React.createClass({
 		var i;
 		
 		for(i = 0; i < this.state.length; i++) {
-			nodes.push(<TextField getValue={this.getValue} key={i} keyPosition={i} />);
+			nodes.push(<TextField getFormArray={this.getValue} key={i} keyPosition={i} />);
 		}
 		
 		return (

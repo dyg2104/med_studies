@@ -2,12 +2,12 @@ var React = require('react');
 
 var TextField = React.createClass({
 	getPositionValue: function () {
-		var array = this.props.getValue();
+		var array = this.props.getFormArray();
 		return array[this.props.keyPosition];
 	},
 	
 	handleChange: function (e) {
-		var array = this.props.getValue();
+		var array = this.props.getFormArray();
 		array[this.props.keyPosition] = e.target.value;
 	},
 	

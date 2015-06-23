@@ -1,20 +1,15 @@
 var React        = require('react');
-var Background   = require('./BackgroundSubForm.jsx');
-var Methodology  = require('./MethodologySubForm.jsx');
-var Measurement  = require('./MeasurementSubForm.jsx');
-var Conclusion   = require('./ConclusionSubForm.jsx');
-
-var study = window.study = {};
+var Background   = require('./components/background/BackgroundSubForm.jsx');
+var Methodology  = require('./components/methodology/MethodologySubForm.jsx');
+var Measurement  = require('./components/measurement/MeasurementSubForm.jsx');
+var Conclusion   = require('./components/conclusion/ConclusionSubForm.jsx');
+var StudyStore   = require('./stores/StudyStore');
 
 var NewForm = React.createClass({
 	getInitialState: function () {
 		return {
 			step: 1
 		}
-	},
-	
-	getStudy: function () {
-		return study;	
 	},
 	
 	goToBackground: function () {
@@ -50,24 +45,24 @@ var NewForm = React.createClass({
 		
 		switch(this.state.step) {
 			case 1:
-				subForm = <Background nextStep={this.nextStep} 
-					previousStep={this.previousStep} 
-					getStudy={this.getStudy} />;
+				subForm = <Background 
+							nextStep={this.nextStep} 
+							previousStep={this.previousStep} />;
 				break;
 			case 2:
-				subForm = <Methodology nextStep={this.nextStep} 
-					previousStep={this.previousStep} 
-					getStudy={this.getStudy} />;
+				subForm = <Methodology 
+							nextStep={this.nextStep} 
+							previousStep={this.previousStep} />;
 				break;
 			case 3:
-				subForm = <Measurement nextStep={this.nextStep} 
-					previousStep={this.previousStep} 
-					getStudy={this.getStudy} />;
+				subForm = <Measurement 
+							nextStep={this.nextStep} 
+							previousStep={this.previousStep} />;
 				break;
 			case 4:
-				subForm = <Conclusion nextStep={this.nextStep} 
-					previousStep={this.previousStep} 
-					getStudy={this.getStudy} />;
+				subForm = <Conclusion 
+							nextStep={this.nextStep} 
+							previousStep={this.previousStep} />;
 				break; 
 		}
 		

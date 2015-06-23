@@ -3,30 +3,24 @@ var ControlGroup  = require('./ControlGroup.jsx');
 
 var ControlGroups = React.createClass({	
 	getInitialState: function () {
-		var controlGroups = this.getValue();
+		var controlGroups = this.props.getFormArray();
 		return {length: controlGroups.length};
-	},
-	
-	getValue: function () {
-		var study = this.props.getFormObj();
-		study['controlGroups'] = study['controlGroups'] || [{}];
-		return study['controlGroups'];	
 	},
 	
 	handleClick: function (e) {
 		e.preventDefault();
-		var controlGroups = this.getValue();
+		var controlGroups = this.props.getFormArray();
 		controlGroups.push({});
 		this.setState({length: controlGroups.length});
 	},
 	
 	render: function () {
-		var controlGroups = this.getValue();
+		var controlGroups = this.props.getFormArray();
 		var nodes = [];
 		var i;
 		
 		for(i = 0; i < this.state.length; i++) {
-			nodes.push(<ControlGroup getFormObj={this.getValue} key={i} keyPosition={i} />);
+			nodes.push(<ControlGroup getFormArray={this.props.getFormArray} key={i} keyPosition={i} />);
 		}
 		
 		return (
