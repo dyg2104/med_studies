@@ -15,7 +15,7 @@ var _study = window.study = {
 	involvedParties: [''],
 	references: [''],
 	methodology: {
-		design: undefined,
+		design: [''],
 		diagnosis: undefined,
 		primaryEndpoint: undefined,
 		secondaryEndpoints: ['']
@@ -68,7 +68,7 @@ function pushValue(keys, store) {
 		array.push('');
 	} else {
 		storeHolder = store[key];
-		storeValue(keys, value, storeHolder);
+		pushValue(keys, storeHolder);
 	}
 }
 

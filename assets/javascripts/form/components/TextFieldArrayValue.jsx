@@ -3,7 +3,7 @@ var StudyActions  = require('../actions/StudyActions');
 
 var TextField = React.createClass({
 	handleChange: function (e) {
-		var keys = this.props.keys;
+		var keys = this.props.setterKeys;
 		var value = e.target.value;
 		StudyActions.updateField(keys, value);
 	},

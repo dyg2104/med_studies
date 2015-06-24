@@ -9,39 +9,48 @@ var BackgroundSubForm = React.createClass({
 				<div>background</div>
 			    <TextField
 					formObj={this.props.study}
-					keys="title" 
+					getterKey="title" 
+					setterKeys="title"
 					title="Title" />
 				<TextFieldArray
 					formObj={this.props.study}
-					keys="authors" 
+					getterKey="authors"
+					setterkeys="authors" 
 					title="Authors" />
 				<TextField
 					formObj={this.props.study}
-					keys="description" 
+					getterKey="description" 
+					setterKeys="description" 
 					title="Description" />
 				<TextField
 					formObj={this.props.study}
-					keys="diseaseName" 
+					getterKey="diseaseName" 
+					setterKeys="diseaseName" 
 					title="Disease Name" />
 				<TextFieldArray
 					formObj={this.props.study}
-					keys="complications" 
+					getterKey="complications" 
+					setterKeys="complications"
 					title="Complications" />
 				<TextFieldArray  
 					formObj={this.props.study}
-					keys="currentTreatments" 
+					getterKey="currentTreatments" 
+					setterKeys="currentTreatments" 
 					title="Current Treatments" />
 			 	<TextFieldArray
 					formObj={this.props.study}
-					keys="trials" 
+					getterKey="trials" 
+					setterKeys="trials" 
 					title="Trials" />
 				<TextFieldArray
 					formObj={this.props.study}
-					keys="involvedParties" 
+					getterKey="involvedParties" 
+					setterKeys="involvedParties" 
 					title="Involved Parties" />
 				<TextFieldArray
 					formObj={this.props.study}
-					keys="references" 
+					getterKey="references" 
+					setterKeys="references" 
 					title="References" />
 				<a href="#" onClick={this.props.nextStep}>Next</a>
 			</div>

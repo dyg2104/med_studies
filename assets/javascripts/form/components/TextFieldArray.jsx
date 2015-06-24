@@ -5,12 +5,12 @@ var TextField     = require('./TextFieldArrayValue.jsx');
 var TextFields = React.createClass({	
 	getValue: function () {
 		var formObj = this.props.formObj;
-		return formObj[this.props.keys];	
+		return formObj[this.props.getterKey];	
 	},
 	
 	handleClick: function (e) {
 		e.preventDefault();
-		var keys = this.props.keys;
+		var keys = this.props.setterKeys;
 		StudyActions.updateArraySize(keys);
 	},
 	
@@ -22,7 +22,7 @@ var TextFields = React.createClass({
 		for(i = 0; i < array.length; i++) {
 			nodes.push(<TextField 
 							key={i} 
-							keys={this.props.keys + ':' + i} 
+							setterKeys={this.props.setterKeys + ':' + i} 
 							arrayValue={array[i]} />);
 		}
 		

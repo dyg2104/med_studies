@@ -1,49 +1,36 @@
 var React                = require('react');
 var TextField            = require('../TextField.jsx');
 var TextFieldArray       = require('../TextFieldArray.jsx');
-var ControlGroups        = require('./ControlGroups.jsx');
-var EligibilityCriteria  = require('./EligibilityCriteria.jsx');
+// var ControlGroups        = require('./ControlGroups.jsx');
+// var EligibilityCriteria  = require('./EligibilityCriteria.jsx');
 
 var MethodologySubForm = React.createClass({
-	getMethodology: function () {
-		var study = this.props.getStudy();
-		study['methodology'] = study['methodology'] || {};
-		return study['methodology'];
-	},
-	
-	getControlGroups: function () {
-		var study = this.props.getStudy();
-		study['controlGroups'] = study['controlGroups'] || [{}];
-		return study['controlGroups'];	
-	},
-	
-	getTotalData: function () {
-		var study = this.props.getStudy();
-		study['totalData'] = study['totalData'] || {};
-		return study['totalData'];	
-	},
-	
 	render: function () {
+		var methodology = this.props.study['methodology'];
+		
 		return (
 			<div>
 				<div>methodology</div>
-				<TextFieldArray getFormObj={this.getMethodology} 
-					keyName="design" 
+				<TextFieldArray 
+					formObj={methodology}
+					getterKey="design"
+					setterKeys="methodology:design" 
 					title="Design" />
-				<TextField getFormObj={this.getMethodology} 
-					keyName="diagnosis" 
+				<TextField 
+					formObj={methodology}
+					getterKey="diagnosis" 
+					setterKeys="diagnosis" 
 					title="Diagnosis" />
-			    <ControlGroups getFormArray={this.getControlGroups} 
-					keyName="controlGroups" 
-					title="Control Groups" />
-				<TextField getFormObj={this.getMethodology} 
-					keyName="primaryEndpoint" 
+				<TextField 
+					formObj={methodology}
+					getterKey="primaryEndpoint" 
+					setterKeys="primaryEndpoint" 
 					title="Primary Endpoint" />
-				<TextFieldArray getFormObj={this.getMethodology} 
-					keyName="secondaryEndpoints" 
+				<TextFieldArray 
+					formObj={methodology}
+					getterKey="secondaryEndpoints"
+					setterKeys="secondaryEndpoints"
 					title="Secondary Endpoints" />
-				<EligibilityCriteria getControlGroups={this.getControlGroups}
-					getTotalData={this.getTotalData} />
 			</div>
 		)
 	}
