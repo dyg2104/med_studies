@@ -1,26 +1,24 @@
 var React         = require('react');
+var StudyActions  = require('../../actions/StudyActions');
 var ControlGroup  = require('./ControlGroup.jsx');
 
-var ControlGroups = React.createClass({	
-	getInitialState: function () {
-		var controlGroups = this.props.getFormArray();
-		return {length: controlGroups.length};
-	},
-	
+var ControlGroups = React.createClass({				
 	handleClick: function (e) {
 		e.preventDefault();
-		var controlGroups = this.props.getFormArray();
-		controlGroups.push({});
-		this.setState({length: controlGroups.length});
+		var keys = this.props.setterKeys;
+		StudyActions.updateControlGroupsSize(keys);
 	},
 	
 	render: function () {
-		var controlGroups = this.props.getFormArray();
 		var nodes = [];
+		var controlGroups = this.props.formArr;
 		var i;
 		
-		for(i = 0; i < this.state.length; i++) {
-			nodes.push(<ControlGroup getFormArray={this.props.getFormArray} key={i} keyPosition={i} />);
+		for(i = 0; i < controlGroups.length; i++) {
+			nodes.push(<ControlGroup 
+							key={i} 
+							setterKeys={this.props.setterKeys + ':' + i} 
+							controlGroup={controlGroups[i]} />);
 		}
 		
 		return (

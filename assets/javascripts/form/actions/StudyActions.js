@@ -14,6 +14,13 @@ var StudyActions = {
 			type: 'UPDATE_ARRAY_SIZE',
 			keys: keys
 		});
+	},
+	
+	updateControlGroupsSize: function(keys) {
+		StudyDispatcher.dispatch({ 
+			type: 'UPDATE_CONTROL_GROUPS_SIZE', 
+			keys: keys 
+		});
 	}
 };
 

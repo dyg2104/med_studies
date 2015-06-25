@@ -26,7 +26,9 @@ var _study = window.study = {
 	result: {
 		summary: undefined
 	},
-	controlGroups: [],
+	controlGroups: [
+		{name: undefined, numPatients: undefined, numMen: undefined, numWomen: undefined}
+	],
 	totalData: {
 		methodology: {
 			eligibilityCriteria: [{}],
@@ -43,6 +45,15 @@ var _study = window.study = {
 	}
 };
 
+function getControlGroup() {
+	return {
+		name: undefined, 
+		numPatients: undefined, 
+		numMen: undefined, 
+		numWomen: undefined
+	};
+}
+
 function storeValue(keys, value, store) {
 	var key = keys.shift();
 	var storeHolder;
@@ -58,7 +69,7 @@ function storeValue(keys, value, store) {
 	}
 }
 
-function pushValue(keys, store) {
+function pushArray(keys, store) {
 	var key = keys.shift();
 	var array;
 	var storeHolder;
@@ -68,7 +79,24 @@ function pushValue(keys, store) {
 		array.push('');
 	} else {
 		storeHolder = store[key];
-		pushValue(keys, storeHolder);
+		pushArray(keys, storeHolder);
+	}
+}
+
+// TODO simplify this method since it will never need recursion
+function pushControlGroup(keys, store) {
+	var key = keys.shift();
+	var controlGroup;
+	var array;
+	var storeHolder;
+
+	if (keys.length === 0) {
+		controlGroup = getControlGroup();
+		array = store[key];
+		array.push(controlGroup);
+	} else {
+		storeHolder = store[key];
+		pushControlGroup(keys, storeHolder);
 	}
 }
 
@@ -103,7 +131,12 @@ StudyDispatcher.register(function(payload) {
 			break;
 		case 'UPDATE_ARRAY_SIZE':
 			keys = payload.keys.split(':');
-			pushValue(keys, _study);
+			pushArray(keys, _study);
+			StudyStore.triggerChange();
+			break;
+		case 'UPDATE_CONTROL_GROUPS_SIZE':
+			keys = payload.keys.split(':');
+			pushControlGroup(keys, _study);
 			StudyStore.triggerChange();
 			break;
 	}

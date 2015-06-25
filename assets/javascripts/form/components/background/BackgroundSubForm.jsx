@@ -15,7 +15,7 @@ var BackgroundSubForm = React.createClass({
 				<TextFieldArray
 					formObj={this.props.study}
 					getterKey="authors"
-					setterkeys="authors" 
+					setterKeys="authors"
 					title="Authors" />
 				<TextField
 					formObj={this.props.study}

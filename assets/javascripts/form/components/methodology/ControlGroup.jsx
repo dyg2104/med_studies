@@ -1,26 +1,29 @@
 var React      = require('react');
 var TextField  = require('../TextField.jsx');
 
-var ControlGroup = React.createClass({
-	getControlGroup: function () {
-		var controlGroups = this.props.getFormArray();
-		return controlGroups[this.props.keyPosition];
-	},
-	
+var ControlGroup = React.createClass({	
 	render: function () {
 		return (
 			<div>
-				<TextField getFormObj={this.getControlGroup} 
-					keyName="name" 
+				<TextField 
+					formObj={this.props.controlGroup}
+					getterKey="name" 
+					setterKeys={this.props.setterKeys + ":name"}
 					title="Name" />
-				<TextField getFormObj={this.getControlGroup} 
-					keyName="numPatients" 
+				<TextField 
+					formObj={this.props.controlGroup}
+					getterKey="numPatients" 
+					setterKeys={this.props.setterKeys + ":numPatients"}
 					title="Number of Patients" />
-				<TextField getFormObj={this.getControlGroup} 
-					keyName="numMen" 
+				<TextField 
+					formObj={this.props.controlGroup}
+					getterKey="numMen" 
+					setterKeys={this.props.setterKeys + ":numMen"}
 					title="Number of Men" />
-				<TextField getFormObj={this.getControlGroup} 
-					keyName="numWomen" 
+				<TextField 
+					formObj={this.props.controlGroup}
+					getterKey="numWomen" 
+					setterKeys={this.props.setterKeys + ":numWomen"}
 					title="Number of Women" />
 			</div>
         );
