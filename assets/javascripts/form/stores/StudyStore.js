@@ -27,11 +27,19 @@ var _study = window.study = {
 		summary: undefined
 	},
 	controlGroups: [
-		{name: undefined, numPatients: undefined, numMen: undefined, numWomen: undefined}
+		{
+			name: undefined, 
+			numPatients: undefined, 
+			numMen: undefined, 
+			numWomen: undefined,
+			methodology: {
+				eligibilityCriteria: [{name: undefined, units: undefined, low: undefined, high: undefined}]
+			}
+		}
 	],
 	totalData: {
 		methodology: {
-			eligibilityCriteria: [{}],
+			eligibilityCriteria: [{name: undefined, units: undefined, low: undefined, high: undefined}],
 			patientCharacteristics: [{}],
 		},
 		measurement: {
@@ -127,6 +135,14 @@ StudyDispatcher.register(function(payload) {
 			keys = payload.keys.split(':');
 			value = payload.value;
 			storeValue(keys, value, _study);
+			StudyStore.triggerChange();
+			break;
+		case 'UPDATE_FIELDS':
+			keys = payload.keysArray;
+			value = payload.value;
+			_.each(keys, function(key) {
+				storeValue(key.split(':'), value, _study);
+			});
 			StudyStore.triggerChange();
 			break;
 		case 'UPDATE_ARRAY_SIZE':
