@@ -9,6 +9,14 @@ var StudyActions = {
 		});
 	},
 	
+	updateFields: function(keysArray, value) {
+		StudyDispatcher.dispatch({
+			type: 'UPDATE_FIELDS',
+			keysArray: keysArray,
+			value: value
+		});
+	},
+	
 	updateArraySize: function(keys) {
 		StudyDispatcher.dispatch({
 			type: 'UPDATE_ARRAY_SIZE',
