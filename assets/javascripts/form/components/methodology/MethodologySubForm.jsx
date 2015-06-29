@@ -2,12 +2,13 @@ var React                = require('react');
 var TextField            = require('../TextField.jsx');
 var TextFieldArray       = require('../TextFieldArray.jsx');
 var ControlGroups        = require('./ControlGroups.jsx');
-// var EligibilityCriteria  = require('./EligibilityCriteria.jsx');
+var EligibilityCriteria  = require('./EligibilityCriteria.jsx');
 
 var MethodologySubForm = React.createClass({
 	render: function () {
 		var methodology = this.props.study['methodology'];
 		var controlGroups = this.props.study['controlGroups'];
+		var totalData = this.props.study['totalData'];
 		
 		return (
 			<div>
@@ -15,7 +16,7 @@ var MethodologySubForm = React.createClass({
 				<TextField 
 					formObj={methodology}
 					getterKey="diagnosis" 
-					setterKeys="diagnosis" 
+					setterKeys="methodology:diagnosis" 
 					title="Diagnosis" />
 				<TextFieldArray 
 					formObj={methodology}
@@ -29,13 +30,17 @@ var MethodologySubForm = React.createClass({
 				<TextField 
 					formObj={methodology}
 					getterKey="primaryEndpoint" 
-					setterKeys="primaryEndpoint" 
+					setterKeys="methodology:primaryEndpoint" 
 					title="Primary Endpoint" />
 				<TextFieldArray 
 					formObj={methodology}
 					getterKey="secondaryEndpoints"
-					setterKeys="secondaryEndpoints"
+					setterKeys="methodology:secondaryEndpoints"
 					title="Secondary Endpoints" />
+				<EligibilityCriteria
+					controlGroups={controlGroups}
+					totalData={totalData}
+					title="Eligibility Criteria" />
 			</div>
 		)
 	}
