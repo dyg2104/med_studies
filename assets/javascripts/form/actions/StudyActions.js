@@ -29,6 +29,12 @@ var StudyActions = {
 			type: 'UPDATE_CONTROL_GROUPS_SIZE', 
 			keys: keys 
 		});
+	},
+	
+	updateEligibilityCriteriaSize: function() {
+		StudyDispatcher.dispatch({
+			type: 'UPDATE_ELIGIBILITY_CRITERIA_SIZE'
+		});
 	}
 };
 

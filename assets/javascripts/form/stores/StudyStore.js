@@ -33,14 +33,15 @@ var _study = window.study = {
 			numMen: undefined, 
 			numWomen: undefined,
 			methodology: {
-				eligibilityCriteria: [{name: undefined, units: undefined, low: undefined, high: undefined}]
+				eligibilityCriteria: [{name: undefined, units: undefined, low: undefined, high: undefined}],
+				patientCharacteristics: [{name: undefined, units: undefined, type: undefined, data: undefined, sd: undefined}]
 			}
 		}
 	],
 	totalData: {
 		methodology: {
 			eligibilityCriteria: [{name: undefined, units: undefined, low: undefined, high: undefined}],
-			patientCharacteristics: [{}],
+			patientCharacteristics: [{name: undefined, units: undefined, type: undefined, data: undefined, sd: undefined}]
 		},
 		measurement: {
 			medications: [{}],
@@ -54,13 +55,32 @@ var _study = window.study = {
 };
 
 function getControlGroup() {
+	var criteria = [];
+	
+	for (var i = 0; i < _study['totalData']['methodology']['eligibilityCriteria'].length; i++) {
+		criteria.push({name: undefined, units: undefined, low: undefined, high: undefined});
+	}
+	
 	return {
 		name: undefined, 
 		numPatients: undefined, 
 		numMen: undefined, 
-		numWomen: undefined
+		numWomen: undefined,
+		methodology: {
+			eligibilityCriteria: criteria
+		}
 	};
-}
+};
+
+
+function getEligibilityCriteria() {
+	return {
+		name: undefined, 
+		units: undefined, 
+		low: undefined, 
+		high: undefined
+	};
+};
 
 function storeValue(keys, value, store) {
 	var key = keys.shift();
@@ -108,6 +128,17 @@ function pushControlGroup(keys, store) {
 	}
 }
 
+function pushEligibilityCriteria() {
+	var controlGroups = _study['controlGroups'];
+	var totalData = _study['totalData'];
+	
+	for (var i = 0; i < controlGroups.length; i++) {
+		controlGroups[i]['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
+	}
+	
+	totalData['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
+}
+
 var StudyStore = _.extend({}, Backbone.Events, {
 	getStudy: function() {
 		return _study;
@@ -153,6 +184,10 @@ StudyDispatcher.register(function(payload) {
 		case 'UPDATE_CONTROL_GROUPS_SIZE':
 			keys = payload.keys.split(':');
 			pushControlGroup(keys, _study);
+			StudyStore.triggerChange();
+			break;
+		case 'UPDATE_ELIGIBILITY_CRITERIA_SIZE':
+			pushEligibilityCriteria();
 			StudyStore.triggerChange();
 			break;
 	}
