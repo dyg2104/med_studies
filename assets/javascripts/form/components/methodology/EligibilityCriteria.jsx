@@ -1,19 +1,25 @@
 var React                 = require('react');
+var StudyActions          = require('../../actions/StudyActions');
 var EligibilityCriterion  = require('./EligibilityCriterion.jsx');
 
 var EligibilityCriteria = React.createClass({	
-	getControlGroupsCriteria: function(position, length) {
+	getControlGroupsCriteria: function(position) {
 		var criteria = [];
 		var controlGroup;
 		var criterion;
 		
-		for (var i = 0; i < length; i++) {
+		for (var i = 0; i < this.props.controlGroups.length; i++) {
 			var controlGroup = this.props.controlGroups[i];
 			criterion = controlGroup['methodology']['eligibilityCriteria'][position];
 			criteria.push(criterion);
 		}
 		
 		return criteria;
+	},
+	
+	handleClick: function (e) {
+		e.preventDefault();
+		StudyActions.updateEligibilityCriteriaSize();
 	},
 	
 	render: function() {
@@ -24,7 +30,7 @@ var EligibilityCriteria = React.createClass({
 			nodes.push(<EligibilityCriterion
 							key={i}
 							position={i}
-							controlGroupsCriteria={this.getControlGroupsCriteria(i, criteria.length)}
+							controlGroupsCriteria={this.getControlGroupsCriteria(i)}
 							totalDataCriterion={criteria[i]} />);
 		}
 		
@@ -32,6 +38,7 @@ var EligibilityCriteria = React.createClass({
 			<div>
 				{this.props.title}
 				{nodes}
+				<a href='#' onClick={this.handleClick}>+</a>
 			</div>
 		)
 	}
