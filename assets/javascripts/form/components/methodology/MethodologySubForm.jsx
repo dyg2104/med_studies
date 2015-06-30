@@ -1,8 +1,17 @@
-var React                = require('react');
-var TextField            = require('../TextField.jsx');
-var TextFieldArray       = require('../TextFieldArray.jsx');
-var ControlGroups        = require('./ControlGroups.jsx');
-var EligibilityCriteria  = require('./EligibilityCriteria.jsx');
+var React                          = require('react');
+var StudyActions                   = require('../../actions/StudyActions');
+var TextField                      = require('../TextField.jsx');
+var TextFieldArray                 = require('../TextFieldArray.jsx');
+var ControlGroups                  = require('./ControlGroups.jsx');
+var EligibilityCriterion           = require('./EligibilityCriterion.jsx');
+var ControlGroupsTotalDataFactory  = require('../ControlGroupsTotalData.jsx');
+
+function ecClickHandler(e) {
+	e.preventDefault();
+	StudyActions.updateEligibilityCriteriaSize();
+}
+
+var EligibilityCriteria = ControlGroupsTotalDataFactory(EligibilityCriterion, 'methodology', 'eligibilityCriteria', ecClickHandler);
 
 var MethodologySubForm = React.createClass({
 	render: function () {
