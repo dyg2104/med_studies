@@ -1,8 +1,7 @@
 var _                         = require('underscore');
 var React                     = require('react');
 var TextFieldCGTD             = require('../TextFieldCGTD.jsx');
-var EligibilityCriterionLow   = require('./EligibilityCriterionLow.jsx');
-var EligibilityCriterionHigh  = require('./EligibilityCriterionHigh.jsx');
+var TextFieldCGTDValue        = require('../TextFieldCGTDValue.jsx');
 
 var EligibilityCriterion = React.createClass({			
 	getCGSetterKeys: function(index, lastKey) {
@@ -42,13 +41,17 @@ var EligibilityCriterion = React.createClass({
 					getAllSetterKeys={this.getAllSetterKeys}
 					title="Units" />
 				
-				<EligibilityCriterionLow 
+				<TextFieldCGTDValue 
+					keyName="low"
+					title="Low"
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
 					getTDSetterKeys={this.getTDSetterKeys} />
 					
-				<EligibilityCriterionHigh 
+				<TextFieldCGTDValue
+					keyName="high"
+					title="High" 
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
