@@ -4,6 +4,7 @@ var TextField                      = require('../TextField.jsx');
 var TextFieldArray                 = require('../TextFieldArray.jsx');
 var ControlGroups                  = require('./ControlGroups.jsx');
 var EligibilityCriterion           = require('./EligibilityCriterion.jsx');
+var PatientCharacteristic          = require('./PatientCharacteristic.jsx');
 var ControlGroupsTotalDataFactory  = require('../ControlGroupsTotalData.jsx');
 
 function ecClickHandler(e) {
@@ -11,7 +12,13 @@ function ecClickHandler(e) {
 	StudyActions.updateEligibilityCriteriaSize();
 }
 
+function pcClickHandler(e) {
+	e.preventDefault();
+	StudyActions.updatePatientCharacteristicsSize();
+}
+
 var EligibilityCriteria = ControlGroupsTotalDataFactory(EligibilityCriterion, 'methodology', 'eligibilityCriteria', ecClickHandler);
+var PatientCharacteristics = ControlGroupsTotalDataFactory(PatientCharacteristic, 'methodology', 'patientCharacteristics', pcClickHandler);
 
 var MethodologySubForm = React.createClass({
 	render: function () {
@@ -50,6 +57,10 @@ var MethodologySubForm = React.createClass({
 					controlGroups={controlGroups}
 					totalData={totalData}
 					title="Eligibility Criteria" />
+				<PatientCharacteristics 
+					controlGroups={controlGroups}
+					totalData={totalData}
+					title="Patient Characteristics" />
 			</div>
 		)
 	}
