@@ -1,16 +1,15 @@
-var _                         = require('underscore');
-var React                     = require('react');
-var TextFieldCGTD             = require('../TextFieldCGTD.jsx');
-var EligibilityCriterionLow   = require('./EligibilityCriterionLow.jsx');
-var EligibilityCriterionHigh  = require('./EligibilityCriterionHigh.jsx');
+var _                   = require('underscore');
+var React               = require('react');
+var TextFieldCGTD       = require('../TextFieldCGTD.jsx');
+var TextFieldCGTDValue  = require('../TextFieldCGTDValue.jsx');
 
-var EligibilityCriterion = React.createClass({			
+var PatientCharacteristic = React.createClass({			
 	getCGSetterKeys: function(index, lastKey) {
-		return 'controlGroups:' + index + ':methodology:eligibilityCriteria:' + this.props.position + ':' + lastKey;
+		return 'controlGroups:' + index + ':methodology:patientCharacteristics:' + this.props.position + ':' + lastKey;
 	},
 	
 	getTDSetterKeys: function(lastKey) {
-		return 'totalData:methodology:eligibilityCriteria:' + this.props.position + ':' + lastKey;
+		return 'totalData:methodology:patientCharacteristics:' + this.props.position + ':' + lastKey;
 	},
 	
 	getAllSetterKeys: function(lastKey) {
@@ -41,22 +40,32 @@ var EligibilityCriterion = React.createClass({
 					lastKey="units"
 					getAllSetterKeys={this.getAllSetterKeys}
 					title="Units" />
-				
-				<EligibilityCriterionLow 
+					
+				<TextFieldCGTD
+					formObj={this.props.totalDataCriterion}
+					getterKey="type"
+					lastKey="type"
+					getAllSetterKeys={this.getAllSetterKeys}
+					title="Type" />
+					
+				<TextFieldCGTDValue
+					keyName="data"
+					title="Data" 
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
 					getTDSetterKeys={this.getTDSetterKeys} />
 					
-				<EligibilityCriterionHigh 
+				<TextFieldCGTDValue
+					keyName="sd"
+					title="SD" 
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
-					getTDSetterKeys={this.getTDSetterKeys} />	
-				
+					getTDSetterKeys={this.getTDSetterKeys} />
 			</div>
 		)
 	}
 });
 
-module.exports = EligibilityCriterion;
+module.exports = PatientCharacteristic;
