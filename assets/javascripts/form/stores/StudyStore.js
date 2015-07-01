@@ -82,6 +82,16 @@ function getEligibilityCriteria() {
 	};
 };
 
+function getPatientCharacteristics() {
+	return {
+		name: undefined, 
+		units: undefined, 
+		type: undefined, 
+		data: undefined, 
+		sd: undefined
+	};
+};
+
 function storeValue(keys, value, store) {
 	var key = keys.shift();
 	var storeHolder;
@@ -139,6 +149,17 @@ function pushEligibilityCriteria() {
 	totalData['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
 }
 
+function pushPatientCharacteristics() {
+	var controlGroups = _study['controlGroups'];
+	var totalData = _study['totalData'];
+	
+	for (var i = 0; i < controlGroups.length; i++) {
+		controlGroups[i]['methodology']['patientCharacteristics'].push(getPatientCharacteristics());
+	}
+	
+	totalData['methodology']['patientCharacteristics'].push(getPatientCharacteristics());
+}
+
 var StudyStore = _.extend({}, Backbone.Events, {
 	getStudy: function() {
 		return _study;
@@ -188,6 +209,10 @@ StudyDispatcher.register(function(payload) {
 			break;
 		case 'UPDATE_ELIGIBILITY_CRITERIA_SIZE':
 			pushEligibilityCriteria();
+			StudyStore.triggerChange();
+			break;
+		case 'UPDATE_PATIENT_CHARACTERISTICS_SIZE':
+			pushPatientCharacteristics();
 			StudyStore.triggerChange();
 			break;
 	}

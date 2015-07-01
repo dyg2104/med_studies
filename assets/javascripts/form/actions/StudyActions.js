@@ -35,6 +35,12 @@ var StudyActions = {
 		StudyDispatcher.dispatch({
 			type: 'UPDATE_ELIGIBILITY_CRITERIA_SIZE'
 		});
+	},
+	
+	updatePatientCharacteristicsSize: function() {
+		StudyDispatcher.dispatch({
+			type: 'UPDATE_PATIENT_CHARACTERISTICS_SIZE'
+		});
 	}
 };
 
