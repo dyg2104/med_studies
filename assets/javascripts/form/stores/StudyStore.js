@@ -37,7 +37,9 @@ var _study = window.study = {
 				patientCharacteristics: [{name: undefined, units: undefined, type: undefined, data: undefined, sd: undefined}]
 			},
 			measurement: {
-				medications: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}]
+				medications: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
+				adverseEvents: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
+				patientData: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}]
 			}
 		}
 		
@@ -49,8 +51,8 @@ var _study = window.study = {
 		},
 		measurement: {
 			medications: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
-			adverseEvents: [{}],
-			patientData: [{}]
+			adverseEvents: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
+			patientData: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}]
 		},
 		result: {
 			primaryEndpoint: undefined
@@ -62,6 +64,7 @@ function getControlGroup() {
 	var criteria = [];
 	var characteristics = [];
 	var medications = [];
+	var adverseEvents = [];
 	
 	for (var i = 0; i < _study['totalData']['methodology']['eligibilityCriteria'].length; i++) {
 		criteria.push({name: undefined, units: undefined, low: undefined, high: undefined});
@@ -73,6 +76,10 @@ function getControlGroup() {
 	
 	for (var k = 0; k < _study['totalData']['measurement']['medications'].length; k++) {
 		medications.push({name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}});
+	}
+	
+	for (var l = 0; l < _study['totalData']['measurement']['adverseEvents'].length; l++) {
+		adverseEvents.push({name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}});
 	}
 	
 	return {
