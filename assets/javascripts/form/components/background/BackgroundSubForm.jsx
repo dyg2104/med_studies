@@ -6,7 +6,6 @@ var BackgroundSubForm = React.createClass({
 	render: function () {	
 		return (
 			<div>
-				<div>background</div>
 			    <TextField
 					formObj={this.props.study}
 					getterKey="title" 

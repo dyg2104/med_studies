@@ -28,7 +28,6 @@ var MethodologySubForm = React.createClass({
 		
 		return (
 			<div>
-				<div>methodology</div>
 				<TextField 
 					formObj={methodology}
 					getterKey="diagnosis" 

@@ -23,7 +23,7 @@ var _study = window.study = {
 	measurement: {
 		statisticalAnalysis: undefined
 	},
-	result: {
+	conclusion: {
 		summary: undefined
 	},
 	controlGroups: [
@@ -53,9 +53,6 @@ var _study = window.study = {
 			medications: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
 			adverseEvents: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
 			patientData: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}]
-		},
-		result: {
-			primaryEndpoint: undefined
 		}
 	}
 };
@@ -65,6 +62,7 @@ function getControlGroup() {
 	var characteristics = [];
 	var medications = [];
 	var adverseEvents = [];
+	var patientData = [];
 	
 	for (var i = 0; i < _study['totalData']['methodology']['eligibilityCriteria'].length; i++) {
 		criteria.push({name: undefined, units: undefined, low: undefined, high: undefined});
@@ -82,6 +80,10 @@ function getControlGroup() {
 		adverseEvents.push({name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}});
 	}
 	
+	for (var m = 0; m < _study['totalData']['measurement']['patientData'].length; m++) {
+		patientData.push({name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}});
+	}
+	
 	return {
 		name: undefined, 
 		numPatients: undefined, 
@@ -92,7 +94,9 @@ function getControlGroup() {
 			patientCharacteristics: characteristics
 		},
 		measurement: {
-			medications: medications
+			medications: medications,
+			adverseEvents: adverseEvents,
+			patientData: patientData
 		}
 	};
 };
