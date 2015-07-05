@@ -35,8 +35,12 @@ var _study = window.study = {
 			methodology: {
 				eligibilityCriteria: [{name: undefined, units: undefined, low: undefined, high: undefined}],
 				patientCharacteristics: [{name: undefined, units: undefined, type: undefined, data: undefined, sd: undefined}]
+			},
+			measurement: {
+				medications: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}]
 			}
 		}
+		
 	],
 	totalData: {
 		methodology: {
@@ -44,7 +48,7 @@ var _study = window.study = {
 			patientCharacteristics: [{name: undefined, units: undefined, type: undefined, data: undefined, sd: undefined}]
 		},
 		measurement: {
-			medications: [{}],
+			medications: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
 			adverseEvents: [{}],
 			patientData: [{}]
 		},
@@ -56,9 +60,19 @@ var _study = window.study = {
 
 function getControlGroup() {
 	var criteria = [];
+	var characteristics = [];
+	var medications = [];
 	
 	for (var i = 0; i < _study['totalData']['methodology']['eligibilityCriteria'].length; i++) {
 		criteria.push({name: undefined, units: undefined, low: undefined, high: undefined});
+	}
+	
+	for (var j = 0; j < _study['totalData']['methodology']['patientCharacteristics'].length; j++) {
+		characteristics.push({name: undefined, units: undefined, type: undefined, data: undefined, sd: undefined});
+	}
+	
+	for (var k = 0; k < _study['totalData']['measurement']['medications'].length; k++) {
+		medications.push({name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}});
 	}
 	
 	return {
@@ -67,7 +81,11 @@ function getControlGroup() {
 		numMen: undefined, 
 		numWomen: undefined,
 		methodology: {
-			eligibilityCriteria: criteria
+			eligibilityCriteria: criteria,
+			patientCharacteristics: characteristics
+		},
+		measurement: {
+			medications: medications
 		}
 	};
 };
