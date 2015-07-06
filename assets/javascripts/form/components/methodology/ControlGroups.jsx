@@ -5,8 +5,7 @@ var ControlGroup  = require('./ControlGroup.jsx');
 var ControlGroups = React.createClass({				
 	handleClick: function (e) {
 		e.preventDefault();
-		var keys = this.props.setterKeys;
-		StudyActions.updateControlGroupsSize(keys);
+		StudyActions.updateControlGroupsSize();
 	},
 	
 	render: function () {

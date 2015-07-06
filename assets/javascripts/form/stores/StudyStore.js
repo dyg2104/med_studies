@@ -102,8 +102,7 @@ StudyDispatcher.register(function(payload) {
 			StudyStore.triggerChange();
 			break;
 		case 'UPDATE_CONTROL_GROUPS_SIZE':
-			keys = payload.keys.split(':');
-			helpers.pushControlGroup(keys, _study);
+			helpers.pushControlGroup(_study);
 			StudyStore.triggerChange();
 			break;
 		case 'UPDATE_ELIGIBILITY_CRITERIA_SIZE':

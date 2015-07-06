@@ -26,8 +26,7 @@ var StudyActions = {
 	
 	updateControlGroupsSize: function(keys) {
 		StudyDispatcher.dispatch({ 
-			type: 'UPDATE_CONTROL_GROUPS_SIZE', 
-			keys: keys 
+			type: 'UPDATE_CONTROL_GROUPS_SIZE'
 		});
 	},
 	

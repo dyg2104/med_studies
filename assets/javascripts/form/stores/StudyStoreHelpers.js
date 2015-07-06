@@ -92,12 +92,11 @@ module.exports = {
 		}
 	},
 	
-	pushControlGroup: function(keys, store) {
-		var key = keys.shift();
-		var array = store[key];
+	pushControlGroup: function(store) {
+		var controlGroups = store['controlGroups'];
 		var controlGroup = getControlGroup(store);
 		
-		array.push(controlGroup);
+		controlGroups.push(controlGroup);
 	},
 	
 	pushEligibilityCriteria: function() {
