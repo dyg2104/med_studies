@@ -24,7 +24,7 @@ var StudyActions = {
 		});
 	},
 	
-	updateControlGroupsSize: function(keys) {
+	updateControlGroupsSize: function() {
 		StudyDispatcher.dispatch({ 
 			type: 'UPDATE_CONTROL_GROUPS_SIZE'
 		});

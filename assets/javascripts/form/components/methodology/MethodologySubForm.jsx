@@ -1,5 +1,4 @@
 var React                          = require('react');
-var StudyActions                   = require('../../actions/StudyActions');
 var TextField                      = require('../TextField.jsx');
 var TextFieldArray                 = require('../TextFieldArray.jsx');
 var ControlGroups                  = require('./ControlGroups.jsx');
@@ -7,18 +6,10 @@ var EligibilityCriterion           = require('./EligibilityCriterion.jsx');
 var PatientCharacteristic          = require('./PatientCharacteristic.jsx');
 var FactoryCGTD                    = require('../FactoryCGTD.jsx');
 
-function ecClickHandler(e) {
-	e.preventDefault();
-	StudyActions.updateEligibilityCriteriaSize();
-}
+var handlers                       = require('./clickHandlers');
 
-function pcClickHandler(e) {
-	e.preventDefault();
-	StudyActions.updatePatientCharacteristicsSize();
-}
-
-var EligibilityCriteria = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', ecClickHandler);
-var PatientCharacteristics = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', pcClickHandler);
+var EligibilityCriteria = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
+var PatientCharacteristics = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
 
 var MethodologySubForm = React.createClass({
 	render: function () {

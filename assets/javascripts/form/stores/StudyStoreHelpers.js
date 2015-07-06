@@ -99,9 +99,9 @@ module.exports = {
 		controlGroups.push(controlGroup);
 	},
 	
-	pushEligibilityCriteria: function() {
-		var controlGroups = _study['controlGroups'];
-		var totalData = _study['totalData'];
+	pushEligibilityCriteria: function(store) {
+		var controlGroups = store['controlGroups'];
+		var totalData = store['totalData'];
 	
 		for (var i = 0; i < controlGroups.length; i++) {
 			controlGroups[i]['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
@@ -110,9 +110,9 @@ module.exports = {
 		totalData['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
 	},
 	
-	pushPatientCharacteristics: function() {
-		var controlGroups = _study['controlGroups'];
-		var totalData = _study['totalData'];
+	pushPatientCharacteristics: function(store) {
+		var controlGroups = store['controlGroups'];
+		var totalData = store['totalData'];
 	
 		for (var i = 0; i < controlGroups.length; i++) {
 			controlGroups[i]['methodology']['patientCharacteristics'].push(getPatientCharacteristics());

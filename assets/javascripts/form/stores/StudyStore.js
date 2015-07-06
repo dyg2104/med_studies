@@ -106,11 +106,11 @@ StudyDispatcher.register(function(payload) {
 			StudyStore.triggerChange();
 			break;
 		case 'UPDATE_ELIGIBILITY_CRITERIA_SIZE':
-			helpers.pushEligibilityCriteria();
+			helpers.pushEligibilityCriteria(_study);
 			StudyStore.triggerChange();
 			break;
 		case 'UPDATE_PATIENT_CHARACTERISTICS_SIZE':
-			helpers.pushPatientCharacteristics();
+			helpers.pushPatientCharacteristics(_study);
 			StudyStore.triggerChange();
 			break;
 	}
