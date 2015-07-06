@@ -23,6 +23,11 @@ var NewForm = React.createClass({
 		StudyStore.removeChangeListener(this._onChange);
 	},
 	
+	_onChange: function() {
+		var study = StudyStore.getStudy();
+		this.setState({study: study});
+	},
+	
 	goToBackground: function() {
 		this.setState({step: 1});
 	},
@@ -51,11 +56,6 @@ var NewForm = React.createClass({
 	  })
 	},
 	
-	_onChange: function() {
-		var study = StudyStore.getStudy();
-		this.setState({study: study});
-	},
-	
 	render: function() {
 		var subForm;
 		
@@ -63,8 +63,7 @@ var NewForm = React.createClass({
 			case 1:
 				subForm = <Background
 							study={this.state.study}
-							nextStep={this.nextStep} 
-							previousStep={this.previousStep} />;
+							nextStep={this.nextStep} />;
 				break;
 			case 2:
 				subForm = <Methodology 
@@ -81,7 +80,6 @@ var NewForm = React.createClass({
 			case 4:
 				subForm = <Conclusion
 							study={this.state.study}
-							nextStep={this.nextStep} 
 							previousStep={this.previousStep} />;
 				break; 
 		}
