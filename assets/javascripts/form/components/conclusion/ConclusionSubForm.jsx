@@ -6,11 +6,14 @@ var ConclusionSubForm = React.createClass({
 		var conclusion = this.props.study['conclusion'];
 		
 		return (
-		    <TextArea 
-				formObj={conclusion}
-				getterKey="summary"
-				setterKeys="conclusion:summary"
-				title="Summary" />
+		    <div>
+				<TextArea 
+					formObj={conclusion}
+					getterKey="summary"
+					setterKeys="conclusion:summary"
+					title="Summary" />
+				<a href="#" onClick={this.props.previousStep}>Previous</a>
+			</div>
 		)
 	}
 });

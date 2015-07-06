@@ -1,12 +1,11 @@
-var React                          = require('react');
-var TextField                      = require('../TextField.jsx');
-var TextFieldArray                 = require('../TextFieldArray.jsx');
-var ControlGroups                  = require('./ControlGroups.jsx');
-var EligibilityCriterion           = require('./EligibilityCriterion.jsx');
-var PatientCharacteristic          = require('./PatientCharacteristic.jsx');
-var FactoryCGTD                    = require('../FactoryCGTD.jsx');
-
-var handlers                       = require('./clickHandlers');
+var React                  = require('react');
+var TextField              = require('../TextField.jsx');
+var TextFieldArray         = require('../TextFieldArray.jsx');
+var ControlGroups          = require('./ControlGroups.jsx');
+var EligibilityCriterion   = require('./EligibilityCriterion.jsx');
+var PatientCharacteristic  = require('./PatientCharacteristic.jsx');
+var FactoryCGTD            = require('../FactoryCGTD.jsx');
+var handlers               = require('./clickHandlers');
 
 var EligibilityCriteria = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
 var PatientCharacteristics = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
@@ -51,6 +50,8 @@ var MethodologySubForm = React.createClass({
 					controlGroups={controlGroups}
 					totalData={totalData}
 					title="Patient Characteristics" />
+				<a href="#" onClick={this.props.previousStep}>Previous</a>
+				<a href="#" onClick={this.props.nextStep}>Next</a>
 			</div>
 		)
 	}

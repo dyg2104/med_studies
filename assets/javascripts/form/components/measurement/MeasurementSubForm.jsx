@@ -42,6 +42,8 @@ var MeasurementSubForm = React.createClass({
 					controlGroups={controlGroups}
 					totalData={totalData}
 					title="Patient Data" />
+				<a href="#" onClick={this.props.previousStep}>Previous</a>
+				<a href="#" onClick={this.props.nextStep}>Next</a>
 			</div>
 		)
 	}
