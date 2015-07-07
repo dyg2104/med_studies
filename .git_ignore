@@ -1,2 +1,3 @@
 ./med_studies_app/app/assets/javascripts
 ./public/assets
+./log/development.log
