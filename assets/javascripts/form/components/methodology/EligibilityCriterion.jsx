@@ -30,32 +30,32 @@ var EligibilityCriterion = React.createClass({
 				<TextFieldCGTD
 					formObj={this.props.totalDataCriterion}
 					getterKey="name"
-					lastKey="name"
 					getAllSetterKeys={this.getAllSetterKeys}
+					lastKey="name"
 					title="Name" />
 					
 				<TextFieldCGTD
 					formObj={this.props.totalDataCriterion}
 					getterKey="units"
-					lastKey="units"
 					getAllSetterKeys={this.getAllSetterKeys}
+					lastKey="units"
 					title="Units" />
 				
 				<TextFieldCGTDValue 
 					keyName="low"
-					title="Low"
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
-					getTDSetterKeys={this.getTDSetterKeys} />
+					getTDSetterKeys={this.getTDSetterKeys} 
+					title="Low" />
 					
 				<TextFieldCGTDValue
-					keyName="high"
-					title="High" 
+					keyName="high" 
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
-					getTDSetterKeys={this.getTDSetterKeys} />	
+					getTDSetterKeys={this.getTDSetterKeys} 
+					title="High" />	
 				
 			</div>
 		)

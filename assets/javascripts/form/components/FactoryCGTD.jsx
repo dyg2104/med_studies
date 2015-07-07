@@ -8,7 +8,7 @@ module.exports = function(Component, firstKey, secondKey, handleClick) {
 			var criterion;
 		
 			for (var i = 0; i < this.props.controlGroups.length; i++) {
-				var controlGroup = this.props.controlGroups[i];
+				controlGroup = this.props.controlGroups[i];
 				criterion = controlGroup[firstKey][secondKey][position];
 				criteria.push(criterion);
 			}

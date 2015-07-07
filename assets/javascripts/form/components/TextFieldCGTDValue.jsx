@@ -10,16 +10,16 @@ var TextFieldCGTDValue = React.createClass({
 		for(i = 0; i < this.props.controlGroupsCriteria.length; i++) {
 			criterion = this.props.controlGroupsCriteria[i];
 			nodes.push(<TextField 
-						formObj={criterion}
 						key={i}
+						formObj={criterion}
 						getterKey={this.props.keyName}
 						setterKeys={this.props.getCGSetterKeys(i, this.props.keyName)}
 						title={this.props.title} />);
 		}
 	
 		nodes.push(<TextField 
-					formObj={this.props.totalDataCriterion}
 					key={i+1}
+					formObj={this.props.totalDataCriterion}
 					getterKey={this.props.keyName}
 					setterKeys={this.props.getTDSetterKeys(this.props.keyName)}
 					title={this.props.title} />);

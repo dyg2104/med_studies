@@ -30,39 +30,39 @@ var PatientCharacteristic = React.createClass({
 				<TextFieldCGTD
 					formObj={this.props.totalDataCriterion}
 					getterKey="name"
-					lastKey="name"
 					getAllSetterKeys={this.getAllSetterKeys}
+					lastKey="name"
 					title="Name" />
 					
 				<TextFieldCGTD
 					formObj={this.props.totalDataCriterion}
 					getterKey="units"
-					lastKey="units"
 					getAllSetterKeys={this.getAllSetterKeys}
+					lastKey="units"
 					title="Units" />
 					
 				<TextFieldCGTD
 					formObj={this.props.totalDataCriterion}
 					getterKey="type"
-					lastKey="type"
 					getAllSetterKeys={this.getAllSetterKeys}
+					lastKey="type"
 					title="Type" />
 					
 				<TextFieldCGTDValue
 					keyName="data"
-					title="Data" 
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
-					getTDSetterKeys={this.getTDSetterKeys} />
+					getTDSetterKeys={this.getTDSetterKeys} 
+					title="Data" />
 					
 				<TextFieldCGTDValue
-					keyName="sd"
-					title="SD" 
+					keyName="sd" 
 					controlGroupsCriteria={this.props.controlGroupsCriteria} 
 					totalDataCriterion={this.props.totalDataCriterion}
 					getCGSetterKeys={this.getCGSetterKeys}
-					getTDSetterKeys={this.getTDSetterKeys} />
+					getTDSetterKeys={this.getTDSetterKeys} 
+					title="SD" />
 			</div>
 		)
 	}

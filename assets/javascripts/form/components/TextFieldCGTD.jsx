@@ -4,7 +4,7 @@ var StudyActions  = require('../actions/StudyActions');
 var TextField = React.createClass({
 	getValue: function () {
 		var formObj = this.props.formObj;
-		return formObj[this.props.getterKey];	
+		return formObj[this.props.getterKey];
 	},
 	
 	handleChange: function (e) {
