@@ -113,6 +113,11 @@ StudyDispatcher.register(function(payload) {
 			helpers.pushPatientCharacteristics(_study);
 			StudyStore.triggerChange();
 			break;
+		case 'UPDATE_MEASUREMENT_SIZE':
+			keys = payload.keys.split(':');
+			helpers.pushMeasurementData(keys, _study);
+			StudyStore.triggerChange();
+			break;
 	}
 	
 });

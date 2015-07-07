@@ -40,7 +40,7 @@ function getControlGroup(store) {
 			patientData: patientData
 		}
 	};
-};
+}
 
 
 function getEligibilityCriteria() {
@@ -50,7 +50,7 @@ function getEligibilityCriteria() {
 		low: undefined, 
 		high: undefined
 	};
-};
+}
 
 function getPatientCharacteristics() {
 	return {
@@ -60,17 +60,29 @@ function getPatientCharacteristics() {
 		data: undefined, 
 		sd: undefined
 	};
-};
+}
+
+function getMeasurementData() {
+	return {
+		name: undefined, 
+		units: undefined, 
+		type: undefined, 
+		before: {data: undefined, sd: undefined}, 
+		after: {data: undefined, sd: undefined}, 
+		difference: {data: undefined, sd: undefined}
+	};
+}
 
 module.exports = {
 	storeValue: function(keys, value, store) {
 		var key = keys.shift();
 		var storeHolder;
-	
+		
+		if (/\d+/.test(key)) {
+			key = parseInt(key);
+		}
+		
 		if (keys.length === 0) {
-			if (/\d+/.test(key)) {
-				key = parseInt(key);
-			}
 			store[key] = value;
 		} else {
 			storeHolder = store[key];
@@ -119,5 +131,19 @@ module.exports = {
 		}
 	
 		totalData['methodology']['patientCharacteristics'].push(getPatientCharacteristics());
+	},
+	
+	pushMeasurementData: function(keys, store) {
+		var controlGroups = store['controlGroups'];
+		var totalData = store['totalData'];
+		
+		var firstKey = keys[0];
+		var secondKey = keys[1];
+		
+		for (var i = 0; i < controlGroups.length; i++) {
+			controlGroups[i][firstKey][secondKey].push(getMeasurementData());
+		}
+		
+		totalData[firstKey][secondKey].push(getMeasurementData());
 	}
 };

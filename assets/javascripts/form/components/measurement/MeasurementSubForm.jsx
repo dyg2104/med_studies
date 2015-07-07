@@ -3,19 +3,15 @@ var StudyActions    = require('../../actions/StudyActions');
 var TextArea        = require('../TextArea.jsx');
 var FactoryCGTDSub  = require('../FactoryCGTDSub.jsx');
 var FactoryCGTD     = require('../FactoryCGTD.jsx');
-
-function ecClickHandler(e) {
-	e.preventDefault();
-	StudyActions.updateEligibilityCriteriaSize();
-}
+var handlers        = require('./clickHandlers');
 
 var Medication = FactoryCGTDSub('measurement', 'medications');
 var AdverseEvent = FactoryCGTDSub('measurement', 'adverseEvents');
 var PatientData = FactoryCGTDSub('measurement', 'patientData');
 
-var Medications = FactoryCGTD(Medication, 'measurement', 'medications', ecClickHandler);
-var AdverseEvents = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', ecClickHandler);
-var PatientDataPlural = FactoryCGTD(PatientData, 'measurement', 'patientData', ecClickHandler);
+var Medications = FactoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
+var AdverseEvents = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
+var PatientDataPlural = FactoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
 
 var MeasurementSubForm = React.createClass({
 	render: function () {

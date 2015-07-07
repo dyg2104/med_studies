@@ -40,6 +40,13 @@ var StudyActions = {
 		StudyDispatcher.dispatch({
 			type: 'UPDATE_PATIENT_CHARACTERISTICS_SIZE'
 		});
+	},
+	
+	updateMeasurementSize: function(keys) {
+		StudyDispatcher.dispatch({
+			type: 'UPDATE_MEASUREMENT_SIZE',
+			keys: keys
+		});
 	}
 };
 
