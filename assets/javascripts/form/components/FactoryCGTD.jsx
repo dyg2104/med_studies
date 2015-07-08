@@ -2,30 +2,32 @@ var React = require('react');
 
 module.exports = function(Component, firstKey, secondKey, handleClick) {
 	var ControlGroupsTotalData = React.createClass({
-		getControlGroupsCriteria: function(position) {
-			var criteria = [];
+		getControlGroupsData: function(position) {
+			var data = [];
 			var controlGroup;
-			var criterion;
+			var singular;
 		
 			for (var i = 0; i < this.props.controlGroups.length; i++) {
 				controlGroup = this.props.controlGroups[i];
-				criterion = controlGroup[firstKey][secondKey][position];
-				criteria.push(criterion);
+				singular = controlGroup[firstKey][secondKey][position];
+				data.push(singular);
 			}
 		
-			return criteria;
+			return data;
 		},
 		
 		render: function() {
 			var nodes = [];
-			var criteria = this.props.totalData[firstKey][secondKey];
+			var data = this.props.totalData[firstKey][secondKey];
 		
-			for (var i = 0; i < criteria.length; i++) {
-				nodes.push(<Component
-							key={i}
-							position={i}
-							controlGroupsCriteria={this.getControlGroupsCriteria(i)}
-							totalDataCriterion={criteria[i]} />);
+			for (var i = 0; i < data.length; i++) {
+				nodes.push(
+					<Component
+						key={i}
+						position={i}
+						controlGroupsCriteria={this.getControlGroupsData(i)}
+						totalDataCriterion={data[i]} />
+				);
 			}
 		
 			return (
