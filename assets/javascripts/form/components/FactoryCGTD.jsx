@@ -24,9 +24,10 @@ module.exports = function(Component, firstKey, secondKey, handleClick) {
 				nodes.push(
 					<Component
 						key={i}
-						position={i}
-						controlGroupsCriteria={this.getControlGroupsData(i)}
-						totalDataCriterion={data[i]} />
+						controlGroupsData={this.getControlGroupsData(i)}
+						totalData={data[i]} 
+						getterKey={firstKey + ':' + secondKey + ':' + i}
+						setterKeys={firstKey + ':' + secondKey + ':' + i} />
 				);
 			}
 		

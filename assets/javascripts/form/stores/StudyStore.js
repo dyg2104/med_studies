@@ -42,8 +42,7 @@ var _study = window.study = {
 				adverseEvents: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}],
 				patientData: [{name: undefined, units: undefined, type: undefined, before: {data: undefined, sd: undefined}, after: {data: undefined, sd: undefined}, difference: {data: undefined, sd: undefined}}]
 			}
-		}
-		
+		}	
 	],
 	totalData: {
 		methodology: {
@@ -95,6 +94,12 @@ StudyDispatcher.register(function(payload) {
 				helpers.storeValue(key.split(':'), value, _study);
 			});
 			StudyStore.triggerChange();
+			break;
+		case 'UPDATE_CGTD_FIELDS':
+			keys = payload.keys;
+			value = payload.value;
+			helpers.storeCGTDValue(keys, value, _study);
+			StudyStore.triggerChange();			
 			break;
 		case 'UPDATE_ARRAY_SIZE':
 			keys = payload.keys.split(':');
