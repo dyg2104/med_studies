@@ -4,56 +4,32 @@ var TextFieldCGTD       = require('./TextFieldCGTD.jsx');
 var TextFieldCGTDDiff   = require('./TextFieldCGTDDiff.jsx');
 
 module.exports = function(firstKey, secondKey) {
-	var ControlGroupsTotalDataSub = React.createClass({
-		getCGSetterKeys: function(index, lastKey) {
-			return 'controlGroups:' + index + ':' + firstKey + ':' + secondKey + ':' + this.props.position + ':' + lastKey;
-		},
-	
-		getTDSetterKeys: function(lastKey) {
-			return 'totalData:' + firstKey + ':' + secondKey + ':' + this.props.position + ':' + lastKey;
-		},
-	
-		getAllSetterKeys: function(lastKey) {
-			var keys = [];
-			var criterion;
-		
-			for(var i = 0; i < this.props.controlGroupsCriteria.length; i++) {
-				keys.push(this.getCGSetterKeys(i, lastKey));
-			}
-			keys.push(this.getTDSetterKeys(lastKey));
-		
-			return keys;
-		},
-	
+	var ControlGroupsTotalDataSub = React.createClass({	
 		render: function () {
 			return (
 				<div>
 					<TextFieldCGTD
-						formObj={this.props.totalDataCriterion}
+						formObj={this.props.totalData}
 						getterKey="name"
-						lastKey="name"
-						getAllSetterKeys={this.getAllSetterKeys}
+						setterKeys={this.props.setterKeys + ':' + "name"}
 						title="Name" />
 					
 					<TextFieldCGTD
-						formObj={this.props.totalDataCriterion}
+						formObj={this.props.totalData}
 						getterKey="units"
-						lastKey="units"
-						getAllSetterKeys={this.getAllSetterKeys}
+						setterKeys={this.props.setterKeys + ':' + "units"}
 						title="Units" />
 					
 					<TextFieldCGTD
-						formObj={this.props.totalDataCriterion}
+						formObj={this.props.totalData}
 						getterKey="type"
-						lastKey="type"
-						getAllSetterKeys={this.getAllSetterKeys}
+						setterKeys={this.props.setterKeys + ':' + "type"}
 						title="Type" />
 					
 					<TextFieldCGTDDiff 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.getCGSetterKeys}
-						getTDSetterKeys={this.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						setterKeys={this.props.setterKeys} />
 				</div>
 			)
 		}

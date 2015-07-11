@@ -14,10 +14,12 @@ var ControlGroups = React.createClass({
 		var i;
 		
 		for(i = 0; i < controlGroups.length; i++) {
-			nodes.push(<ControlGroup 
-							key={i} 
-							setterKeys={this.props.setterKeys + ':' + i} 
-							controlGroup={controlGroups[i]} />);
+			nodes.push(
+				<ControlGroup 
+					key={i} 
+					controlGroup={controlGroups[i]}
+					setterKeys={this.props.setterKeys + ':' + i} />
+			);
 		}
 		
 		return (

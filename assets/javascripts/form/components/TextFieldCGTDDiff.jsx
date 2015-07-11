@@ -3,64 +3,57 @@ var TextFieldCGTDValue  = require('./TextFieldCGTDValue.jsx');
 
 var TextFieldCGTDDifference = React.createClass({	
 	render: function () {
-				
 		return (
 			<div>
 				<div>
 					Before
 					<TextFieldCGTDValue
-						keyName="before:data"
-						title="Data" 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.props.getCGSetterKeys}
-						getTDSetterKeys={this.props.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						getterKey="before:data"
+						setterKeys={this.props.setterKeys + ':' + "before:data"}
+						title="Data" />
 		
 					<TextFieldCGTDValue
-						keyName="before:sd"
-						title="SD" 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.props.getCGSetterKeys}
-						getTDSetterKeys={this.props.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						getterKey="before:sd"
+						setterKeys={this.props.setterKeys + ':' + "before:sd"}
+						title="SD" />
 				</div>
 		
 				<div>
 					After
 					<TextFieldCGTDValue
-						keyName="after:data"
-						title="Data" 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.props.getCGSetterKeys}
-						getTDSetterKeys={this.props.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						getterKey="after:data"
+						setterKeys={this.props.setterKeys + ':' + "after:data"}
+						title="Data" />
 		
 					<TextFieldCGTDValue
-						keyName="after:sd"
-						title="SD" 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.props.getCGSetterKeys}
-						getTDSetterKeys={this.props.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						getterKey="after:sd"
+						setterKeys={this.props.setterKeys + ':' + "after:sd"}
+						title="SD" />
 				</div>
 		
 				<div>
 					Difference
 					<TextFieldCGTDValue
-						keyName="difference:data"
-						title="Data" 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.props.getCGSetterKeys}
-						getTDSetterKeys={this.props.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						getterKey="difference:data"
+						setterKeys={this.props.setterKeys + ':' + "difference:data"}
+						title="Data" />
 		
 					<TextFieldCGTDValue
-						keyName="difference:sd"
-						title="SD" 
-						controlGroupsCriteria={this.props.controlGroupsCriteria} 
-						totalDataCriterion={this.props.totalDataCriterion}
-						getCGSetterKeys={this.props.getCGSetterKeys}
-						getTDSetterKeys={this.props.getTDSetterKeys} />
+						controlGroupsData={this.props.controlGroupsData}
+						totalData={this.props.totalData}
+						getterKey="difference:sd"
+						setterKeys={this.props.setterKeys + ':' + "difference:sd"}
+						title="SD" />
 				</div>
 			</div>
         );
