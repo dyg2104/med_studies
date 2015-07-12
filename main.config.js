@@ -22,7 +22,7 @@ config.output = {
 
 config.module = {
 	loaders: [
-		{ test: /\.jsx$/, loader: "jsx-loader" }
+		{ test: /\.es\.js|jsx$/, exclude: /(node_modules)/, loader: 'babel' }
 	]
 };
 

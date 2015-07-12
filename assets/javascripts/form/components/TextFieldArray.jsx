@@ -20,10 +20,12 @@ var TextFields = React.createClass({
 		var i;
 		
 		for(i = 0; i < array.length; i++) {
-			nodes.push(<TextField 
-							key={i} 
-							setterKeys={this.props.setterKeys + ':' + i} 
-							arrayValue={array[i]} />);
+			nodes.push(
+				<TextField 
+					key={i} 
+					arrayValue={array[i]} 
+					setterKeys={this.props.setterKeys + ':' + i} />
+			);
 		}
 		
 		return (

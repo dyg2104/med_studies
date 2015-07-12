@@ -17,6 +17,14 @@ var StudyActions = {
 		});
 	},
 	
+	updateCGTDFields: function(keys, value) {
+		StudyDispatcher.dispatch({
+			type: 'UPDATE_CGTD_FIELDS',
+			keys: keys,
+			value: value
+		});
+	},
+	
 	updateArraySize: function(keys) {
 		StudyDispatcher.dispatch({
 			type: 'UPDATE_ARRAY_SIZE',

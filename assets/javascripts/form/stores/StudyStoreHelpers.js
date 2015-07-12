@@ -90,6 +90,19 @@ module.exports = {
 		}
 	},
 	
+	storeCGTDValue: function(keys, value, store) {
+		var controlGroups = store['controlGroups'];
+		var holder;
+		
+		for (var i = 0; i < controlGroups.length; i++) {
+			holder = 'controlGroups:' + i + ':' + keys;
+			this.storeValue(holder.split(':'), value, store);
+		}
+		
+		holder = 'totalData:' + keys;
+		this.storeValue(holder.split(':'), value, store);
+	},
+	
 	pushArray: function(keys, store) {
 		var key = keys.shift();
 		var array;

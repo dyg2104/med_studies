@@ -8,9 +8,9 @@ var TextField = React.createClass({
 	},
 	
 	handleChange: function (e) {
-		var keys = this.props.getAllSetterKeys(this.props.lastKey);
+		var keys = this.props.setterKeys;
 		var value = e.target.value;
-		StudyActions.updateFields(keys, value);
+		StudyActions.updateCGTDFields(keys, value);
 	},
 	
 	render: function () {
