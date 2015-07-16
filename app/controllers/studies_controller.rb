@@ -1,4 +1,8 @@
 class StudiesController < ApplicationController
+  include StudiesConcern
+  
+  skip_before_filter  :verify_authenticity_token
+    
   def index
     render "index"
   end
@@ -8,6 +12,9 @@ class StudiesController < ApplicationController
   end
   
   def create
+    @study = StudiesConcern.form_parser(params)
+    
+    render json: {success: true}
   end
   
   def show
