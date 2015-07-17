@@ -81,7 +81,7 @@ var StudyStore = _.extend({}, Backbone.Events, {
 			url: '/studies',
 			method: 'POST',
 			dataType: 'json',
-			data: _study
+			data: JSON.stringify(_study)
 		});
 	}
 });

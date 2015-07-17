@@ -12,8 +12,9 @@ class StudiesController < ApplicationController
   end
   
   def create
-    @study = StudiesConcern.form_parser(params)
-    
+    @form_params = JSON.parse(request.raw_post)
+    @study = StudiesConcern.form_parser(@form_params)
+    @study.save!
     render json: {success: true}
   end
   
