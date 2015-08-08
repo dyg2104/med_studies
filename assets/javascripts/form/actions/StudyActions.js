@@ -55,6 +55,12 @@ var StudyActions = {
 			type: 'UPDATE_MEASUREMENT_SIZE',
 			keys: keys
 		});
+	},
+	
+	submit: function() {
+		StudyDispatcher.dispatch({
+			type: 'SUBMIT'
+		});
 	}
 };
 

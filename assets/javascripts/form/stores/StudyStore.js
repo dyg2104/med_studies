@@ -1,4 +1,5 @@
 var _                = require('underscore');
+var $                = require('jquery');
 var Backbone         = require('backbone');
 var StudyDispatcher  = require('../dispatchers/StudyDispatcher');
 var helpers          = require('./StudyStoreHelpers');
@@ -73,6 +74,15 @@ var StudyStore = _.extend({}, Backbone.Events, {
 	
 	removeChangeListener: function(callback) {
 		this.off(CHANGE_EVENT, callback);
+	},
+	
+	submit: function() {
+		$.ajax({
+			url: '/studies',
+			method: 'POST',
+			dataType: 'json',
+			data: JSON.stringify(_study)
+		});
 	}
 });
 
@@ -122,6 +132,15 @@ StudyDispatcher.register(function(payload) {
 			keys = payload.keys.split(':');
 			helpers.pushMeasurementData(keys, _study);
 			StudyStore.triggerChange();
+			break;
+	}
+	
+});
+
+StudyDispatcher.register(function(payload) {	
+	switch(payload.type) {
+		case 'SUBMIT':
+			StudyStore.submit();
 			break;
 	}
 	

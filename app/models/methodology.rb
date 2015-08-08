@@ -5,4 +5,6 @@ class Methodology
   field :diagnosis, type: String
   field :primary_endpoint, type: String
   field :secondary_endpoints, type: Array
+  
+  embedded_in :study
 end

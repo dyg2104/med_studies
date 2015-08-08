@@ -6,4 +6,6 @@ class TotalDatum
   field :num_women, type: Integer
   field :methodology, type: Hash
   field :measurement, type: Hash
+  
+  embedded_in :study
 end
