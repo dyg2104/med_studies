@@ -7,6 +7,10 @@ gem 'uglifier', '>= 1.3.0'
 gem 'bcrypt'
 gem 'sdoc', '~> 0.4.0',          group: :doc
 
+gem 'elasticsearch'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+
 group :development do
   gem 'byebug'
   gem 'better_errors'
