@@ -1,5 +1,7 @@
 class Study
   include Mongoid::Document
+  include Elasticsearch::Model
+  include Elasticsearch::Model::Callbacks
   
   field :title, type: String
   field :authors, type: Array
@@ -15,4 +17,8 @@ class Study
   embeds_one  :conclusion
   embeds_many :control_groups
   embeds_one  :total_datum
+  
+  def as_indexed_json
+    as_json(except: [:id, :_id])
+  end
 end
