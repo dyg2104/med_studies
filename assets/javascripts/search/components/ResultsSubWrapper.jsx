@@ -17,4 +17,4 @@ class ResultsSubWrapper extends React.Component {
 	}
 }
 
-export default ResultsSubWrapper
+export default ResultsSubWrapper;

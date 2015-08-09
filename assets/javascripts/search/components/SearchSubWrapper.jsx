@@ -50,20 +50,24 @@ class SearchSubWrapper extends React.Component {
 		switch(this.state.step) {
 			case 1:
 				subForm = <Background
+							formObj={this.props.formObj}
 							nextStep={this.nextStep} />;
 				break;
 			case 2:
 				subForm = <Methodology 
+							formObj={this.props.formObj}
 							nextStep={this.nextStep} 
 							previousStep={this.previousStep} />;
 				break;
 			case 3:
 				subForm = <Measurement
+							formObj={this.props.formObj}
 							nextStep={this.nextStep} 
 							previousStep={this.previousStep} />;
 				break;
 			case 4:
 				subForm = <Conclusion
+							formObj={this.props.formObj}
 							previousStep={this.previousStep} />;
 				break; 
 		}
@@ -72,7 +76,7 @@ class SearchSubWrapper extends React.Component {
 			<div>
 				<div>
 					<div>
-						<a href="#" onClick={this.goToBackground} >Background</a>
+						<a href="#" onClick={this.goToBackground}>Background</a>
 					</div>
 					<div>
 						<a href="#" onClick={this.goToMethodology}>Methodology</a>
