@@ -14,7 +14,6 @@ class SearchWrapper extends React.Component {
 		this._onChange = this._onChange.bind(this);
 		this.goToSearch = this.goToSearch.bind(this);		
 		this.goToResults = this.goToResults.bind(this);
-
 	}
 	
 	componentDidMount() {
@@ -42,14 +41,22 @@ class SearchWrapper extends React.Component {
 		let childComponent;
 		
 		if (this.state.step === 'search') {
-			childComponent = <SearchSubWrapper changeStep={this.goToResults} formObj={this.state.search} />
+			childComponent = <SearchSubWrapper formObj={this.state.search} />
 		} else if (this.state.step === 'results') {
-			childComponent = <ResultsSubWrapper changeStep={this.goToSearch} />
+			childComponent = <ResultsSubWrapper />
 		}
 		
 		return (
 			<div>
-			{childComponent}
+				<div>
+					<a href="#" onClick={this.goToSearch}>Search</a>
+				</div>
+				<div>
+					<a href="#" onClick={this.goToResults}>Results</a>
+				</div>
+				<div>
+					{childComponent}
+				</div>
 			</div>
 		);
 	}

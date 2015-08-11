@@ -9,9 +9,6 @@ class ResultsSubWrapper extends React.Component {
 		return (
 			<div>
 				Results Sub Wrapper
-				<div>
-					<a href="#" onClick={this.props.changeStep}>Search</a>
-				</div>
 			</div>
 		);
 	}

@@ -8,6 +8,7 @@ class SearchSubWrapper extends React.Component {
 	constructor(props) {
 		super(props)
 		this.state = {step: 1};
+		
 		this.goToBackground = this.goToBackground.bind(this);
 		this.goToMethodology = this.goToMethodology.bind(this);
 		this.goToMeasurement = this.goToMeasurement.bind(this);
@@ -86,9 +87,6 @@ class SearchSubWrapper extends React.Component {
 					</div>
 					<div>
 						<a href="#" onClick={this.goToConclusion}>Conclusion</a>
-					</div>
-					<div>
-						<a href="#" onClick={this.props.changeStep}>Results</a>
 					</div>
 				</div>
 				<div>
