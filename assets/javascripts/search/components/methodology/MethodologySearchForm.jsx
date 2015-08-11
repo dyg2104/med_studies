@@ -81,7 +81,7 @@ class MethodologySearchForm extends React.Component {
 					<TextField
 						formObj={this.props.formObj}
 						getterKey="patientCharacteristicsName"
-						setterKey="patientCharacteristicsname"
+						setterKey="patientCharacteristicsName"
 						title="Name" />
 					<TextField
 						formObj={this.props.formObj}

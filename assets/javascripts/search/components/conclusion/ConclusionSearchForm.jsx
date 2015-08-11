@@ -1,4 +1,5 @@
-const React = require('react');
+const React      = require('react');
+const TextField  = require('../TextField.jsx');
 
 class ConclusionSearchForm extends React.Component {
 	constructor(props) {
@@ -9,6 +10,11 @@ class ConclusionSearchForm extends React.Component {
 		return (
 			<div>
 				Conclusion Search Form
+				<TextField
+					formObj={this.props.formObj}
+					getterKey="summary"
+					setterKey="summary"
+					title="Summary" />
 			</div>	
 		);
 	}
