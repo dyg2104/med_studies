@@ -18,7 +18,9 @@ class Study
   embeds_many :control_groups
   embeds_one  :total_datum
   
-  def as_indexed_json
+  # Figure out how to update elasticsearch when a model is saved
+  
+  def as_indexed_json(options={})
     as_json(except: [:id, :_id])
   end
 end

@@ -7,6 +7,12 @@ let SearchActions = {
 			key: key,
 			value: value	
 		});
+	},
+	
+	submit() {
+		SearchDispatcher.dispatch({
+			type: 'SUBMIT'
+		});
 	}
 };
 

@@ -1,7 +1,9 @@
 const React              = require('react');
 const SearchSubWrapper   = require('./components/SearchSubWrapper.jsx');
 const ResultsSubWrapper  = require('./components/ResultsSubWrapper.jsx');
+const UIStore            = require('./stores/UIStore.es.js')
 const SearchStore        = require('./stores/SearchStore.es.js');
+const UIActions          = require('./actions/UIActions.es.js');
 
 class SearchWrapper extends React.Component {
 	constructor(props) {
@@ -17,24 +19,33 @@ class SearchWrapper extends React.Component {
 	}
 	
 	componentDidMount() {
+		UIStore.addChangeListener(this._onChange);
 		SearchStore.addChangeListener(this._onChange);
 	}
 	
 	componentWillUnmount() {
+		UIStore.removeChangeListener(this._onChange);
 		SearchStore.removeChangeListener(this._onChange);
 	}
 	
 	_onChange() {
+		let step = UIStore.getStep();
 		let search = SearchStore.getSearch();
-		this.setState({search: search});
+		let results = SearchStore.getResults();
+		
+		this.setState({
+			step: step,
+			search: search,
+			results: results
+		});
 	}
 	
 	goToSearch() {
-		this.setState({step: 'search'});
+		UIActions.updateField('step', 'search');
 	}
 	
 	goToResults() {
-		this.setState({step: 'results'});
+		UIActions.updateField('step', 'results');
 	}
 	
 	render() {
