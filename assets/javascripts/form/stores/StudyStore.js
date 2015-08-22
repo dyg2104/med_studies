@@ -78,7 +78,7 @@ var StudyStore = _.extend({}, Backbone.Events, {
 	
 	submit: function() {
 		$.ajax({
-			url: '/studies',
+			url: '/studies/',
 			method: 'POST',
 			dataType: 'json',
 			data: JSON.stringify(_study)
