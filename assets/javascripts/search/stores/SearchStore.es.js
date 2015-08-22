@@ -43,9 +43,7 @@ let SearchStore = _.extend({}, Backbone.Events, {
 			let studies = [];
 			
 			for (let res of responses) {
-				if (res && res['_source']) {
-					studies.push(res['_source']);	
-				}
+				studies.push(res);	
 			}
 			
 			_results = studies;

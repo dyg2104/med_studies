@@ -54,7 +54,7 @@ class SearchWrapper extends React.Component {
 		if (this.state.step === 'search') {
 			childComponent = <SearchSubWrapper formObj={this.state.search} />
 		} else if (this.state.step === 'results') {
-			childComponent = <ResultsSubWrapper />
+			childComponent = <ResultsSubWrapper formArr={this.state.results} />
 		}
 		
 		return (
