@@ -1,0 +1,11 @@
+<script>
+	window._variables_ = window._variables_ || {};
+	window._variables_.study = <%= raw(@study_json) %>
+</script>
+
+<div id="showWrapper">
+</div>
+
+<%= webpack_manifest_script %>
+<%= webpack_bundle_tag 'common' %>
+<%= webpack_bundle_tag 'show' %>
