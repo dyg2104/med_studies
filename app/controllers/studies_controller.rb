@@ -23,6 +23,7 @@ class StudiesController < ApplicationController
     @id = params[:id]
     @study = Study.find(@id)
     @study_json = @study.to_json()
+    
     render "show"
   end
 end
