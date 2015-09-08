@@ -28,13 +28,13 @@ var BackgroundSubForm = React.createClass({
 					title="Disease Name" />
 				<TextFieldArray
 					formObj={this.props.study}
-					getterKey="complications" 
+					getterKey="complications"
 					setterKeys="complications"
 					title="Complications" />
-				<TextFieldArray  
+				<TextFieldArray
 					formObj={this.props.study}
-					getterKey="currentTreatments" 
-					setterKeys="currentTreatments" 
+					getterKey="currentTreatments"
+					setterKeys="currentTreatments"
 					title="Current Treatments" />
 			 	<TextFieldArray
 					formObj={this.props.study}
