@@ -1,8 +1,8 @@
 const React        = require('react');
-const Background   = require('./components/ShowBackground.jsx');
+const Background   = require('./components/background/ShowBackground.jsx');
 const Methodology  = require('./components/methodology/ShowMethodology.jsx');
-const Measurement  = require('./components/ShowMeasurement.jsx');
-const Conclusion   = require('./components/ShowConclusion.jsx');
+const Measurement  = require('./components/measurement/ShowMeasurement.jsx');
+const Conclusion   = require('./components/conclusion/ShowConclusion.jsx');
 const ShowStore    = require('./stores/ShowStore.es.js');
 
 class ShowWrapper extends React.Component {

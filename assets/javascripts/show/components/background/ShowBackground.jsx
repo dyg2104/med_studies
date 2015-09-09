@@ -1,6 +1,6 @@
 const React           = require('react');
-const TextValue       = require('./TextValue.jsx');
-const TextArrayValue  = require('./TextArrayValue.jsx');
+const TextValue       = require('../TextValue.jsx');
+const TextArrayValue  = require('../TextArrayValue.jsx');
 
 class ShowBackground extends React.Component {
 	constructor(props) {

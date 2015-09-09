@@ -1,8 +1,13 @@
-const React                = require('react');
-const ControlGroups        = require('./ControlGroups.jsx');
-const EligibilityCriteria  = require('./EligibilityCriteria.jsx');
-const TextValue            = require('../TextValue.jsx');
-const TextArrayValue       = require('../TextArrayValue.jsx');
+const React                   = require('react');
+const ControlGroups           = require('./ControlGroups.jsx');
+const EligibilityCriteria     = require('./EligibilityCriteria.jsx');
+const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
+
+const TextValue               = require('../TextValue.jsx');
+const TextArrayValue          = require('../TextArrayValue.jsx');
+const FactoryCGTD             = require('../FactoryCGTD.jsx');
+
+const PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics');
 
 class ShowMethodology extends React.Component {
 	constructor(props) {
@@ -37,6 +42,10 @@ class ShowMethodology extends React.Component {
 				<EligibilityCriteria 
 					controlGroups={controlGroups}
 					totalData={totalData} />
+				<PatientCharacteristics 
+					controlGroups={controlGroups}
+					totalData={totalData}
+					title="Patient Characteristics" />
 			</div>
 		);
 	}
