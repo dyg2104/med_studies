@@ -1,6 +1,6 @@
 var React         = require('react');
-var StudyActions  = require('../../actions/StudyActions');
 var ControlGroup  = require('./ControlGroup.jsx');
+var StudyActions  = require('../../actions/StudyActions');
 
 var ControlGroups = React.createClass({				
 	handleClick: function (e) {

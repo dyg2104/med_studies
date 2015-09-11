@@ -1,16 +1,16 @@
 var React         = require('react');
-var StudyActions  = require('../actions/StudyActions');
+var StudyActions  = require('../../actions/StudyActions');
 
-var TextField = React.createClass({
+var TextArea = React.createClass({
 	getValue: function () {
 		var formObj = this.props.formObj;
-		return formObj[this.props.getterKey];
+		return formObj[this.props.getterKey];	
 	},
 	
 	handleChange: function (e) {
 		var keys = this.props.setterKeys;
 		var value = e.target.value;
-		StudyActions.updateCGTDFields(keys, value);
+		StudyActions.updateField(keys, value);
 	},
 	
 	render: function () {
@@ -18,8 +18,7 @@ var TextField = React.createClass({
 			<div>
 				<label>
 			    {this.props.title}
-				<input 
-					type="text" 
+				<textarea 
 					defaultValue={this.getValue()}
 					onChange={this.handleChange} />
 				</label>
@@ -28,4 +27,4 @@ var TextField = React.createClass({
     }
 });
 
-module.exports = TextField;
+module.exports = TextArea;

@@ -1,5 +1,5 @@
 var React         = require('react');
-var StudyActions  = require('../actions/StudyActions');
+var StudyActions  = require('../../actions/StudyActions');
 var TextField     = require('./TextFieldArrayValue.jsx');
 
 var TextFields = React.createClass({	

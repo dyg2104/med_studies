@@ -1,14 +1,16 @@
-var React                  = require('react');
-var TextField              = require('../TextField.jsx');
-var TextFieldArray         = require('../TextFieldArray.jsx');
-var ControlGroups          = require('./ControlGroups.jsx');
-var FactoryCGTD            = require('../FactoryCGTD.jsx');
-var EligibilityCriterion   = require('./EligibilityCriterion.jsx');
-var PatientCharacteristic  = require('./PatientCharacteristic.jsx');
-var handlers               = require('./clickHandlers');
+var React                   = require('react');
 
-var EligibilityCriteria = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
-var PatientCharacteristics = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
+var TextField               = require('../shared/TextField.jsx');
+var TextFieldArray          = require('../shared/TextFieldArray.jsx');
+var FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
+
+var EligibilityCriterion    = require('./EligibilityCriterion.jsx');
+var PatientCharacteristic   = require('./PatientCharacteristic.jsx');
+var handlers                = require('./clickHandlers');
+
+var ControlGroups           = require('./ControlGroups.jsx');
+var EligibilityCriteria     = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
+var PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
 
 var MethodologySubForm = React.createClass({
 	render: function () {

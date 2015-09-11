@@ -1,11 +1,16 @@
 var React         = require('react');
-var StudyActions  = require('../actions/StudyActions');
+var StudyActions  = require('../../actions/StudyActions');
 
 var TextField = React.createClass({
+	getValue: function () {
+		var formObj = this.props.formObj;
+		return formObj[this.props.getterKey];
+	},
+	
 	handleChange: function (e) {
 		var keys = this.props.setterKeys;
 		var value = e.target.value;
-		StudyActions.updateField(keys, value);
+		StudyActions.updateCGTDFields(keys, value);
 	},
 	
 	render: function () {
@@ -15,7 +20,7 @@ var TextField = React.createClass({
 			    {this.props.title}
 				<input 
 					type="text" 
-					defaultValue={this.props.arrayValue}
+					defaultValue={this.getValue()}
 					onChange={this.handleChange} />
 				</label>
 			</div>

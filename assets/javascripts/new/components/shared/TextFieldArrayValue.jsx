@@ -1,12 +1,7 @@
 var React         = require('react');
-var StudyActions  = require('../actions/StudyActions');
+var StudyActions  = require('../../actions/StudyActions');
 
-var TextArea = React.createClass({
-	getValue: function () {
-		var formObj = this.props.formObj;
-		return formObj[this.props.getterKey];	
-	},
-	
+var TextField = React.createClass({
 	handleChange: function (e) {
 		var keys = this.props.setterKeys;
 		var value = e.target.value;
@@ -18,8 +13,9 @@ var TextArea = React.createClass({
 			<div>
 				<label>
 			    {this.props.title}
-				<textarea 
-					defaultValue={this.getValue()}
+				<input 
+					type="text" 
+					defaultValue={this.props.arrayValue}
 					onChange={this.handleChange} />
 				</label>
 			</div>
@@ -27,4 +23,4 @@ var TextArea = React.createClass({
     }
 });
 
-module.exports = TextArea;
+module.exports = TextField;

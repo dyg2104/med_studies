@@ -1,5 +1,5 @@
 var React      = require('react');
-var TextField  = require('../TextField.jsx');
+var TextField  = require('../shared/TextField.jsx');
 
 var ControlGroup = React.createClass({	
 	render: function () {

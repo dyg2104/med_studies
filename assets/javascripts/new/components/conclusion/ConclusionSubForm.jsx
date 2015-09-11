@@ -1,6 +1,6 @@
 var React         = require('react');
+var TextArea      = require('../shared/TextArea.jsx');
 var StudyActions  = require('../../actions/StudyActions.js');
-var TextArea      = require('../TextArea.jsx');
 
 var ConclusionSubForm = React.createClass({
 	submit: function (e) {

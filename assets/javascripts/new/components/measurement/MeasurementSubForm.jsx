@@ -1,17 +1,19 @@
-var React           = require('react');
-var StudyActions    = require('../../actions/StudyActions');
-var TextArea        = require('../TextArea.jsx');
-var FactoryCGTDSub  = require('../FactoryCGTDSub.jsx');
-var FactoryCGTD     = require('../FactoryCGTD.jsx');
-var handlers        = require('./clickHandlers');
+var React              = require('react');
 
-var Medication = FactoryCGTDSub('measurement', 'medications');
-var AdverseEvent = FactoryCGTDSub('measurement', 'adverseEvents');
-var PatientData = FactoryCGTDSub('measurement', 'patientData');
+var TextArea           = require('../shared/TextArea.jsx');
+var FactoryCGTDSub     = require('../shared/FactoryCGTDSub.jsx');
+var FactoryCGTD        = require('../shared/FactoryCGTD.jsx');
 
-var Medications = FactoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
-var AdverseEvents = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
-var PatientDataPlural = FactoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
+var Medication         = FactoryCGTDSub('measurement', 'medications');
+var AdverseEvent       = FactoryCGTDSub('measurement', 'adverseEvents');
+var PatientData        = FactoryCGTDSub('measurement', 'patientData');
+var handlers           = require('./clickHandlers');
+
+var Medications        = FactoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
+var AdverseEvents      = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
+var PatientDataPlural  = FactoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
+
+var StudyActions       = require('../../actions/StudyActions');
 
 var MeasurementSubForm = React.createClass({
 	render: function () {

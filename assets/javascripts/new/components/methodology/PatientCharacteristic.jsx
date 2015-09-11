@@ -1,7 +1,7 @@
 var _                   = require('underscore');
 var React               = require('react');
-var TextFieldCGTD       = require('../TextFieldCGTD.jsx');
-var TextFieldCGTDValue  = require('../TextFieldCGTDValue.jsx');
+var TextFieldCGTD       = require('../shared/TextFieldCGTD.jsx');
+var TextFieldCGTDValue  = require('../shared/TextFieldCGTDValue.jsx');
 
 var PatientCharacteristic = React.createClass({
 	render: function () {
