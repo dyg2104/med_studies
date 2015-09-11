@@ -79,21 +79,21 @@ module.exports = function(firstKey, secondKey) {
 						<div>After SD</div>
 						<div>
 							{cgAfterSdMarkup}
-							<div>{tdCriterion.after.sd}</div>
+							<div>{findNameSpace('after.sd', tdCriterion)}</div>
 						</div>
 					</div>
 					<div>
 						<div>Difference Data</div>
 						<div>
 							{cgDifferenceDataMarkup}
-							<div>{tdCriterion.difference.data}</div>
+							<div>{findNameSpace('difference.data', tdCriterion)}</div>
 						</div>
 					</div>
 					<div>
 						<div>Difference SD</div>
 						<div>
 							{cgDifferenceSdMarkup}
-							<div>{tdCriterion.difference.sd}</div>
+							<div>{findNameSpace('difference.sd', tdCriterion)}</div>
 						</div>
 					</div>
 				</div>

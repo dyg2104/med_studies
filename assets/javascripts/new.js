@@ -1,4 +1,4 @@
-var React  = require('react');
-var Form   = require('./form/NewForm.jsx');
+var React       = require('react');
+var NewWrapper  = require('./new/NewWrapper.jsx');
 
-React.render(React.createElement(Form, null), document.getElementById('newForm'));
+React.render(React.createElement(NewWrapper, null), document.getElementById('newWrapper'));

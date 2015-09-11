@@ -5,7 +5,7 @@ var Measurement  = require('./components/measurement/MeasurementSubForm.jsx');
 var Conclusion   = require('./components/conclusion/ConclusionSubForm.jsx');
 var StudyStore   = require('./stores/StudyStore');
 
-var NewForm = React.createClass({
+var NewWrapper = React.createClass({
 	getInitialState: function() {
 		var step = 1;
 		var study = StudyStore.getStudy();
@@ -108,4 +108,4 @@ var NewForm = React.createClass({
 	}
 });
 
-module.exports = NewForm;
+module.exports = NewWrapper;
