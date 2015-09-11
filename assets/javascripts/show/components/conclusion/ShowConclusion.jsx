@@ -1,4 +1,5 @@
-const React = require('react');
+const React      = require('react');
+const TextValue  = require('../TextValue.jsx');
 
 class ShowConclusion extends React.Component {
 	constructor(props) {
@@ -6,8 +7,15 @@ class ShowConclusion extends React.Component {
 	}
 	
 	render() {
+		let conclusion = this.props.study.conclusion;
+		
 		return (
-			<div>Conclusion</div>
+			<div>
+				<TextValue 
+					formObj={conclusion} 
+					getterKey="summary"
+					title="Summary" />
+			</div>
 		);
 	}
 }
