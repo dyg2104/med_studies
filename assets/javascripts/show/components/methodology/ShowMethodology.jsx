@@ -1,11 +1,12 @@
 const React                   = require('react');
+
+const TextValue               = require('../shared/TextValue.jsx');
+const TextArrayValue          = require('../shared/TextArrayValue.jsx');
+const FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
+
 const ControlGroups           = require('./ControlGroups.jsx');
 const EligibilityCriteria     = require('./EligibilityCriteria.jsx');
 const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
-
-const TextValue               = require('../TextValue.jsx');
-const TextArrayValue          = require('../TextArrayValue.jsx');
-const FactoryCGTD             = require('../FactoryCGTD.jsx');
 
 const PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics');
 

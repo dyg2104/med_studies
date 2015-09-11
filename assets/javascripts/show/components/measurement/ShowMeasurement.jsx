@@ -1,8 +1,8 @@
 const React           = require('react');
 
-const TextValue       = require('../TextValue.jsx');
-const FactoryCGTDSub  = require('../FactoryCGTDSub.jsx');
-const FactoryCGTD     = require('../FactoryCGTD.jsx');
+const TextValue       = require('../shared/TextValue.jsx');
+const FactoryCGTDSub  = require('../shared/FactoryCGTDSub.jsx');
+const FactoryCGTD     = require('../shared/FactoryCGTD.jsx');
 
 const Medication      = FactoryCGTDSub('measurement', 'medications');
 const AdverseEvent    = FactoryCGTDSub('measurement', 'adverseEvents');

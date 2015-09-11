@@ -1,5 +1,5 @@
 const React      = require('react');
-const TextValue  = require('../TextValue.jsx');
+const TextValue  = require('../shared/TextValue.jsx');
 
 class ShowConclusion extends React.Component {
 	constructor(props) {
