@@ -1,8 +1,8 @@
 var React        = require('react');
-var Background   = require('./components/background/BackgroundSubForm.jsx');
-var Methodology  = require('./components/methodology/MethodologySubForm.jsx');
-var Measurement  = require('./components/measurement/MeasurementSubForm.jsx');
-var Conclusion   = require('./components/conclusion/ConclusionSubForm.jsx');
+var Background   = require('./components/background/NewBackground.jsx');
+var Methodology  = require('./components/methodology/NewMethodology.jsx');
+var Measurement  = require('./components/measurement/NewMeasurement.jsx');
+var Conclusion   = require('./components/conclusion/NewConclusion.jsx');
 var StudyStore   = require('./stores/StudyStore');
 
 var NewWrapper = React.createClass({

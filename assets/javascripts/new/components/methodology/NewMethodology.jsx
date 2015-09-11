@@ -12,7 +12,7 @@ var ControlGroups           = require('./ControlGroups.jsx');
 var EligibilityCriteria     = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
 var PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
 
-var MethodologySubForm = React.createClass({
+var NewMethodology = React.createClass({
 	render: function () {
 		var methodology = this.props.study['methodology'];
 		var controlGroups = this.props.study['controlGroups'];
@@ -59,4 +59,4 @@ var MethodologySubForm = React.createClass({
 	}
 });
 
-module.exports = MethodologySubForm;
+module.exports = NewMethodology;

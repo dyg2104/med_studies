@@ -15,7 +15,7 @@ var PatientDataPlural  = FactoryCGTD(PatientData, 'measurement', 'patientData', 
 
 var StudyActions       = require('../../actions/StudyActions');
 
-var MeasurementSubForm = React.createClass({
+var NewMeasurement = React.createClass({
 	render: function () {
 		var measurement = this.props.study['measurement'];
 		var controlGroups = this.props.study['controlGroups'];
@@ -47,4 +47,4 @@ var MeasurementSubForm = React.createClass({
 	}
 });
 
-module.exports = MeasurementSubForm;
+module.exports = NewMeasurement;

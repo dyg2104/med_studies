@@ -2,7 +2,7 @@ var React           = require('react');
 var TextField       = require('../shared/TextField.jsx');
 var TextFieldArray  = require('../shared/TextFieldArray.jsx');
 
-var BackgroundSubForm = React.createClass({	
+var NewBackground = React.createClass({	
 	render: function () {	
 		return (
 			<div>
@@ -57,4 +57,4 @@ var BackgroundSubForm = React.createClass({
 	}
 });
 
-module.exports = BackgroundSubForm;
+module.exports = NewBackground;

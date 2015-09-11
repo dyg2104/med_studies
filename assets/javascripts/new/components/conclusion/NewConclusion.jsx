@@ -2,7 +2,7 @@ var React         = require('react');
 var TextArea      = require('../shared/TextArea.jsx');
 var StudyActions  = require('../../actions/StudyActions.js');
 
-var ConclusionSubForm = React.createClass({
+var NewConclusion = React.createClass({
 	submit: function (e) {
 		e.preventDefault();
 		StudyActions.submit();
@@ -25,4 +25,4 @@ var ConclusionSubForm = React.createClass({
 	}
 });
 
-module.exports = ConclusionSubForm;
+module.exports = NewConclusion;
