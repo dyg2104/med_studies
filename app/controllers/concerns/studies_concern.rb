@@ -11,7 +11,7 @@ module StudiesConcern
     @study.references = params["references"]
     
     @disease = self.get_disease_from_params(params)
-    @study.diseases = [@disease]
+    @study.disease = @disease
     
     @methodology_params = params["methodology"]
     @study.methodology = self.get_methodology_from_params(@methodology_params)

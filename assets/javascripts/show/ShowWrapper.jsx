@@ -1,63 +1,57 @@
-var React        = require('react');
-var Background   = require('./components/background/BackgroundSubForm.jsx');
-var Methodology  = require('./components/methodology/MethodologySubForm.jsx');
-var Measurement  = require('./components/measurement/MeasurementSubForm.jsx');
-var Conclusion   = require('./components/conclusion/ConclusionSubForm.jsx');
-var StudyStore   = require('./stores/StudyStore');
+const React        = require('react');
+const Background   = require('./components/background/ShowBackground.jsx');
+const Methodology  = require('./components/methodology/ShowMethodology.jsx');
+const Measurement  = require('./components/measurement/ShowMeasurement.jsx');
+const Conclusion   = require('./components/conclusion/ShowConclusion.jsx');
+const ShowStore    = require('./stores/ShowStore.es.js');
 
-var NewForm = React.createClass({
-	getInitialState: function() {
-		var step = 1;
-		var study = StudyStore.getStudy();
-		return {
-			step: step,
-			study: study
-		}
-	},
+class ShowWrapper extends React.Component {
+	constructor(props) {
+		super(props);
+		this.state = {
+			step: 1,
+			study: ShowStore.getStudy()
+		};
+		
+		this.goToBackground = this.goToBackground.bind(this);
+		this.goToMethodology = this.goToMethodology.bind(this);
+		this.goToMeasurement = this.goToMeasurement.bind(this);
+		this.goToConclusion = this.goToConclusion.bind(this);
+		this.nextStep = this.nextStep.bind(this);
+		this.previousStep = this.previousStep.bind(this);
+	}
 	
-	componentDidMount: function() {
-		StudyStore.addChangeListener(this._onChange);
-	},
-	
-	componentWillUnmount: function() {
-		StudyStore.removeChangeListener(this._onChange);
-	},
-	
-	_onChange: function() {
-		var study = StudyStore.getStudy();
-		this.setState({study: study});
-	},
-	
-	goToBackground: function() {
+	goToBackground() {
 		this.setState({step: 1});
-	},
+	}
 	
-	goToMethodology: function() {
+	goToMethodology() {
 		this.setState({step: 2});
-	},
+	}
 	
-	goToMeasurement: function() {
+	goToMeasurement() {
 		this.setState({step: 3});
-	},
+	}
 	
-	goToConclusion: function() {
+	goToConclusion() {
 		this.setState({step: 4});
-	},
+	}
 	
-	nextStep: function() {
+	nextStep() {
 	  this.setState({
 	    step : this.state.step + 1
 	  })
-	},
+	}
 	
-	previousStep: function() {
+	previousStep() {
 	  this.setState({
 	    step : this.state.step - 1
 	  })
-	},
+	}
 	
-	render: function() {
-		var subForm;
+	
+	render() {
+		let subForm;
 		
 		switch(this.state.step) {
 			case 1:
@@ -106,6 +100,6 @@ var NewForm = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
-module.exports = NewForm;
+export default ShowWrapper;

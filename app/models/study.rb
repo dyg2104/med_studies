@@ -10,15 +10,12 @@ class Study
   field :involved_parties, type: Array
   field :references, type: Array
   
-  has_and_belongs_to_many :diseases
-  
+  embeds_one  :disease
   embeds_one  :methodology
   embeds_one  :measurement
   embeds_one  :conclusion
   embeds_many :control_groups
   embeds_one  :total_datum
-  
-  # Figure out how to update elasticsearch when a model is saved
   
   def as_indexed_json(options={})
     as_json(except: [:id, :_id])
