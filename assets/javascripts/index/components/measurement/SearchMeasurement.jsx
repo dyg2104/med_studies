@@ -1,7 +1,7 @@
 const React      = require('react');
-const TextField  = require('../TextField.jsx');
+const TextField  = require('../shared/TextField.jsx');
 
-class MeasurementSearchForm extends React.Component {
+class SearchMeasurement extends React.Component {
 	constructor(props) {
 		super(props)
 	}
@@ -164,4 +164,4 @@ class MeasurementSearchForm extends React.Component {
 	}
 }
 
-export default MeasurementSearchForm;
+export default SearchMeasurement;

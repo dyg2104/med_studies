@@ -1,5 +1,5 @@
 const React          = require('react');
-const SearchActions  = require('../actions/SearchActions.es.js');
+const SearchActions  = require('../../actions/SearchActions.es.js');
 
 class TextField extends React.Component {
 	constructor(props) {

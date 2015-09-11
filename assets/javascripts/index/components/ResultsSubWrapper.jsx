@@ -1,5 +1,5 @@
 const React   = require('react');
-const Result  = require('./Result.jsx');
+const Result  = require('./shared/Result.jsx');
 
 class ResultsSubWrapper extends React.Component {
 	constructor(props) {

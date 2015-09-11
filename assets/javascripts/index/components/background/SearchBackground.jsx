@@ -1,7 +1,7 @@
 const React      = require('react');
-const TextField  = require('../TextField.jsx');
+const TextField  = require('../shared/TextField.jsx');
 
-class BackgroundSearchForm extends React.Component {
+class SearchBackground extends React.Component {
 	constructor(props) {
 		super(props)
 	}
@@ -60,4 +60,4 @@ class BackgroundSearchForm extends React.Component {
 	}
 }
 
-export default BackgroundSearchForm;
+export default SearchBackground;

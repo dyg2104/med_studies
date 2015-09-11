@@ -1,8 +1,8 @@
 const React        = require('react');
-const Background   = require('./background/BackgroundSearchForm.jsx');
-const Methodology  = require('./methodology/MethodologySearchForm.jsx');
-const Measurement  = require('./measurement/MeasurementSearchForm.jsx');
-const Conclusion   = require('./conclusion/ConclusionSearchForm.jsx');
+const Background   = require('./background/SearchBackground.jsx');
+const Methodology  = require('./methodology/SearchMethodology.jsx');
+const Measurement  = require('./measurement/SearchMeasurement.jsx');
+const Conclusion   = require('./conclusion/SearchConclusion.jsx');
 
 class SearchSubWrapper extends React.Component {
 	constructor(props) {

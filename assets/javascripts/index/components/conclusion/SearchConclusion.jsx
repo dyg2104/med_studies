@@ -1,8 +1,8 @@
 const React         = require('react');
-const TextField     = require('../TextField.jsx');
+const TextField     = require('../shared/TextField.jsx');
 const SearchActions = require('../../actions/SearchActions.es.js');
 
-class ConclusionSearchForm extends React.Component {
+class SearchConclusion extends React.Component {
 	constructor(props) {
 		super(props)
 	}
@@ -27,4 +27,4 @@ class ConclusionSearchForm extends React.Component {
 	}
 }
 
-export default ConclusionSearchForm;
+export default SearchConclusion;
