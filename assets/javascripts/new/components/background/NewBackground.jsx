@@ -1,6 +1,7 @@
-var React           = require('react');
-var TextField       = require('../shared/TextField.jsx');
-var TextFieldArray  = require('../shared/TextFieldArray.jsx');
+const React           = require('react');
+const TextField       = require('../shared/TextField.jsx');
+const TextFieldArray  = require('../shared/TextFieldArray.jsx');
+const uiActions       = require('../../actions/uiActions.es.js');
 
 var NewBackground = React.createClass({	
 	render: function () {	
@@ -51,7 +52,7 @@ var NewBackground = React.createClass({
 					getterKey="references" 
 					setterKeys="references" 
 					title="References" />
-				<a href="#" onClick={this.props.nextStep}>Next</a>
+				<a href="#" onClick={uiActions.nextStep}>Next</a>
 			</div>
 		)
 	}

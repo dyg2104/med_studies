@@ -1,16 +1,18 @@
-var React                   = require('react');
+const React                   = require('react');
 
-var TextField               = require('../shared/TextField.jsx');
-var TextFieldArray          = require('../shared/TextFieldArray.jsx');
-var FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
+const TextField               = require('../shared/TextField.jsx');
+const TextFieldArray          = require('../shared/TextFieldArray.jsx');
+const FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
 
-var EligibilityCriterion    = require('./EligibilityCriterion.jsx');
-var PatientCharacteristic   = require('./PatientCharacteristic.jsx');
-var handlers                = require('./clickHandlers');
+const EligibilityCriterion    = require('./EligibilityCriterion.jsx');
+const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
+const handlers                = require('./clickHandlers');
 
-var ControlGroups           = require('./ControlGroups.jsx');
-var EligibilityCriteria     = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
-var PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
+const ControlGroups           = require('./ControlGroups.jsx');
+const EligibilityCriteria     = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
+const PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
+
+const uiActions               = require('../../actions/uiActions.es.js');
 
 var NewMethodology = React.createClass({
 	render: function () {
@@ -52,8 +54,8 @@ var NewMethodology = React.createClass({
 					controlGroups={controlGroups}
 					totalData={totalData}
 					title="Patient Characteristics" />
-				<a href="#" onClick={this.props.previousStep}>Previous</a>
-				<a href="#" onClick={this.props.nextStep}>Next</a>
+				<a href="#" onClick={uiActions.previousStep}>Previous</a>
+				<a href="#" onClick={uiActions.nextStep}>Next</a>
 			</div>
 		)
 	}

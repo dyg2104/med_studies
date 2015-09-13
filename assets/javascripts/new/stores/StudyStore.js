@@ -1,7 +1,7 @@
 var _                = require('underscore');
 var $                = require('jquery');
 var Backbone         = require('backbone');
-var StudyDispatcher  = require('../dispatchers/StudyDispatcher');
+var StudyDispatcher  = require('../dispatchers/dispatcher.es.js');
 var helpers          = require('./StudyStoreHelpers');
 
 var CHANGE_EVENT = 'change';

@@ -1,86 +1,64 @@
-var React        = require('react');
-var Background   = require('./components/background/NewBackground.jsx');
-var Methodology  = require('./components/methodology/NewMethodology.jsx');
-var Measurement  = require('./components/measurement/NewMeasurement.jsx');
-var Conclusion   = require('./components/conclusion/NewConclusion.jsx');
-var StudyStore   = require('./stores/StudyStore');
+const React        = require('react');
 
-var NewWrapper = React.createClass({
-	getInitialState: function() {
-		var step = 1;
-		var study = StudyStore.getStudy();
-		return {
-			step: step,
+const uiStore      = require('./stores/uiStore.es.js');
+const studyStore   = require('./stores/studyStore');
+
+const Background   = require('./components/background/NewBackground.jsx');
+const Methodology  = require('./components/methodology/NewMethodology.jsx');
+const Measurement  = require('./components/measurement/NewMeasurement.jsx');
+const Conclusion   = require('./components/conclusion/NewConclusion.jsx');
+
+const uiActions    = require('./actions/uiActions.es.js');
+
+class NewWrapper extends React.Component {
+	constructor(props) {
+		super(props);	
+		let ui = uiStore.getUI();
+		let study = studyStore.getStudy();
+		
+		this.state = {
+			step: ui.step,
 			study: study
-		}
-	},
+		};
+		
+		this._onChange = this._onChange.bind(this);
+	}
 	
-	componentDidMount: function() {
-		StudyStore.addChangeListener(this._onChange);
-	},
+	componentDidMount() {
+		uiStore.addChangeListener(this._onChange);
+		studyStore.addChangeListener(this._onChange);
+	}
 	
-	componentWillUnmount: function() {
-		StudyStore.removeChangeListener(this._onChange);
-	},
+	componentWillUnmount() {
+		uiStore.removeChangeListener(this._onChange);
+		studyStore.removeChangeListener(this._onChange);
+	}
 	
-	_onChange: function() {
-		var study = StudyStore.getStudy();
-		this.setState({study: study});
-	},
-	
-	goToBackground: function() {
-		this.setState({step: 1});
-	},
-	
-	goToMethodology: function() {
-		this.setState({step: 2});
-	},
-	
-	goToMeasurement: function() {
-		this.setState({step: 3});
-	},
-	
-	goToConclusion: function() {
-		this.setState({step: 4});
-	},
-	
-	nextStep: function() {
-	  this.setState({
-	    step : this.state.step + 1
-	  })
-	},
-	
-	previousStep: function() {
-	  this.setState({
-	    step : this.state.step - 1
-	  })
-	},
-	
-	render: function() {
-		var subForm;
+	_onChange() {
+		let ui = uiStore.getUI();
+		let study = studyStore.getStudy();
+		
+		this.setState({
+			step: ui.step, 
+			study: study
+		});
+	}
+		
+	render() {
+		let subForm;
 		
 		switch(this.state.step) {
 			case 1:
-				subForm = <Background
-							study={this.state.study}
-							nextStep={this.nextStep} />;
+				subForm = <Background study={this.state.study} />;
 				break;
 			case 2:
-				subForm = <Methodology 
-							study={this.state.study}
-							nextStep={this.nextStep} 
-							previousStep={this.previousStep} />;
+				subForm = <Methodology study={this.state.study} />;
 				break;
 			case 3:
-				subForm = <Measurement 
-							study={this.state.study}
-							nextStep={this.nextStep} 
-							previousStep={this.previousStep} />;
+				subForm = <Measurement study={this.state.study} />;
 				break;
 			case 4:
-				subForm = <Conclusion
-							study={this.state.study}
-							previousStep={this.previousStep} />;
+				subForm = <Conclusion study={this.state.study} />;
 				break; 
 		}
 		
@@ -88,16 +66,16 @@ var NewWrapper = React.createClass({
 			<div>
 				<div>
 					<div>
-						<a href="#" onClick={this.goToBackground}>Background</a>
+						<a href="#" onClick={uiActions.goToBackground}>Background</a>
 					</div>
 					<div>
-						<a href="#" onClick={this.goToMethodology}>Methodology</a>
+						<a href="#" onClick={uiActions.goToMethodology}>Methodology</a>
 					</div>
 					<div>
-						<a href="#" onClick={this.goToMeasurement}>Measurement</a>
+						<a href="#" onClick={uiActions.goToMeasurement}>Measurement</a>
 					</div>
 					<div>
-						<a href="#" onClick={this.goToConclusion}>Conclusion</a>
+						<a href="#" onClick={uiActions.goToConclusion}>Conclusion</a>
 					</div>
 				</div>
 				<div>
@@ -106,6 +84,6 @@ var NewWrapper = React.createClass({
 			</div>
 		);
 	}
-});
+};
 
-module.exports = NewWrapper;
+export default NewWrapper;

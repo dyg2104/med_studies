@@ -1,6 +1,7 @@
-var React         = require('react');
-var TextArea      = require('../shared/TextArea.jsx');
-var StudyActions  = require('../../actions/StudyActions.js');
+const React         = require('react');
+const TextArea      = require('../shared/TextArea.jsx');
+const uiActions     = require('../../actions/uiActions.es.js');
+const StudyActions  = require('../../actions/StudyActions.js');
 
 var NewConclusion = React.createClass({
 	submit: function (e) {
@@ -18,7 +19,7 @@ var NewConclusion = React.createClass({
 					getterKey="summary"
 					setterKeys="conclusion:summary"
 					title="Summary" />
-				<a href="#" onClick={this.props.previousStep}>Previous</a>
+				<a href="#" onClick={uiActions.previousStep}>Previous</a>
 				<a href="#" onClick={this.submit}>Submit</a>
 			</div>
 		)
