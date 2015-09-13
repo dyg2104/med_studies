@@ -3,78 +3,57 @@ const Background   = require('./components/background/ShowBackground.jsx');
 const Methodology  = require('./components/methodology/ShowMethodology.jsx');
 const Measurement  = require('./components/measurement/ShowMeasurement.jsx');
 const Conclusion   = require('./components/conclusion/ShowConclusion.jsx');
+const UIStore      = require('./stores/UIStore.es.js');
 const ShowStore    = require('./stores/ShowStore.es.js');
+const showActions  = require('./actions/showActions.es.js');
 
 class ShowWrapper extends React.Component {
 	constructor(props) {
 		super(props);
+		let ui = UIStore.getUI();
+		let study = ShowStore.getStudy();
+		 
 		this.state = {
-			step: 1,
-			study: ShowStore.getStudy()
+			step: ui.step,
+			study: study
 		};
 		
-		this.goToBackground = this.goToBackground.bind(this);
-		this.goToMethodology = this.goToMethodology.bind(this);
-		this.goToMeasurement = this.goToMeasurement.bind(this);
-		this.goToConclusion = this.goToConclusion.bind(this);
-		this.nextStep = this.nextStep.bind(this);
-		this.previousStep = this.previousStep.bind(this);
+		this._onChange = this._onChange.bind(this);
 	}
 	
-	goToBackground() {
-		this.setState({step: 1});
+	componentDidMount() {
+		UIStore.addChangeListener(this._onChange);
 	}
 	
-	goToMethodology() {
-		this.setState({step: 2});
+	componentWillUnmount() {
+		UIStore.removeChangeListener(this._onChange);
 	}
 	
-	goToMeasurement() {
-		this.setState({step: 3});
+	_onChange() {
+		let ui = UIStore.getUI();
+		let study = ShowStore.getStudy();
+		
+		this.setState({
+			step: ui.step, 
+			study: study
+		});
 	}
-	
-	goToConclusion() {
-		this.setState({step: 4});
-	}
-	
-	nextStep() {
-	  this.setState({
-	    step : this.state.step + 1
-	  })
-	}
-	
-	previousStep() {
-	  this.setState({
-	    step : this.state.step - 1
-	  })
-	}
-	
-	
+		
 	render() {
 		let subForm;
 		
 		switch(this.state.step) {
 			case 1:
-				subForm = <Background
-							study={this.state.study}
-							nextStep={this.nextStep} />;
+				subForm = <Background study={this.state.study} />;
 				break;
 			case 2:
-				subForm = <Methodology 
-							study={this.state.study}
-							nextStep={this.nextStep} 
-							previousStep={this.previousStep} />;
+				subForm = <Methodology study={this.state.study} />;
 				break;
 			case 3:
-				subForm = <Measurement 
-							study={this.state.study}
-							nextStep={this.nextStep} 
-							previousStep={this.previousStep} />;
+				subForm = <Measurement study={this.state.study} />;
 				break;
 			case 4:
-				subForm = <Conclusion
-							study={this.state.study}
-							previousStep={this.previousStep} />;
+				subForm = <Conclusion study={this.state.study} />;
 				break; 
 		}
 		
@@ -82,16 +61,16 @@ class ShowWrapper extends React.Component {
 			<div>
 				<div>
 					<div>
-						<a href="#" onClick={this.goToBackground}>Background</a>
+						<a href="#" onClick={showActions.goToBackground}>Background</a>
 					</div>
 					<div>
-						<a href="#" onClick={this.goToMethodology}>Methodology</a>
+						<a href="#" onClick={showActions.goToMethodology}>Methodology</a>
 					</div>
 					<div>
-						<a href="#" onClick={this.goToMeasurement}>Measurement</a>
+						<a href="#" onClick={showActions.goToMeasurement}>Measurement</a>
 					</div>
 					<div>
-						<a href="#" onClick={this.goToConclusion}>Conclusion</a>
+						<a href="#" onClick={showActions.goToConclusion}>Conclusion</a>
 					</div>
 				</div>
 				<div>
