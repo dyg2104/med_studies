@@ -1,17 +1,20 @@
 const React        = require('react');
+
+const uiStore      = require('./stores/uIStore.es.js');
+const showStore    = require('./stores/showStore.es.js');
+
 const Background   = require('./components/background/ShowBackground.jsx');
 const Methodology  = require('./components/methodology/ShowMethodology.jsx');
 const Measurement  = require('./components/measurement/ShowMeasurement.jsx');
 const Conclusion   = require('./components/conclusion/ShowConclusion.jsx');
-const UIStore      = require('./stores/UIStore.es.js');
-const ShowStore    = require('./stores/ShowStore.es.js');
+
 const showActions  = require('./actions/showActions.es.js');
 
 class ShowWrapper extends React.Component {
 	constructor(props) {
 		super(props);
-		let ui = UIStore.getUI();
-		let study = ShowStore.getStudy();
+		let ui = uiStore.getUI();
+		let study = showStore.getStudy();
 		 
 		this.state = {
 			step: ui.step,
@@ -22,16 +25,16 @@ class ShowWrapper extends React.Component {
 	}
 	
 	componentDidMount() {
-		UIStore.addChangeListener(this._onChange);
+		uiStore.addChangeListener(this._onChange);
 	}
 	
 	componentWillUnmount() {
-		UIStore.removeChangeListener(this._onChange);
+		uiStore.removeChangeListener(this._onChange);
 	}
 	
 	_onChange() {
-		let ui = UIStore.getUI();
-		let study = ShowStore.getStudy();
+		let ui = uiStore.getUI();
+		let study = showStore.getStudy();
 		
 		this.setState({
 			step: ui.step, 

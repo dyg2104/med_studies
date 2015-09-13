@@ -1,6 +1,7 @@
 const React           = require('react');
 const TextValue       = require('../shared/TextValue.jsx');
 const TextArrayValue  = require('../shared/TextArrayValue.jsx');
+const findNameSpace   = require('find-namespace-value');
 
 class ShowBackground extends React.Component {
 	constructor(props) {
@@ -9,7 +10,7 @@ class ShowBackground extends React.Component {
 	
 	render() {
 		let study = this.props.study;
-		let disease = study.disease;
+		let disease = findNameSpace('disease', study);
 		
 		return (
 			<div>

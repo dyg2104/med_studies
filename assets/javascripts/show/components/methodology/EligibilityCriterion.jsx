@@ -1,3 +1,4 @@
+const _              = require('underscore');
 const React          = require('react');
 const findNameSpace  = require('find-namespace-value');
 
@@ -10,8 +11,12 @@ class EligibilityCriterion extends React.Component {
 		let index = this.props.index;
 		let controlGroups = this.props.controlGroups;
 		let totalData = this.props.totalData;
-		
 		let tdCriteria = findNameSpace('methodology.eligibilityCriteria', totalData);
+		
+		if (!(_.isNumber(index) && controlGroups && totalData && tdCriteria)) {
+			return false;
+		}
+		
 		let tdCriterion = tdCriteria[index];
 		
 		let cgLowMarkup = [];
@@ -20,6 +25,7 @@ class EligibilityCriterion extends React.Component {
 		for (let controlGroup of controlGroups) {
 			let cgCriteria = findNameSpace('methodology.eligibilityCriteria', controlGroup);
 			let cgCriterion = cgCriteria[index];
+			// Todo output something different if there's no criterion at this index
 			cgLowMarkup.push(<div>{cgCriterion.low}</div>);
 			cgHighMarkup.push(<div>{cgCriterion.high}</div>);
 		}

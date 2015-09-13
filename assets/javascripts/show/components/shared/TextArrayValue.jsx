@@ -1,4 +1,5 @@
-const React = require('react');
+const React          = require('react');
+const findNameSpace  = require('find-namespace-value');
 
 class TextArrayValue extends React.Component {
 	constructor(props) {
@@ -7,7 +8,7 @@ class TextArrayValue extends React.Component {
 	
 	render() {
 		let title = this.props.title;
-		let value = this.props.formObj[this.props.getterKey];
+		let value = findNameSpace(this.props.getterKey, this.props.formObj);
 		
 		return (
 			<div>
