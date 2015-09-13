@@ -8,7 +8,7 @@ const Methodology  = require('./components/methodology/ShowMethodology.jsx');
 const Measurement  = require('./components/measurement/ShowMeasurement.jsx');
 const Conclusion   = require('./components/conclusion/ShowConclusion.jsx');
 
-const showActions  = require('./actions/showActions.es.js');
+const uiActions  = require('./actions/uiActions.es.js');
 
 class ShowWrapper extends React.Component {
 	constructor(props) {
@@ -64,16 +64,16 @@ class ShowWrapper extends React.Component {
 			<div>
 				<div>
 					<div>
-						<a href="#" onClick={showActions.goToBackground}>Background</a>
+						<a href="#" onClick={uiActions.goToBackground}>Background</a>
 					</div>
 					<div>
-						<a href="#" onClick={showActions.goToMethodology}>Methodology</a>
+						<a href="#" onClick={uiActions.goToMethodology}>Methodology</a>
 					</div>
 					<div>
-						<a href="#" onClick={showActions.goToMeasurement}>Measurement</a>
+						<a href="#" onClick={uiActions.goToMeasurement}>Measurement</a>
 					</div>
 					<div>
-						<a href="#" onClick={showActions.goToConclusion}>Conclusion</a>
+						<a href="#" onClick={uiActions.goToConclusion}>Conclusion</a>
 					</div>
 				</div>
 				<div>
