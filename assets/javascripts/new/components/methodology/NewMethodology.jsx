@@ -2,15 +2,15 @@ const React                   = require('react');
 
 const TextField               = require('../shared/TextField.jsx');
 const TextFieldArray          = require('../shared/TextFieldArray.jsx');
-const FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
+const factoryCGTD             = require('../shared/factoryCGTD.jsx');
 
 const EligibilityCriterion    = require('./EligibilityCriterion.jsx');
 const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
 const handlers                = require('./clickHandlers');
 
 const ControlGroups           = require('./ControlGroups.jsx');
-const EligibilityCriteria     = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
-const PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
+const EligibilityCriteria     = factoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
+const PatientCharacteristics  = factoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
 
 const uiActions               = require('../../actions/uiActions.es.js');
 

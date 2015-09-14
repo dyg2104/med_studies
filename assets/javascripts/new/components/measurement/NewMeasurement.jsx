@@ -1,17 +1,17 @@
 const React              = require('react');
 
 const TextArea           = require('../shared/TextArea.jsx');
-const FactoryCGTDSub     = require('../shared/FactoryCGTDSub.jsx');
-const FactoryCGTD        = require('../shared/FactoryCGTD.jsx');
+const factoryCGTDSub     = require('../shared/factoryCGTDSub.jsx');
+const factoryCGTD        = require('../shared/factoryCGTD.jsx');
 
-const Medication         = FactoryCGTDSub('measurement', 'medications');
-const AdverseEvent       = FactoryCGTDSub('measurement', 'adverseEvents');
-const PatientData        = FactoryCGTDSub('measurement', 'patientData');
+const Medication         = factoryCGTDSub('measurement', 'medications');
+const AdverseEvent       = factoryCGTDSub('measurement', 'adverseEvents');
+const PatientData        = factoryCGTDSub('measurement', 'patientData');
 const handlers           = require('./clickHandlers');
 
-const Medications        = FactoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
-const AdverseEvents      = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
-const PatientDataPlural  = FactoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
+const Medications        = factoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
+const AdverseEvents      = factoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
+const PatientDataPlural  = factoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
 
 const uiActions          = require('../../actions/uiActions.es.js');
 
