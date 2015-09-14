@@ -1,14 +1,19 @@
-var React       = require('react');
-var newActions  = require('../../actions/newActions.es.js');
+const React       = require('react');
+const newActions  = require('../../actions/newActions.es.js');
 
-var TextField = React.createClass({
-	handleChange: function (e) {
-		var keys = this.props.setterKeys;
-		var value = e.target.value;
-		newActions.updateField(keys, value);
-	},
+class TextFieldArrayValue extends React.Component {
+	constructor(props) {
+		super(props);
+		this.handleChange = this.handleChange.bind(this);
+	}
 	
-	render: function () {
+	handleChange(e) {
+		let keys = this.props.setterKeys;
+		let value = e.target.value;
+		newActions.updateField(keys, value);
+	}
+	
+	render() {
 		return (
 			<div>
 				<label>
@@ -21,6 +26,6 @@ var TextField = React.createClass({
 			</div>
         );
     }
-});
+};
 
-module.exports = TextField;
+export default TextFieldArrayValue;

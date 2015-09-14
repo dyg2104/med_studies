@@ -3,8 +3,12 @@ const TextField       = require('../shared/TextField.jsx');
 const TextFieldArray  = require('../shared/TextFieldArray.jsx');
 const uiActions       = require('../../actions/uiActions.es.js');
 
-var NewBackground = React.createClass({	
-	render: function () {	
+class NewBackground extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
+	render() {	
 		return (
 			<div>
 			    <TextField
@@ -56,6 +60,6 @@ var NewBackground = React.createClass({
 			</div>
 		)
 	}
-});
+}
 
-module.exports = NewBackground;
+export default NewBackground;
