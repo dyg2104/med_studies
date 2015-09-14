@@ -1,11 +1,11 @@
-var React         = require('react');
-var StudyActions  = require('../../actions/StudyActions');
+var React       = require('react');
+var newActions  = require('../../actions/newActions.es.js');
 
 var TextField = React.createClass({
 	handleChange: function (e) {
 		var keys = this.props.setterKeys;
 		var value = e.target.value;
-		StudyActions.updateField(keys, value);
+		newActions.updateField(keys, value);
 	},
 	
 	render: function () {

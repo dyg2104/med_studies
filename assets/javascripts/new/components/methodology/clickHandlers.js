@@ -1,13 +1,13 @@
-var StudyActions = require('../../actions/StudyActions');
+var newActions = require('../../actions/newActions.es.js');
 
 module.exports = {
 	eligibilityCriteria: function(e) {
 		e.preventDefault();
-		StudyActions.updateEligibilityCriteriaSize();
+		newActions.updateEligibilityCriteriaSize();
 	},
 
 	patientCharacteristics: function(e) {
 		e.preventDefault();
-		StudyActions.updatePatientCharacteristicsSize();
+		newActions.updatePatientCharacteristicsSize();
 	}	
 };

@@ -14,7 +14,6 @@ const AdverseEvents      = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEven
 const PatientDataPlural  = FactoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
 
 const uiActions          = require('../../actions/uiActions.es.js');
-const StudyActions       = require('../../actions/StudyActions');
 
 var NewMeasurement = React.createClass({
 	render: function () {

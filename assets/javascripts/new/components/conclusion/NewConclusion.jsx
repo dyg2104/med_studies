@@ -1,12 +1,12 @@
 const React         = require('react');
 const TextArea      = require('../shared/TextArea.jsx');
 const uiActions     = require('../../actions/uiActions.es.js');
-const StudyActions  = require('../../actions/StudyActions.js');
+const newActions    = require('../../actions/newActions.es.js');
 
 var NewConclusion = React.createClass({
 	submit: function (e) {
 		e.preventDefault();
-		StudyActions.submit();
+		newActions.submit();
 	},
 	
 	render: function () {

@@ -1,6 +1,6 @@
 var React         = require('react');
-var StudyActions  = require('../../actions/StudyActions');
 var TextField     = require('./TextFieldArrayValue.jsx');
+var newActions    = require('../../actions/newActions.es.js');
 
 var TextFields = React.createClass({	
 	getValue: function () {
@@ -11,7 +11,7 @@ var TextFields = React.createClass({
 	handleClick: function (e) {
 		e.preventDefault();
 		var keys = this.props.setterKeys;
-		StudyActions.updateArraySize(keys);
+		newActions.updateArraySize(keys);
 	},
 	
 	render: function () {

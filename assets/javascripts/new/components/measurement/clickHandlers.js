@@ -1,18 +1,18 @@
-var StudyActions = require('../../actions/StudyActions');
+var newActions = require('../../actions/newActions.es.js');
 
 module.exports = {
 	medications: function(e) {
 		e.preventDefault();
-		StudyActions.updateMeasurementSize('measurement:medications');
+		newActions.updateMeasurementSize('measurement:medications');
 	},
 	
 	adverseEvents: function(e) {
 		e.preventDefault();
-		StudyActions.updateMeasurementSize('measurement:adverseEvents');
+		newActions.updateMeasurementSize('measurement:adverseEvents');
 	},
 	
 	patientData: function(e) {
 		e.preventDefault();
-		StudyActions.updateMeasurementSize('measurement:patientData');
+		newActions.updateMeasurementSize('measurement:patientData');
 	}
 };

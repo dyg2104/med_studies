@@ -1,11 +1,11 @@
 var React         = require('react');
 var ControlGroup  = require('./ControlGroup.jsx');
-var StudyActions  = require('../../actions/StudyActions');
+var newActions    = require('../../actions/newActions.es.js');
 
 var ControlGroups = React.createClass({				
 	handleClick: function (e) {
 		e.preventDefault();
-		StudyActions.updateControlGroupsSize();
+		newActions.updateControlGroupsSize();
 	},
 	
 	render: function () {
