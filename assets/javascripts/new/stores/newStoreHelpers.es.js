@@ -73,10 +73,10 @@ function getMeasurementData() {
 	};
 }
 
-module.exports = {
-	storeValue: function(keys, value, store) {
-		var key = keys.shift();
-		var storeHolder;
+let helpers = {
+	storeValue(keys, value, store) {
+		let key = keys.shift();
+		let storeHolder;
 		
 		if (/\d+/.test(key)) {
 			key = parseInt(key);
@@ -90,11 +90,11 @@ module.exports = {
 		}
 	},
 	
-	storeCGTDValue: function(keys, value, store) {
-		var controlGroups = store['controlGroups'];
-		var holder;
+	storeCGTDValue(keys, value, store) {
+		let controlGroups = store['controlGroups'];
+		let holder;
 		
-		for (var i = 0; i < controlGroups.length; i++) {
+		for (let i = 0; i < controlGroups.length; i++) {
 			holder = 'controlGroups:' + i + ':' + keys;
 			this.storeValue(holder.split(':'), value, store);
 		}
@@ -103,10 +103,10 @@ module.exports = {
 		this.storeValue(holder.split(':'), value, store);
 	},
 	
-	pushArray: function(keys, store) {
-		var key = keys.shift();
-		var array;
-		var storeHolder;
+	pushArray(keys, store) {
+		let key = keys.shift();
+		let array;
+		let storeHolder;
 	
 		if (keys.length === 0) {
 			array = store[key];
@@ -117,46 +117,48 @@ module.exports = {
 		}
 	},
 	
-	pushControlGroup: function(store) {
-		var controlGroups = store['controlGroups'];
-		var controlGroup = getControlGroup(store);
+	pushControlGroup(store) {
+		let controlGroups = store['controlGroups'];
+		let controlGroup = getControlGroup(store);
 		
 		controlGroups.push(controlGroup);
 	},
 	
-	pushEligibilityCriteria: function(store) {
-		var controlGroups = store['controlGroups'];
-		var totalData = store['totalData'];
+	pushEligibilityCriteria(store) {
+		let controlGroups = store['controlGroups'];
+		let totalData = store['totalData'];
 	
-		for (var i = 0; i < controlGroups.length; i++) {
+		for (let i = 0; i < controlGroups.length; i++) {
 			controlGroups[i]['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
 		}
 	
 		totalData['methodology']['eligibilityCriteria'].push(getEligibilityCriteria());
 	},
 	
-	pushPatientCharacteristics: function(store) {
-		var controlGroups = store['controlGroups'];
-		var totalData = store['totalData'];
+	pushPatientCharacteristics(store) {
+		let controlGroups = store['controlGroups'];
+		let totalData = store['totalData'];
 	
-		for (var i = 0; i < controlGroups.length; i++) {
+		for (let i = 0; i < controlGroups.length; i++) {
 			controlGroups[i]['methodology']['patientCharacteristics'].push(getPatientCharacteristics());
 		}
 	
 		totalData['methodology']['patientCharacteristics'].push(getPatientCharacteristics());
 	},
 	
-	pushMeasurementData: function(keys, store) {
-		var controlGroups = store['controlGroups'];
-		var totalData = store['totalData'];
+	pushMeasurementData(keys, store) {
+		let controlGroups = store['controlGroups'];
+		let totalData = store['totalData'];
 		
-		var firstKey = keys[0];
-		var secondKey = keys[1];
+		let firstKey = keys[0];
+		let secondKey = keys[1];
 		
-		for (var i = 0; i < controlGroups.length; i++) {
+		for (let i = 0; i < controlGroups.length; i++) {
 			controlGroups[i][firstKey][secondKey].push(getMeasurementData());
 		}
 		
 		totalData[firstKey][secondKey].push(getMeasurementData());
 	}
 };
+
+export default helpers;

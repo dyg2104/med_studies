@@ -1,12 +1,12 @@
-var $           = require('jquery');
-var _           = require('underscore');
-var Backbone    = require('backbone');
-var dispatcher  = require('../dispatchers/dispatcher.es.js');
-var helpers     = require('./newStoreHelpers');
+const $           = require('jquery');
+const _           = require('underscore');
+const Backbone    = require('backbone');
+const dispatcher  = require('../dispatchers/dispatcher.es.js');
+const helpers     = require('./newStoreHelpers.es.js');
 
-var CHANGE_EVENT = 'change';
+const CHANGE_EVENT = 'change';
 
-var _study = window.study = {
+let _study = window.study = {
 	title: undefined,
 	authors: [''],
 	description: undefined,
@@ -59,24 +59,24 @@ var _study = window.study = {
 };
 
 
-var newStore = _.extend({}, Backbone.Events, {
-	getStudy: function() {
+let newStore = _.extend({}, Backbone.Events, {
+	getStudy() {
 		return _study;
 	},
 	
-	triggerChange: function() {
+	triggerChange() {
 		this.trigger(CHANGE_EVENT);
 	},
 	
-	addChangeListener: function(callback) {
+	addChangeListener(callback) {
 		this.on(CHANGE_EVENT, callback);
 	},
 	
-	removeChangeListener: function(callback) {
+	removeChangeListener(callback) {
 		this.off(CHANGE_EVENT, callback);
 	},
 	
-	submit: function() {
+	submit() {
 		$.ajax({
 			url: '/studies/',
 			method: 'POST',
@@ -86,9 +86,9 @@ var newStore = _.extend({}, Backbone.Events, {
 	}
 });
 
-dispatcher.register(function(payload) {
-	var keys;
-	var value;
+dispatcher.register((payload) => {
+	let keys;
+	let value;
 	
 	switch(payload.type) {
 		case 'UPDATE_FIELD':
@@ -114,9 +114,9 @@ dispatcher.register(function(payload) {
 	}
 });
 
-dispatcher.register(function(payload) {
-	var keys;
-	var value;
+dispatcher.register((payload) => {
+	let keys;
+	let value;
 	
 	switch(payload.type) {
 		case 'UPDATE_ARRAY_SIZE':
@@ -144,7 +144,7 @@ dispatcher.register(function(payload) {
 	}	
 });
 
-dispatcher.register(function(payload) {	
+dispatcher.register((payload) => {	
 	switch(payload.type) {
 		case 'SUBMIT':
 			newStore.submit();
