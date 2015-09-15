@@ -1,4 +1,5 @@
-var React = require('react');
+const React     = require('react');
+const handlers  = require('./clickHandlers.es.js');
 
 module.exports = function(Component, firstKey, secondKey, handleClick) {
 	var ControlGroupsTotalData = React.createClass({
@@ -19,6 +20,7 @@ module.exports = function(Component, firstKey, secondKey, handleClick) {
 		render: function() {
 			var nodes = [];
 			var data = this.props.totalData[firstKey][secondKey];
+			var handler = handlers[handleClick];
 		
 			for (var i = 0; i < data.length; i++) {
 				nodes.push(
@@ -35,7 +37,7 @@ module.exports = function(Component, firstKey, secondKey, handleClick) {
 				<div>
 					{this.props.title}
 					{nodes}
-					<a href='#' onClick={handleClick}>+</a>
+					<a href='#' onClick={handler}>+</a>
 				</div>
 			)
 		}

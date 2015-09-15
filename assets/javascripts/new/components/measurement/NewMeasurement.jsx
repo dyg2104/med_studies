@@ -7,11 +7,10 @@ const factoryCGTD        = require('../shared/factoryCGTD.jsx');
 const Medication         = factoryCGTDSub('measurement', 'medications');
 const AdverseEvent       = factoryCGTDSub('measurement', 'adverseEvents');
 const PatientData        = factoryCGTDSub('measurement', 'patientData');
-const handlers           = require('./clickHandlers');
 
-const Medications        = factoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
-const AdverseEvents      = factoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
-const PatientDataPlural  = factoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
+const Medications        = factoryCGTD(Medication, 'measurement', 'medications', 'medications');
+const AdverseEvents      = factoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', 'adverseEvents');
+const PatientDataPlural  = factoryCGTD(PatientData, 'measurement', 'patientData', 'patientData');
 
 const uiActions          = require('../../actions/uiActions.es.js');
 

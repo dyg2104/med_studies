@@ -6,19 +6,22 @@ const factoryCGTD             = require('../shared/factoryCGTD.jsx');
 
 const EligibilityCriterion    = require('./EligibilityCriterion.jsx');
 const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
-const handlers                = require('./clickHandlers');
 
 const ControlGroups           = require('./ControlGroups.jsx');
-const EligibilityCriteria     = factoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
-const PatientCharacteristics  = factoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
+const EligibilityCriteria     = factoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', 'eligibilityCriteria');
+const PatientCharacteristics  = factoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', 'patientCharacteristics');
 
 const uiActions               = require('../../actions/uiActions.es.js');
 
-var NewMethodology = React.createClass({
-	render: function () {
-		var methodology = this.props.study['methodology'];
-		var controlGroups = this.props.study['controlGroups'];
-		var totalData = this.props.study['totalData'];
+class NewMethodology extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
+	render() {
+		let methodology = this.props.study['methodology'];
+		let controlGroups = this.props.study['controlGroups'];
+		let totalData = this.props.study['totalData'];
 		
 		return (
 			<div>
@@ -59,6 +62,6 @@ var NewMethodology = React.createClass({
 			</div>
 		)
 	}
-});
+};
 
-module.exports = NewMethodology;
+export default NewMethodology;
