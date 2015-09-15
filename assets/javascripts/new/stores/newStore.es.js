@@ -1,8 +1,8 @@
-var _                = require('underscore');
-var $                = require('jquery');
-var Backbone         = require('backbone');
-var StudyDispatcher  = require('../dispatchers/dispatcher.es.js');
-var helpers          = require('./studyStoreHelpers');
+var $           = require('jquery');
+var _           = require('underscore');
+var Backbone    = require('backbone');
+var dispatcher  = require('../dispatchers/dispatcher.es.js');
+var helpers     = require('./newStoreHelpers');
 
 var CHANGE_EVENT = 'change';
 
@@ -59,7 +59,7 @@ var _study = window.study = {
 };
 
 
-var StudyStore = _.extend({}, Backbone.Events, {
+var newStore = _.extend({}, Backbone.Events, {
 	getStudy: function() {
 		return _study;
 	},
@@ -86,7 +86,7 @@ var StudyStore = _.extend({}, Backbone.Events, {
 	}
 });
 
-StudyDispatcher.register(function(payload) {
+dispatcher.register(function(payload) {
 	var keys;
 	var value;
 	
@@ -95,7 +95,7 @@ StudyDispatcher.register(function(payload) {
 			keys = payload.keys.split(':');
 			value = payload.value;
 			helpers.storeValue(keys, value, _study);
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 		case 'UPDATE_FIELDS':
 			keys = payload.keysArray;
@@ -103,47 +103,47 @@ StudyDispatcher.register(function(payload) {
 			_.each(keys, function(key) {
 				helpers.storeValue(key.split(':'), value, _study);
 			});
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 		case 'UPDATE_CGTD_FIELDS':
 			keys = payload.keys;
 			value = payload.value;
 			helpers.storeCGTDValue(keys, value, _study);
-			StudyStore.triggerChange();			
+			newStore.triggerChange();			
 			break;
 		case 'UPDATE_ARRAY_SIZE':
 			keys = payload.keys.split(':');
 			helpers.pushArray(keys, _study);
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 		case 'UPDATE_CONTROL_GROUPS_SIZE':
 			helpers.pushControlGroup(_study);
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 		case 'UPDATE_ELIGIBILITY_CRITERIA_SIZE':
 			helpers.pushEligibilityCriteria(_study);
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 		case 'UPDATE_PATIENT_CHARACTERISTICS_SIZE':
 			helpers.pushPatientCharacteristics(_study);
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 		case 'UPDATE_MEASUREMENT_SIZE':
 			keys = payload.keys.split(':');
 			helpers.pushMeasurementData(keys, _study);
-			StudyStore.triggerChange();
+			newStore.triggerChange();
 			break;
 	}
 	
 });
 
-StudyDispatcher.register(function(payload) {	
+dispatcher.register(function(payload) {	
 	switch(payload.type) {
 		case 'SUBMIT':
-			StudyStore.submit();
+			newStore.submit();
 			break;
 	}
 	
 });
 
-module.exports = StudyStore;
+export default newStore;

@@ -1,7 +1,7 @@
 const React        = require('react');
 
 const uiStore      = require('./stores/uiStore.es.js');
-const studyStore   = require('./stores/studyStore');
+const newStore     = require('./stores/newStore.es.js');
 
 const Background   = require('./components/background/NewBackground.jsx');
 const Methodology  = require('./components/methodology/NewMethodology.jsx');
@@ -14,7 +14,7 @@ class NewWrapper extends React.Component {
 	constructor(props) {
 		super(props);	
 		let ui = uiStore.getUI();
-		let study = studyStore.getStudy();
+		let study = newStore.getStudy();
 		
 		this.state = {
 			step: ui.step,
@@ -26,17 +26,17 @@ class NewWrapper extends React.Component {
 	
 	componentDidMount() {
 		uiStore.addChangeListener(this._onChange);
-		studyStore.addChangeListener(this._onChange);
+		newStore.addChangeListener(this._onChange);
 	}
 	
 	componentWillUnmount() {
 		uiStore.removeChangeListener(this._onChange);
-		studyStore.removeChangeListener(this._onChange);
+		newStore.removeChangeListener(this._onChange);
 	}
 	
 	_onChange() {
 		let ui = uiStore.getUI();
-		let study = studyStore.getStudy();
+		let study = newStore.getStudy();
 		
 		this.setState({
 			step: ui.step, 
