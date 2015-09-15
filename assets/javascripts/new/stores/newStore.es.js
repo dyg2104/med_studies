@@ -111,6 +111,14 @@ dispatcher.register(function(payload) {
 			helpers.storeCGTDValue(keys, value, _study);
 			newStore.triggerChange();			
 			break;
+	}
+});
+
+dispatcher.register(function(payload) {
+	var keys;
+	var value;
+	
+	switch(payload.type) {
 		case 'UPDATE_ARRAY_SIZE':
 			keys = payload.keys.split(':');
 			helpers.pushArray(keys, _study);
@@ -133,8 +141,7 @@ dispatcher.register(function(payload) {
 			helpers.pushMeasurementData(keys, _study);
 			newStore.triggerChange();
 			break;
-	}
-	
+	}	
 });
 
 dispatcher.register(function(payload) {	
