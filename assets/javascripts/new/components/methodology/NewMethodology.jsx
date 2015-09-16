@@ -12,6 +12,7 @@ const EligibilityCriteria     = factoryCGTD(EligibilityCriterion, 'methodology',
 const PatientCharacteristics  = factoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', 'patientCharacteristics');
 
 const uiActions               = require('../../actions/uiActions.es.js');
+const findNameSpace           = require('find-namespace-value');
 
 class NewMethodology extends React.Component {
 	constructor(props) {
@@ -19,13 +20,14 @@ class NewMethodology extends React.Component {
 	}
 	
 	render() {
-		let methodology = this.props.study['methodology'];
-		let controlGroups = this.props.study['controlGroups'];
-		let totalData = this.props.study['totalData'];
+		let study = this.props.study;
+		let methodology = findNameSpace('methodology', study);
+		let controlGroups = findNameSpace('controlGroups', study);
+		let totalData = findNameSpace('totalData', study);
 		
 		return (
 			<div>
-				<TextField 
+				<TextField
 					formObj={methodology}
 					getterKey="diagnosis" 
 					setterKeys="methodology:diagnosis" 
@@ -37,8 +39,7 @@ class NewMethodology extends React.Component {
 					title="Design" />
 				<ControlGroups
 					formArr={controlGroups}
-					setterKeys="controlGroups"
-					title="Control Groups" />
+					setterKeys="controlGroups" />
 				<TextField 
 					formObj={methodology}
 					getterKey="primaryEndpoint" 

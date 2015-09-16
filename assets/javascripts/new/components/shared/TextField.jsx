@@ -1,7 +1,8 @@
-const React       = require('react');
-const newActions  = require('../../actions/newActions.es.js');
+const React          = require('react');
+const BaseComponent  = require('./BaseComponent.jsx');
+const newActions     = require('../../actions/newActions.es.js');
 
-class TextField extends React.Component {
+class TextField extends BaseComponent {
 	constructor(props) {
 		super(props);
 		this.getValue = this.getValue.bind(this);
@@ -14,7 +15,7 @@ class TextField extends React.Component {
 	}
 	
 	handleChange(e) {
-		let keys = this.props.setterKeys;
+		let keys = this.getSetterKeys();
 		let value = e.target.value;
 		newActions.updateField(keys, value);
 	}

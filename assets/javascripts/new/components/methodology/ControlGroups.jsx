@@ -1,35 +1,44 @@
-var React         = require('react');
-var ControlGroup  = require('./ControlGroup.jsx');
-var newActions    = require('../../actions/newActions.es.js');
+const React          = require('react');
+const BaseComponent  = require('../shared/BaseComponent.jsx');
+const ControlGroup   = require('./ControlGroup.jsx');
+const newActions     = require('../../actions/newActions.es.js');
 
-var ControlGroups = React.createClass({				
-	handleClick: function (e) {
+class ControlGroups extends BaseComponent {				
+	constructor(props) {
+		super(props);
+		this.handleClick = this.handleClick.bind(this);
+	}
+	
+	handleClick(e) {
 		e.preventDefault();
 		newActions.updateControlGroupsSize();
-	},
+	}
 	
-	render: function () {
-		var nodes = [];
-		var controlGroups = this.props.formArr;
-		var i;
+	render() {
+		let nodes = [];
+		let controlGroups = this.props.formArr;
+		let setterKeys = this.getSetterKeys();
 		
-		for(i = 0; i < controlGroups.length; i++) {
+		for(let i = 0; i < controlGroups.length; i++) {
+			let controlGroup = controlGroups[i];
+			
 			nodes.push(
-				<ControlGroup 
-					key={i} 
-					controlGroup={controlGroups[i]}
-					setterKeys={this.props.setterKeys + ':' + i} />
+				<ControlGroup
+					key={i}
+					controlGroup={controlGroup}
+					parentSetterKeys={setterKeys}
+					index={i} />
 			);
 		}
 		
 		return (
 			<div>
-				{this.props.title}
-			  	{nodes}
-			  	<a href='#' onClick={this.handleClick}>+</a>
+				Control Groups
+				{nodes}
+				<a href='#' onClick={this.handleClick}>+</a>
 			</div>
 		);
     }
-});
+};
 
-module.exports = ControlGroups;
+export default ControlGroups;
