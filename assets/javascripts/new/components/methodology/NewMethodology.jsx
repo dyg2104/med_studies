@@ -1,26 +1,33 @@
-var React                   = require('react');
+const React                   = require('react');
 
-var TextField               = require('../shared/TextField.jsx');
-var TextFieldArray          = require('../shared/TextFieldArray.jsx');
-var FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
+const TextField               = require('../shared/TextField.jsx');
+const TextFieldArray          = require('../shared/TextFieldArray.jsx');
+const factoryCGTD             = require('../shared/factoryCGTD.jsx');
 
-var EligibilityCriterion    = require('./EligibilityCriterion.jsx');
-var PatientCharacteristic   = require('./PatientCharacteristic.jsx');
-var handlers                = require('./clickHandlers');
+const EligibilityCriterion    = require('./EligibilityCriterion.jsx');
+const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
 
-var ControlGroups           = require('./ControlGroups.jsx');
-var EligibilityCriteria     = FactoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', handlers.eligibilityCriteria);
-var PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', handlers.patientCharacteristics);
+const ControlGroups           = require('./ControlGroups.jsx');
+const EligibilityCriteria     = factoryCGTD(EligibilityCriterion, 'methodology', 'eligibilityCriteria', 'eligibilityCriteria');
+const PatientCharacteristics  = factoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics', 'patientCharacteristics');
 
-var NewMethodology = React.createClass({
-	render: function () {
-		var methodology = this.props.study['methodology'];
-		var controlGroups = this.props.study['controlGroups'];
-		var totalData = this.props.study['totalData'];
+const uiActions               = require('../../actions/uiActions.es.js');
+const findNameSpace           = require('find-namespace-value');
+
+class NewMethodology extends React.Component {
+	constructor(props) {
+		super(props);
+	}
+	
+	render() {
+		let study = this.props.study;
+		let methodology = findNameSpace('methodology', study);
+		let controlGroups = findNameSpace('controlGroups', study);
+		let totalData = findNameSpace('totalData', study);
 		
 		return (
 			<div>
-				<TextField 
+				<TextField
 					formObj={methodology}
 					getterKey="diagnosis" 
 					setterKeys="methodology:diagnosis" 
@@ -32,11 +39,10 @@ var NewMethodology = React.createClass({
 					title="Design" />
 				<ControlGroups
 					formArr={controlGroups}
-					setterKeys="controlGroups"
-					title="Control Groups" />
+					setterKeys="controlGroups" />
 				<TextField 
 					formObj={methodology}
-					getterKey="primaryEndpoint" 
+					getterKey="primaryEndpoint"
 					setterKeys="methodology:primaryEndpoint" 
 					title="Primary Endpoint" />
 				<TextFieldArray 
@@ -52,11 +58,11 @@ var NewMethodology = React.createClass({
 					controlGroups={controlGroups}
 					totalData={totalData}
 					title="Patient Characteristics" />
-				<a href="#" onClick={this.props.previousStep}>Previous</a>
-				<a href="#" onClick={this.props.nextStep}>Next</a>
+				<a href="#" onClick={uiActions.previousStep}>Previous</a>
+				<a href="#" onClick={uiActions.nextStep}>Next</a>
 			</div>
 		)
 	}
-});
+};
 
-module.exports = NewMethodology;
+export default NewMethodology;

@@ -1,16 +1,16 @@
 const React           = require('react');
 
 const TextValue       = require('../shared/TextValue.jsx');
-const FactoryCGTDSub  = require('../shared/FactoryCGTDSub.jsx');
-const FactoryCGTD     = require('../shared/FactoryCGTD.jsx');
+const factoryCGTDSub  = require('../shared/factoryCGTDSub.jsx');
+const factoryCGTD     = require('../shared/factoryCGTD.jsx');
 
-const Medication      = FactoryCGTDSub('measurement', 'medications');
-const AdverseEvent    = FactoryCGTDSub('measurement', 'adverseEvents');
-const PatientDatum    = FactoryCGTDSub('measurement', 'patientData');
+const Medication      = factoryCGTDSub('measurement.medications');
+const AdverseEvent    = factoryCGTDSub('measurement.adverseEvents');
+const PatientDatum    = factoryCGTDSub('measurement.patientData');
 
-const Medications     = FactoryCGTD(Medication, 'measurement', 'medications');
-const AdverseEvents   = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents');
-const PatientData     = FactoryCGTD(PatientDatum, 'measurement', 'patientData');
+const Medications     = factoryCGTD(Medication, 'measurement.medications');
+const AdverseEvents   = factoryCGTD(AdverseEvent, 'measurement.adverseEvents');
+const PatientData     = factoryCGTD(PatientDatum, 'measurement.patientData');
 
 class ShowMeasurement extends React.Component {
 	constructor(props) {

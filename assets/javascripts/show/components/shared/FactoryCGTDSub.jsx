@@ -1,20 +1,23 @@
+const _              = require('underscore');
 const React          = require('react');
 const findNameSpace  = require('find-namespace-value');
 
-module.exports = function(firstKey, secondKey) {
+module.exports = function(key) {
 	class ControlGroupTotalDataSub extends React.Component {
 		constructor(props) {
 			super(props);
 		}
 	
 		render() {
-			let key = firstKey + '.' + secondKey;
 			let index = this.props.index;
 			let controlGroups = this.props.controlGroups;
 			let totalData = this.props.totalData;
-
-		
 			let tdCriteria = findNameSpace(key, totalData);
+			
+			if (!(_.isNumber(index) && controlGroups && totalData && tdCriteria)) {
+				return false;
+			}
+			
 			let tdCriterion = tdCriteria[index];
 		
 			let cgBeforeDataMarkup = [];

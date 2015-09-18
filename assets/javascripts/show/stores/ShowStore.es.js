@@ -1,9 +1,9 @@
 let _study = Object.assign({}, window._variables_.study);
 
-let ShowStore = {
+let showStore = {
 	getStudy() {
 		return _study;
 	}	
 };
 
-export default ShowStore;
+export default showStore;

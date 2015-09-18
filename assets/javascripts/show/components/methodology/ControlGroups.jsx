@@ -7,7 +7,7 @@ class ControlGroups extends React.Component {
 	}
 	
 	render() {
-		let controlGroups = this.props.formArr;
+		let controlGroups = this.props.formArr || [];
 		let controlGroupsMarkup = controlGroups.map((controlGroup) => {
 			return <ControlGroup formObj={controlGroup} />;
 		});

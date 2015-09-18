@@ -1,5 +1,6 @@
 const React                 = require('react');
 const EligibilityCriterion  = require('./EligibilityCriterion.jsx');
+const findNameSpace         = require('find-namespace-value');
 
 class EligibilityCriteria extends React.Component {
 	constructor(props) {
@@ -10,7 +11,9 @@ class EligibilityCriteria extends React.Component {
 		let controlGroups = this.props.controlGroups;
 		let totalData = this.props.totalData;
 		
-		let length = totalData.methodology.eligibilityCriteria.length;
+		let eligibilityCriteria = findNameSpace('methodology.eligibilityCriteria', totalData);
+		
+		let length = eligibilityCriteria && eligibilityCriteria.length ? eligibilityCriteria.length : 0;
 		let eligibilityCriteriaMarkup = [];
 		
 		for (let i = 0; i < length; i++) {

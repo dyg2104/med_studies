@@ -1,19 +1,18 @@
-var React              = require('react');
+const React              = require('react');
 
-var TextArea           = require('../shared/TextArea.jsx');
-var FactoryCGTDSub     = require('../shared/FactoryCGTDSub.jsx');
-var FactoryCGTD        = require('../shared/FactoryCGTD.jsx');
+const TextArea           = require('../shared/TextArea.jsx');
+const factoryCGTDSub     = require('../shared/factoryCGTDSub.jsx');
+const factoryCGTD        = require('../shared/factoryCGTD.jsx');
 
-var Medication         = FactoryCGTDSub('measurement', 'medications');
-var AdverseEvent       = FactoryCGTDSub('measurement', 'adverseEvents');
-var PatientData        = FactoryCGTDSub('measurement', 'patientData');
-var handlers           = require('./clickHandlers');
+const Medication         = factoryCGTDSub('measurement', 'medications');
+const AdverseEvent       = factoryCGTDSub('measurement', 'adverseEvents');
+const PatientData        = factoryCGTDSub('measurement', 'patientData');
 
-var Medications        = FactoryCGTD(Medication, 'measurement', 'medications', handlers.medications);
-var AdverseEvents      = FactoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', handlers.adverseEvents);
-var PatientDataPlural  = FactoryCGTD(PatientData, 'measurement', 'patientData', handlers.patientData);
+const Medications        = factoryCGTD(Medication, 'measurement', 'medications', 'medications');
+const AdverseEvents      = factoryCGTD(AdverseEvent, 'measurement', 'adverseEvents', 'adverseEvents');
+const PatientDataPlural  = factoryCGTD(PatientData, 'measurement', 'patientData', 'patientData');
 
-var StudyActions       = require('../../actions/StudyActions');
+const uiActions          = require('../../actions/uiActions.es.js');
 
 var NewMeasurement = React.createClass({
 	render: function () {
@@ -40,8 +39,8 @@ var NewMeasurement = React.createClass({
 					controlGroups={controlGroups}
 					totalData={totalData}
 					title="Patient Data" />
-				<a href="#" onClick={this.props.previousStep}>Previous</a>
-				<a href="#" onClick={this.props.nextStep}>Next</a>
+				<a href="#" onClick={uiActions.previousStep}>Previous</a>
+				<a href="#" onClick={uiActions.nextStep}>Next</a>
 			</div>
 		)
 	}

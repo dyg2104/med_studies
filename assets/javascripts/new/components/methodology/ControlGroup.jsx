@@ -1,33 +1,45 @@
-var React      = require('react');
-var TextField  = require('../shared/TextField.jsx');
+const React          = require('react');
+const BaseComponent  = require('../shared/BaseComponent.jsx');
+const TextField      = require('../shared/TextField.jsx');
 
-var ControlGroup = React.createClass({	
-	render: function () {
+class ControlGroup extends BaseComponent {	
+	constructor(props) {
+		super(props);
+	}
+	
+	render() {
+		let controlGroup = this.props.controlGroup;
+		let setterKeys = this.getSetterKeys();
+		
 		return (
 			<div>
 				<TextField 
-					formObj={this.props.controlGroup}
+					formObj={controlGroup}
 					getterKey="name" 
-					setterKeys={this.props.setterKeys + ":name"}
+					parentSetterKeys={setterKeys}
+					setterKeys="name"
 					title="Name" />
 				<TextField 
-					formObj={this.props.controlGroup}
+					formObj={controlGroup}
 					getterKey="numPatients" 
-					setterKeys={this.props.setterKeys + ":numPatients"}
+					parentSetterKeys={setterKeys}
+					setterKeys="numPatients"
 					title="Number of Patients" />
 				<TextField 
-					formObj={this.props.controlGroup}
+					formObj={controlGroup}
 					getterKey="numMen" 
-					setterKeys={this.props.setterKeys + ":numMen"}
+					parentSetterKeys={setterKeys}
+					setterKeys="numMen"
 					title="Number of Men" />
 				<TextField 
-					formObj={this.props.controlGroup}
+					formObj={controlGroup}
 					getterKey="numWomen" 
-					setterKeys={this.props.setterKeys + ":numWomen"}
+					parentSetterKeys={setterKeys}
+					setterKeys={"numWomen"}
 					title="Number of Women" />
 			</div>
         );
     }
-});
+};
 
-module.exports = ControlGroup;
+export default ControlGroup;

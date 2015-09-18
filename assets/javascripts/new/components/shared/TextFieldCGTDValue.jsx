@@ -1,8 +1,13 @@
-var React      = require('react');
-var TextField  = require('./TextField.jsx');
+const React          = require('react');
+const BaseComponent  = require('../shared/BaseComponent.jsx');
+const TextField      = require('./TextField.jsx');
 
-var TextFieldCGTDValue = React.createClass({	
-	render: function () {
+class TextFieldCGTDValue extends BaseComponent {
+	constructor(props) {
+		super(props);
+	}
+	
+	render() {
 		var nodes = [];
 		var data;
 		var i;
@@ -34,6 +39,6 @@ var TextFieldCGTDValue = React.createClass({
 			</div>
         );
     }
-});
+};
 
-module.exports = TextFieldCGTDValue;
+export default TextFieldCGTDValue;

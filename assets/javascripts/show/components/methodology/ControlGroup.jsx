@@ -8,6 +8,10 @@ class ControlGroup extends React.Component {
 	render() {
 		let controlGroup = this.props.formObj;
 		
+		if (!controlGroup) {
+			return false;
+		}
+		
 		return (
 			<div>
 				<div>

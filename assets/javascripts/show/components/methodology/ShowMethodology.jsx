@@ -2,13 +2,15 @@ const React                   = require('react');
 
 const TextValue               = require('../shared/TextValue.jsx');
 const TextArrayValue          = require('../shared/TextArrayValue.jsx');
-const FactoryCGTD             = require('../shared/FactoryCGTD.jsx');
+const factoryCGTD             = require('../shared/factoryCGTD.jsx');
 
 const ControlGroups           = require('./ControlGroups.jsx');
 const EligibilityCriteria     = require('./EligibilityCriteria.jsx');
 const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
 
-const PatientCharacteristics  = FactoryCGTD(PatientCharacteristic, 'methodology', 'patientCharacteristics');
+const PatientCharacteristics  = factoryCGTD(PatientCharacteristic, 'methodology.patientCharacteristics');
+
+const findNameSpace           = require('find-namespace-value');
 
 class ShowMethodology extends React.Component {
 	constructor(props) {
@@ -16,9 +18,10 @@ class ShowMethodology extends React.Component {
 	}
 	
 	render() {
-		let methodology = this.props.study['methodology'];
-		let controlGroups = this.props.study['control_groups'];
-		let totalData = this.props.study['total_datum'];
+		let study = this.props.study;
+		let methodology = findNameSpace('methodology', study);
+		let controlGroups = findNameSpace('control_groups', study);
+		let totalData = findNameSpace('total_datum', study);
 		
 		return (
 			<div>

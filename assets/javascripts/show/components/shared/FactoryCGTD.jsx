@@ -1,6 +1,7 @@
-const React = require('react');
+const React          = require('react');
+const findNameSpace  = require('find-namespace-value');
 
-module.exports = function(Component, firstKey, secondKey) {
+module.exports = function(Component, key) {
 	class ControlGroupTotalData extends React.Component {
 		constructor(props) {
 			super(props);
@@ -10,13 +11,13 @@ module.exports = function(Component, firstKey, secondKey) {
 			let controlGroups = this.props.controlGroups;
 			let totalData = this.props.totalData;
 			
-			let field = totalData[firstKey][secondKey];		
-			let length = field.length;
+			let field = findNameSpace(key, totalData);		
+			let length = field && field.length ? field.length : 0;
 			let markup = [];
 		
 			for (let i = 0; i < length; i++) {
 				markup.push(
-					<Component 
+					<Component
 						controlGroups={controlGroups} 
 						totalData={totalData} 
 						index={i} />

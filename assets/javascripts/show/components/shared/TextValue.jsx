@@ -1,4 +1,5 @@
-const React = require('react');
+const React          = require('react');
+const findNameSpace  = require('find-namespace-value');
 
 class TextValue extends React.Component {
 	constructor(props) {
@@ -7,7 +8,11 @@ class TextValue extends React.Component {
 	
 	render() {
 		let title = this.props.title;
-		let value = this.props.formObj[this.props.getterKey];
+		let value = findNameSpace(this.props.getterKey, this.props.formObj);
+		
+		if (!(title && value)) {
+			return false;
+		}
 		
 		return (
 			<div>

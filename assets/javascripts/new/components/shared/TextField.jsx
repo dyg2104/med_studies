@@ -1,19 +1,26 @@
-var React         = require('react');
-var StudyActions  = require('../../actions/StudyActions');
+const React          = require('react');
+const BaseComponent  = require('./BaseComponent.jsx');
+const newActions     = require('../../actions/newActions.es.js');
 
-var TextField = React.createClass({
-	getValue: function () {
-		var formObj = this.props.formObj;
+class TextField extends BaseComponent {
+	constructor(props) {
+		super(props);
+		this.getValue = this.getValue.bind(this);
+		this.handleChange = this.handleChange.bind(this);
+	}
+	
+	getValue() {
+		let formObj = this.props.formObj;
 		return formObj[this.props.getterKey];	
-	},
+	}
 	
-	handleChange: function (e) {
-		var keys = this.props.setterKeys;
-		var value = e.target.value;
-		StudyActions.updateField(keys, value);
-	},
+	handleChange(e) {
+		let keys = this.getSetterKeys();
+		let value = e.target.value;
+		newActions.updateField(keys, value);
+	}
 	
-	render: function () {
+	render() {
 		return (
 			<div>
 				<label>
@@ -26,6 +33,6 @@ var TextField = React.createClass({
 			</div>
         );
     }
-});
+};
 
-module.exports = TextField;
+export default TextField;

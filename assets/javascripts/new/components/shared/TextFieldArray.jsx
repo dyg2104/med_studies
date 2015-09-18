@@ -1,30 +1,38 @@
-var React         = require('react');
-var StudyActions  = require('../../actions/StudyActions');
-var TextField     = require('./TextFieldArrayValue.jsx');
+const React          = require('react');
+const BaseComponent  = require('./BaseComponent.jsx');
+const TextField      = require('./TextFieldArrayValue.jsx');
+const newActions     = require('../../actions/newActions.es.js');
 
-var TextFields = React.createClass({	
-	getValue: function () {
-		var formObj = this.props.formObj;
-		return formObj[this.props.getterKey];	
-	},
+class TextFieldArray extends BaseComponent {
+	constructor(props) {
+		super(props);
+		this.getValue = this.getValue.bind(this);
+		this.handleClick = this.handleClick.bind(this);
+	}
 	
-	handleClick: function (e) {
+	getValue() {
+		let formObj = this.props.formObj;
+		return formObj[this.props.getterKey];
+	}
+	
+	handleClick(e) {
 		e.preventDefault();
-		var keys = this.props.setterKeys;
-		StudyActions.updateArraySize(keys);
-	},
+		let setterKeys = this.getSetterKeys();
+		newActions.updateArraySize(setterKeys);
+	}
 	
-	render: function () {
-		var nodes = [];
-		var array = this.getValue();
-		var i;
+	render() {
+		let nodes = [];
+		let array = this.getValue();
+		let setterKeys = this.getSetterKeys();
 		
-		for(i = 0; i < array.length; i++) {
+		for(let i = 0; i < array.length; i++) {
 			nodes.push(
 				<TextField 
-					key={i} 
+					key={i}
 					arrayValue={array[i]} 
-					setterKeys={this.props.setterKeys + ':' + i} />
+					parentSetterKeys={setterKeys} 
+					index={i} />
 			);
 		}
 		
@@ -36,6 +44,6 @@ var TextFields = React.createClass({
 			</div>
 		);
 	}
-});
+}
 
-module.exports = TextFields;
+export default TextFieldArray;
