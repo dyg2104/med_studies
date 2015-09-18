@@ -42,7 +42,7 @@ class NewMethodology extends React.Component {
 					setterKeys="controlGroups" />
 				<TextField 
 					formObj={methodology}
-					getterKey="primaryEndpoint" 
+					getterKey="primaryEndpoint"
 					setterKeys="methodology:primaryEndpoint" 
 					title="Primary Endpoint" />
 				<TextFieldArray 
