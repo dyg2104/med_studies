@@ -1,16 +1,87 @@
-const React     = require('react');
-const newStore  = require('./stores/newStore.es.js');
-const newActions = require('./actions/newActions.es.js');
+const React        = require('react');
+
+const uiStore      = require('./stores/uiStore.es.js');
+const newStore     = require('./stores/newStore.es.js');
+
+const Background   = require('./components/background/NewBackground.jsx');
+const Methodology  = require('./components/methodology/NewMethodology.jsx');
+const Measurement  = require('./components/measurement/NewMeasurement.jsx');
+const Conclusion   = require('./components/conclusion/NewConclusion.jsx');
+
+const uiActions    = require('./actions/uiActions.es.js');
 
 class NewWrapper extends React.Component {
 	constructor(props) {
-		super(props);
+		super(props);	
+		let ui = uiStore.getUI();
+		let study = newStore.getStudy();
+		
+		this.state = {
+			step: ui.step,
+			study: study
+		};
+		
+		this._onChange = this._onChange.bind(this);
+	}
+	
+	componentDidMount() {
+		uiStore.addChangeListener(this._onChange);
+		newStore.addChangeListener(this._onChange);
+	}
+	
+	componentWillUnmount() {
+		uiStore.removeChangeListener(this._onChange);
+		newStore.removeChangeListener(this._onChange);
+	}
+	
+	_onChange() {
+		let ui = uiStore.getUI();
+		let study = newStore.getStudy();
+		
+		this.setState({
+			step: ui.step, 
+			study: study
+		});
 	}
 	
 	render() {
-		newActions.updateSize('controlGroups:0:methodology:eligibilityCriteria');
+		let subForm;
+		
+		switch(this.state.step) {
+			case 1:
+				subForm = <Background study={this.state.study} />;
+				break;
+			case 2:
+				subForm = <Methodology study={this.state.study} />;
+				break;
+			case 3:
+				subForm = <Measurement study={this.state.study} />;
+				break;
+			case 4:
+				subForm = <Conclusion study={this.state.study} />;
+				break; 
+		}
+		
 		return (
-			<div>newBoa</div>
+			<div>
+				<div>
+					<div>
+						<a href="#" onClick={uiActions.goToBackground}>Background</a>
+					</div>
+					<div>
+						<a href="#" onClick={uiActions.goToMethodology}>Methodology</a>
+					</div>
+					<div>
+						<a href="#" onClick={uiActions.goToMeasurement}>Measurement</a>
+					</div>
+					<div>
+						<a href="#" onClick={uiActions.goToConclusion}>Conclusion</a>
+					</div>
+				</div>
+				<div>
+					{subForm}
+				</div>
+			</div>
 		);
 	}
 }
