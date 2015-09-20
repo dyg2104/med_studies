@@ -1,4 +1,7 @@
-const React = require('react');
+const React           = require('react');
+const TextField       = require('../shared/TextField.jsx');
+const TextFieldArray  = require('../shared/TextFieldArray.jsx');
+const uiActions       = require('../../actions/uiActions.es.js');
 
 class NewBackground extends React.Component {
 	constructor(props) {
@@ -6,8 +9,23 @@ class NewBackground extends React.Component {
 	}
 	
 	render() {
+		let study = this.props.study;
+		
 		return (
-			<div>Background</div>
+			<div>
+				<TextField 
+					formObj={study}
+					getKey="title"
+					setKey="title"
+					title="Title"/>
+				<TextFieldArray
+					formObj={study}
+					getKey="authors"
+					setKey="authors"
+					title="Authors" />
+					
+			<a href="#" onClick={uiActions.nextStep}>Next</a>
+			</div>
 		);
 	}
 }

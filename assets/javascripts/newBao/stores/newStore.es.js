@@ -897,6 +897,7 @@ dispatcher.register((payload) => {
 			key = payload.key;
 			helpers.increaseSize(key.split(':'), _study);
 			newStore.triggerChange();
+			break;
 	}
 });
 
