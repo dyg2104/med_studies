@@ -59,11 +59,11 @@ class TextFieldArray extends React.Component {
 		
 		for(let i = 0; i < arraySize; i++) {
 			nodes.push(
-				<TextField 
+				<TextField
 					key={i}
 					formObj={array}
-					getKey={i} 
-					parentSetKey={setKey} 
+					getKey={i}
+					parentSetKey={setKey}
 					index={i} />
 			);
 		}
