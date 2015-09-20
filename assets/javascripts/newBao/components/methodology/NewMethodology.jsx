@@ -2,10 +2,10 @@ const React                = require('react');
 
 const TextField            = require('../shared/TextField.jsx');
 const TextFieldArray       = require('../shared/TextFieldArray.jsx');
-const textFieldCollection  = require('../shared/textFieldCollection.jsx');
+const factoryCollection  = require('../shared/factoryCollection.jsx');
 
 const ControlGroup         = require('./ControlGroup.jsx');
-const ControlGroups        = textFieldCollection(ControlGroup);  //require('./ControlGroups.jsx');
+const ControlGroups        = factoryCollection(ControlGroup);
 
 const uiActions            = require('../../actions/uiActions.es.js');
 
