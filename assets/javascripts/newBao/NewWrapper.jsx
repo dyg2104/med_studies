@@ -8,7 +8,7 @@ class NewWrapper extends React.Component {
 	}
 	
 	render() {
-		newActions.updateField('methodology:design:0', 'hello');
+		newActions.updateSize('controlGroups:0:methodology:eligibilityCriteria');
 		return (
 			<div>newBoa</div>
 		);

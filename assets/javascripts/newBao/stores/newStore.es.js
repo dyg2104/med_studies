@@ -161,341 +161,366 @@ let _study = window.study = {
 		value: null,
 		type: 'array',
 		default: {
-			name: {
-				value: null,
-				type: 'string',
-				default: null,
-				validation: null
-			},
-			numPatients: {
-				value: null,
-				type: 'string',
-				default: null,
-				validation: null
-			},
-			numMen: {
-				value: null,
-				type: 'string',
-				default: null,
-				validation: null
-			},
-			numWomen: {
-				value: null,
-				type: 'string',
-				default: null,
-				validation: null
-			},
-			methodology: {
-				value: null,
-				type: 'object',
-				default: {
-					eligibilityCriteria: {
-						value: null,
-						type: 'array',
-						default: {
-							name: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							}, 
-							units: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							}, 
-							low: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							}, 
-							high: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							}
-						},
-						validation: null
-					},
-					patientCharacteristics: {
-						value: null,
-						type: 'array',
-						default: {
-							name: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							}, 
-							units: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							},
-							type: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							},
-							data: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							},
-							sd: {
-								value: null,
-								type: 'string',
-								default: null,
-								validation: null
-							}
-						},
-						validation: null
-					}
-				},
-				validation: null
-			},
-			measurement: {
-				medications: {
+			value: null,
+			type: 'object',
+			default: {
+				name: {
 					value: null,
-					type: 'array',
+					type: 'string',
+					default: null,
+					validation: null
+				},
+				numPatients: {
+					value: null,
+					type: 'string',
+					default: null,
+					validation: null
+				},
+				numMen: {
+					value: null,
+					type: 'string',
+					default: null,
+					validation: null
+				},
+				numWomen: {
+					value: null,
+					type: 'string',
+					default: null,
+					validation: null
+				},
+				methodology: {
+					value: null,
+					type: 'object',
 					default: {
-						name: {
+						eligibilityCriteria: {
 							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-							
-						}, 
-						units: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						type: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						before: {
-							value: null,
-							type: 'object',
+							type: 'array',
 							default: {
+								name: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								}, 
+								units: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								}, 
+								low: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								}, 
+								high: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								}
+							},
+							validation: null
+						},
+						patientCharacteristics: {
+							value: null,
+							type: 'array',
+							default: {
+								name: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								}, 
+								units: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								},
+								type: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								},
 								data: {
 									value: null,
-									type: 'number',
+									type: 'string',
 									default: null,
 									validation: null
 								},
 								sd: {
 									value: null,
-									type: 'number',
+									type: 'string',
 									default: null,
 									validation: null
 								}
 							},
 							validation: null
-						},
-						after: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}, 
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						difference: {
-							data: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}, 
-							sd: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}
 						}
 					},
 					validation: null
 				},
-				adverseEvents: {
+				measurement: {
 					value: null,
-					type: 'array',
+					type: 'object',
 					default: {
-						name: {
+						medications: {
 							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-							
-						}, 
-						units: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						type: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						before: {
-							value: null,
-							type: 'object',
+							type: 'array',
 							default: {
-								data: {
+								name: {
 									value: null,
-									type: 'number',
+									type: 'string',
+									default: null,
+									validation: null
+							
+								}, 
+								units: {
+									value: null,
+									type: 'string',
 									default: null,
 									validation: null
 								},
-								sd: {
+								type: {
 									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						after: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}, 
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						difference: {
-							data: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}, 
-							sd: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}
-						}
-					},
-					validation: null
-				},
-				patientData: {
-					value: null,
-					type: 'array',
-					default: {
-						name: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-							
-						}, 
-						units: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						type: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						before: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
+									type: 'string',
 									default: null,
 									validation: null
 								},
-								sd: {
+								before: {
 									value: null,
-									type: 'number',
-									default: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										},
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								},
+								after: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}, 
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								},
+								difference: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}, 
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
 									validation: null
 								}
 							},
 							validation: null
 						},
-						after: {
+						adverseEvents: {
 							value: null,
-							type: 'object',
+							type: 'array',
 							default: {
-								data: {
+								name: {
 									value: null,
-									type: 'number',
+									type: 'string',
 									default: null,
 									validation: null
+							
 								}, 
-								sd: {
+								units: {
 									value: null,
-									type: 'number',
+									type: 'string',
 									default: null,
+									validation: null
+								},
+								type: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								},
+								before: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										},
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								},
+								after: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}, 
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								},
+								difference: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}, 
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
 									validation: null
 								}
 							},
 							validation: null
 						},
-						difference: {
-							data: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}, 
-							sd: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}
+						patientData: {
+							value: null,
+							type: 'array',
+							default: {
+								name: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+							
+								}, 
+								units: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								},
+								type: {
+									value: null,
+									type: 'string',
+									default: null,
+									validation: null
+								},
+								before: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										},
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								},
+								after: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}, 
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								},
+								difference: {
+									value: null,
+									type: 'object',
+									default: {
+										data: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}, 
+										sd: {
+											value: null,
+											type: 'number',
+											default: null,
+											validation: null
+										}
+									},
+									validation: null
+								}
+							},
+							validation: null
 						}
 					},
 					validation: null
 				}
-			}
+			},
+			validation: null
 		},
 		validation: null
 	},
@@ -579,240 +604,260 @@ let _study = window.study = {
 				validation: null
 			},
 			measurement: {
-				medications: {
-					value: null,
-					type: 'array',
-					default: {
-						name: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-							
-						}, 
-						units: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						type: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						before: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								},
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						after: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}, 
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						difference: {
-							data: {
+				value: null,
+				type: 'object',
+				default: {
+					medications: {
+						value: null,
+						type: 'array',
+						default: {
+							name: {
 								value: null,
-								type: 'number',
+								type: 'string',
 								default: null,
 								validation: null
+						
 							}, 
-							sd: {
+							units: {
 								value: null,
-								type: 'number',
+								type: 'string',
 								default: null,
+								validation: null
+							},
+							type: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+							},
+							before: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									},
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							},
+							after: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}, 
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							},
+							difference: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}, 
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
 								validation: null
 							}
-						}
+						},
+						validation: null
 					},
-					validation: null
+					adverseEvents: {
+						value: null,
+						type: 'array',
+						default: {
+							name: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+						
+							}, 
+							units: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+							},
+							type: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+							},
+							before: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									},
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							},
+							after: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}, 
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							},
+							difference: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}, 
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							}
+						},
+						validation: null
+					},
+					patientData: {
+						value: null,
+						type: 'array',
+						default: {
+							name: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+						
+							}, 
+							units: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+							},
+							type: {
+								value: null,
+								type: 'string',
+								default: null,
+								validation: null
+							},
+							before: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									},
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							},
+							after: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}, 
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							},
+							difference: {
+								value: null,
+								type: 'object',
+								default: {
+									data: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}, 
+									sd: {
+										value: null,
+										type: 'number',
+										default: null,
+										validation: null
+									}
+								},
+								validation: null
+							}
+						},
+						validation: null
+					}
 				},
-				adverseEvents: {
-					value: null,
-					type: 'array',
-					default: {
-						name: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-							
-						}, 
-						units: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						type: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						before: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								},
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						after: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}, 
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						difference: {
-							data: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}, 
-							sd: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}
-						}
-					},
-					validation: null
-				},
-				patientData: {
-					value: null,
-					type: 'array',
-					default: {
-						name: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-							
-						}, 
-						units: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						type: {
-							value: null,
-							type: 'string',
-							default: null,
-							validation: null
-						},
-						before: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								},
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						after: {
-							value: null,
-							type: 'object',
-							default: {
-								data: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}, 
-								sd: {
-									value: null,
-									type: 'number',
-									default: null,
-									validation: null
-								}
-							},
-							validation: null
-						},
-						difference: {
-							data: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}, 
-							sd: {
-								value: null,
-								type: 'number',
-								default: null,
-								validation: null
-							}
-						}
-					},
-					validation: null
-				}
+				validation: null
 			}
 		},
 		validation: null
@@ -848,6 +893,10 @@ dispatcher.register((payload) => {
 			helpers.storeValue(key.split(':'), value, _study);
 			newStore.triggerChange();
 			break;
+		case 'UPDATE_SIZE':
+			key = payload.key;
+			helpers.increaseSize(key.split(':'), _study);
+			newStore.triggerChange();
 	}
 });
 

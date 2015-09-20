@@ -7,7 +7,14 @@ const newActions = {
 			key,
 			value	
 		});
-	}
+	},
+	
+	updateSize(key) {
+		dispatcher.dispatch({
+			type: 'UPDATE_SIZE',
+			key
+		});
+	},
 };
 
 export default newActions;
