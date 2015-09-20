@@ -1,9 +1,13 @@
-const React           = require('react');
+const React                = require('react');
 
-const TextField       = require('../shared/TextField.jsx');
-const TextFieldArray  = require('../shared/TextFieldArray.jsx');
+const TextField            = require('../shared/TextField.jsx');
+const TextFieldArray       = require('../shared/TextFieldArray.jsx');
+const textFieldCollection  = require('../shared/textFieldCollection.jsx');
 
-const uiActions       = require('../../actions/uiActions.es.js');
+const ControlGroup         = require('./ControlGroup.jsx');
+const ControlGroups        = textFieldCollection(ControlGroup);  //require('./ControlGroups.jsx');
+
+const uiActions            = require('../../actions/uiActions.es.js');
 
 class NewMethodology extends React.Component {
 	constructor(props) {
@@ -13,19 +17,9 @@ class NewMethodology extends React.Component {
 	render() {
 		let study = this.props.study;
 		let methodology;
-		let controlGroups;
-		let totalData;
 		
 		if (study && study.methodology) {
 			methodology = study.methodology.value ? study.methodology.value : {};
-		}
-		
-		if (study && study.controlGroups) {
-			controlGroups = study.controlGroups.value ? study.controlGroups.value : {};
-		}
-		
-		if (study && study.totalData) {
-			totalData = study.totalData.value ? study.totalData.value : {};
 		}
 		
 		return (
@@ -40,6 +34,11 @@ class NewMethodology extends React.Component {
 					getKey="design"
 					setKey="methodology:design" 
 					title="Design" />
+				<ControlGroups
+					formObj={study}
+					getKey="controlGroups"
+					setKey="controlGroups"
+					title="Control Groups" />
 				<TextField 
 					formObj={methodology}
 					getKey="primaryEndpoint"
