@@ -10,6 +10,7 @@ config.context = __dirname;
 config.entry = {
 	index: './assets/javascripts/index',
 	new: './assets/javascripts/new',
+	newBao: './assets/javascripts/newBao',
 	show: './assets/javascripts/show'
 };
 
