@@ -13,7 +13,18 @@ class LowHigh extends BaseComponent {
 		
 		return (
 			<div>
-				Low High
+				<TextField
+					formObj={controlGroupValues}
+					getKey="low"
+					parentSetKey={setKey} 
+					setKey="low"
+					title="Low" />
+				<TextField
+					formObj={controlGroupValues}
+					getKey="high"
+					parentSetKey={setKey} 
+					setKey="high"
+					title="High" />
 			</div>
 		);
 	}

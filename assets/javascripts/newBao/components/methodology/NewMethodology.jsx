@@ -56,9 +56,7 @@ class NewMethodology extends React.Component {
 					formObj={methodology}
 					getKey="eligibilityCriteria"
 					setKey="methodology:eligibilityCriteria"
-					title="Eligibility Criteria" />
-				
-					
+					title="Eligibility Criteria" />	
 				<a href="#" onClick={uiActions.previousStep}>Previous</a>
 				<a href="#" onClick={uiActions.nextStep}>Next</a>
 			</div>
