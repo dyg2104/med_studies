@@ -1,5 +1,10 @@
-const React               = require('react');
-const BaseComponent       = require('../shared/BaseComponent.jsx');
+const React                = require('react');
+const BaseComponent        = require('../shared/BaseComponent.jsx');
+const TextField            = require('../shared/TextField.jsx');
+const factoryCGCollection  = require('../shared/factoryCGCollection.jsx');
+
+const LowHigh              = require('../shared/LowHigh.jsx');
+const LowHighs             = factoryCGCollection(LowHigh);
 
 class EligibilityCriterion extends BaseComponent {
 	constructor(props) {
@@ -7,9 +12,29 @@ class EligibilityCriterion extends BaseComponent {
 	}
 	
 	render() {
+		let eligibilityCriterion = this.getValue(); 
+		let setKey = this.getSetKey();
+		
 		return (
 			<div>
-			EligibilityCriterion
+				<TextField 
+					formObj={eligibilityCriterion}
+					getKey="name"
+					parentSetKey={setKey}
+					setKey="name"
+					title="Name" />
+				<TextField 
+					formObj={eligibilityCriterion}
+					getKey="units"
+					parentSetKey={setKey}
+					setKey="units"
+					title="Units" />
+				<LowHighs 
+					formObj={eligibilityCriterion} 
+					getKey="controlGroups"
+					parentSetKey={setKey}
+					setKey="controlGroups"
+					title="Low Highs" />
 			</div>
 		);
 	}

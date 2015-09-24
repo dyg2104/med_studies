@@ -829,6 +829,11 @@ let newStore = _.extend({}, Backbone.Events, {
 		return _study;
 	},
 	
+	getControlGroupsSize() {
+		let size = _study.controlGroups.value ? _study.controlGroups.value.length : 1;
+		return size;
+	},
+	
 	triggerChange() {
 		this.trigger(CHANGE_EVENT);
 	},
@@ -853,6 +858,7 @@ dispatcher.register((payload) => {
 			helpers.storeValue(key.split(':'), value, _study);
 			newStore.triggerChange();
 			break;
+		//Todo figure out a way to increase the size of everything that relates to a control group at once
 		case 'UPDATE_SIZE':
 			key = payload.key;
 			helpers.increaseSize(key.split(':'), _study);

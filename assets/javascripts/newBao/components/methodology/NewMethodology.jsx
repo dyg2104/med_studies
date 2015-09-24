@@ -20,16 +20,9 @@ class NewMethodology extends React.Component {
 	render() {
 		let study = this.props.study;
 		let methodology;
-		let controlGroups;
-		let controlGroupsSize;
 		
 		if (study && study.methodology) {
 			methodology = study.methodology.value ? study.methodology.value : {};
-		}
-		
-		if (study && study.controlGroups) {
-			controlGroups = study.controlGroups.value ? study.controlGroups.value : [];
-			controlGroupsSize = controlGroups.length;
 		}
 		
 		return (
@@ -63,7 +56,7 @@ class NewMethodology extends React.Component {
 					formObj={methodology}
 					getKey="eligibilityCriteria"
 					setKey="methodology:eligibilityCriteria"
-					title="Eligibility Criteria"/>
+					title="Eligibility Criteria" />
 				
 					
 				<a href="#" onClick={uiActions.previousStep}>Previous</a>

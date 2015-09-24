@@ -14,7 +14,7 @@ const newActions = {
 			type: 'UPDATE_SIZE',
 			key
 		});
-	},
+	}
 };
 
 export default newActions;
