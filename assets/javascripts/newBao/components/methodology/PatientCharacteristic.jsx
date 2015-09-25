@@ -3,41 +3,41 @@ const BaseComponent        = require('../shared/BaseComponent.jsx');
 const TextField            = require('../shared/TextField.jsx');
 const factoryCGCollection  = require('../shared/factoryCGCollection.jsx');
 
-const LowHigh              = require('../shared/LowHigh.jsx');
-const LowHighs             = factoryCGCollection(LowHigh);
+const DataSD               = require('../shared/DataSD.jsx');
+const DataSDs              = factoryCGCollection(DataSD);
 
-class EligibilityCriterion extends BaseComponent {
+class PatientCharacteristic extends BaseComponent {
 	constructor(props) {
 		super(props);
 	}
 	
 	render() {
-		let eligibilityCriterion = this.getValue();
+		let patientCharacteristic = this.getValue();
 		let setKey = this.getSetKey();
 		
-		return (
+		return(
 			<div>
 				<TextField 
-					formObj={eligibilityCriterion}
+					formObj={patientCharacteristic}
 					getKey="name"
 					parentSetKey={setKey}
 					setKey="name"
 					title="Name" />
 				<TextField 
-					formObj={eligibilityCriterion}
+					formObj={patientCharacteristic}
 					getKey="units"
 					parentSetKey={setKey}
 					setKey="units"
 					title="Units" />
-				<LowHighs 
-					formObj={eligibilityCriterion} 
-					getKey="controlGroups"
+				<TextField 
+					formObj={patientCharacteristic}
+					getKey="type"
 					parentSetKey={setKey}
-					setKey="controlGroups"
-					title="Low Highs" />
+					setKey="type"
+					title="Type" />				
 			</div>
 		);
 	}
 }
 
-export default EligibilityCriterion;
+export default PatientCharacteristic;

@@ -1,16 +1,18 @@
-const React                 = require('react');
+const React                   = require('react');
 
-const TextField             = require('../shared/TextField.jsx');
-const TextFieldArray        = require('../shared/TextFieldArray.jsx');
-const factoryCollection     = require('../shared/factoryCollection.jsx');
+const TextField               = require('../shared/TextField.jsx');
+const TextFieldArray          = require('../shared/TextFieldArray.jsx');
+const factoryCollection       = require('../shared/factoryCollection.jsx');
 
-const ControlGroup          = require('./ControlGroup.jsx');
-const EligibilityCriterion  = require('./EligibilityCriterion.jsx');
+const ControlGroup            = require('./ControlGroup.jsx');
+const EligibilityCriterion    = require('./EligibilityCriterion.jsx');
+const PatientCharacteristic   = require('./PatientCharacteristic.jsx');
 
-const ControlGroups         = factoryCollection(ControlGroup);
-const EligibilityCriteria   = factoryCollection(EligibilityCriterion);
+const ControlGroups           = factoryCollection(ControlGroup);
+const EligibilityCriteria     = factoryCollection(EligibilityCriterion);
+const PatientCharacteristics  = factoryCollection(PatientCharacteristic);
 
-const uiActions             = require('../../actions/uiActions.es.js');
+const uiActions               = require('../../actions/uiActions.es.js');
 
 class NewMethodology extends React.Component {
 	constructor(props) {
@@ -56,7 +58,12 @@ class NewMethodology extends React.Component {
 					formObj={methodology}
 					getKey="eligibilityCriteria"
 					setKey="methodology:eligibilityCriteria"
-					title="Eligibility Criteria" />	
+					title="Eligibility Criteria" />
+				<PatientCharacteristics 
+					formObj={methodology} 
+					getKey="patientCharacteristics"
+					setKey="methodology:patientCharacteristics"
+					title="Patient Characteristics" />
 				<a href="#" onClick={uiActions.previousStep}>Previous</a>
 				<a href="#" onClick={uiActions.nextStep}>Next</a>
 			</div>

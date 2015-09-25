@@ -29,7 +29,7 @@ module.exports = function(Component) {
 			let nodes = [];
 			let array = this.getValue();
 			let setKey = this.getSetKey();
-		
+			
 			for(let i = 0; i < this.state.controlGroupsSize; i++) {
 				nodes.push(
 					<Component
