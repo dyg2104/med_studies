@@ -1,67 +1,65 @@
-let _           = require('underscore');
-let Backbone    = require('backbone');
-let dispatcher  = require('../dispatchers/dispatcher.es.js');
+const BaseStore = require('fluxible/addons/BaseStore');
 
-const CHANGE_EVENT = 'change';
-
-let _ui = {
-	step: 1
-};
-
-let UIStore = _.extend({}, Backbone.Events, {
+class UIStore extends BaseStore {
+	constructor(dispatcher) {
+		super(dispatcher);
+		
+		this._ui = {
+			step: 1
+		};
+	}
+	
 	getUI() {
-		return _ui;
-	},
-	
-	triggerChange() {
-		this.trigger(CHANGE_EVENT);
-	},
-	
-	addChangeListener(callback) {
-		this.on(CHANGE_EVENT, callback);
-	},
-	
-	removeChangeListener(callback) {
-		this.off(CHANGE_EVENT, callback);
+		return this._ui;
 	}
-});
+	
+	getStep() {
+		return this._ui.step;
+	}
+	
+	goToBackground() {
+		this._ui.step = 1;
+		this.emit('change');
+	}
+	
+	goToMethodology() {
+		this._ui.step = 2;
+		this.emit('change');
+	}
+	
+	goToMeasurement() {
+		this._ui.step = 3;
+		this.emit('change');
+	}
+	
+	goToConclusion() {
+		this._ui.step = 4;
+		this.emit('change');
+	}
+	
+	nextStep() {
+		if (this._ui.step < 4) {
+			this._ui.step += 1;
+			this.emit('change');
+		}
+	}
+	
+	previousStep() {
+		if (this._ui.step > 1) {
+			this._ui.step -= 1;
+			this.emit('change');
+		}
+	}
+}
 
-dispatcher.register((payload) => {
-	switch(payload.type) {
-		case 'GO_TO_BACKGROUND':
-			_ui.step = 1;
-			UIStore.triggerChange();
-			break;
-		case 'GO_TO_METHODOLOGY':
-			_ui.step = 2;
-			UIStore.triggerChange();
-			break;
-		case 'GO_TO_MEASUREMENT':
-			_ui.step = 3;
-			UIStore.triggerChange();
-			break;
-		case 'GO_TO_CONCLUSION':
-			_ui.step = 4;
-			UIStore.triggerChange();
-			break;
-	}
-});
-
-dispatcher.register((payload) => {
-	switch(payload.type) {
-		case 'NEXT_STEP':
-			if (_ui.step < 4) {
-				_ui.step += 1;
-				UIStore.triggerChange();	
-			}
-			break;
-		case 'PREVIOUS_STEP':
-			if (_ui.step > 1) {
-				_ui.step -= 1;
-				UIStore.triggerChange();
-			}
-			break;
-	}
-});
+UIStore.storeName = 'UIStore';
+UIStore.handlers = {
+	'GO_TO_BACKGROUND': 'goToBackground',
+	'GO_TO_METHODOLOGY': 'goToMethodology',
+	'GO_TO_MEASUREMENT': 'goToMeasurement',
+	'GO_TO_CONCLUSION': 'goToConclusion',
+	'NEXT_STEP': 'nextStep',
+	'PREVIOUS_STEP': 'previousStep'
+};
 
 export default UIStore;

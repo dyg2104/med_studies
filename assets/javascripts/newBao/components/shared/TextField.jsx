@@ -12,7 +12,7 @@ class TextField extends BaseComponent {
 	handleChange(e) {
 		let key = this.getSetKey();
 		let value = e.target.value;
-		newActions.updateField(key, value);
+		this.context.executeAction(newActions.updateField, {key, value});
 	}
 	
 	render() {

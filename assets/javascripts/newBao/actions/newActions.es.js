@@ -1,19 +1,10 @@
-const dispatcher = require('../dispatchers/dispatcher.es.js');
-
 const newActions = {
-	updateField(key, value) {
-		dispatcher.dispatch({
-			type: 'UPDATE_FIELD',
-			key,
-			value	
-		});
+	updateField(actionContext, payload, done) {
+		actionContext.dispatch('UPDATE_FIELD', payload);
 	},
 	
-	updateSize(key) {
-		dispatcher.dispatch({
-			type: 'UPDATE_SIZE',
-			key
-		});
+	updateSize(actionContext, payload, done) {
+		actionContext.dispatch('UPDATE_SIZE', payload);
 	}
 };
 

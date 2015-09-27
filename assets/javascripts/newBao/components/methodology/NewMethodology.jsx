@@ -17,6 +17,17 @@ const uiActions               = require('../../actions/uiActions.es.js');
 class NewMethodology extends React.Component {
 	constructor(props) {
 		super(props);
+		
+		this.previousStep = this.previousStep.bind(this);
+		this.nextStep = this.nextStep.bind(this);
+	}
+	
+	previousStep() {
+		this.context.executeAction(uiActions.previousStep);
+	}
+	
+	nextStep() {
+		this.context.executeAction(uiActions.nextStep);
 	}
 	
 	render() {
@@ -64,11 +75,16 @@ class NewMethodology extends React.Component {
 					getKey="patientCharacteristics"
 					setKey="methodology:patientCharacteristics"
 					title="Patient Characteristics" />
-				<a href="#" onClick={uiActions.previousStep}>Previous</a>
-				<a href="#" onClick={uiActions.nextStep}>Next</a>
+				<a href="#" onClick={this.previousStep}>Previous</a>
+				<a href="#" onClick={this.nextStep}>Next</a>
 			</div>
 		);
 	}
 }
+
+NewMethodology.contextTypes = {
+    getStore     : React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
 
 export default NewMethodology;

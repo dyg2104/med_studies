@@ -12,4 +12,10 @@ class NewMeasurement extends React.Component {
 	}
 }
 
+NewMeasurement.contextTypes = {
+    getStore     : React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
+
+
 export default NewMeasurement;

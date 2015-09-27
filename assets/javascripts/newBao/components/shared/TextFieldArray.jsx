@@ -13,7 +13,7 @@ class TextFieldArray extends BaseComponent {
 	handleClick(e) {
 		e.preventDefault();
 		let setKey = this.getSetKey();
-		newActions.updateSize(setKey);
+		this.context.executeAction(newActions.updateSize, {key: setKey});
 	}
 	
 	render() {

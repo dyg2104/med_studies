@@ -22,6 +22,8 @@
   "dependencies": {
     "backbone": "^1.2.1",
     "flux": "^2.0.3",
+    "fluxible": "^0.5.4",
+    "fluxible-addons-react": "^0.1.8",
     "jquery": "^2.1.4",
     "lodash": "^3.9.3",
     "react": "^0.13.3",

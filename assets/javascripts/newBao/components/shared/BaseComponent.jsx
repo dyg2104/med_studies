@@ -43,4 +43,10 @@ class BaseComponent extends React.Component {
 	}
 }
 
+BaseComponent.contextTypes = {
+    getStore     : React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
+
+
 export default BaseComponent;

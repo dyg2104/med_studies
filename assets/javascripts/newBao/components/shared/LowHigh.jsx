@@ -1,6 +1,6 @@
 const React               = require('react');
-const BaseComponent       = require('../shared/BaseComponent.jsx');
-const TextField           = require('../shared/TextField.jsx');
+const BaseComponent       = require('./BaseComponent.jsx');
+const TextField           = require('./TextField.jsx');
 
 class LowHigh extends BaseComponent {
 	constructor(props) {

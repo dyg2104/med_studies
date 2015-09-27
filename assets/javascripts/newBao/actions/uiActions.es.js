@@ -1,40 +1,26 @@
-let dispatcher = require('../dispatchers/dispatcher.es.js');
-
-let showActions = {
-	goToBackground() {
-		dispatcher.dispatch({
-			type: 'GO_TO_BACKGROUND'
-		});
+const showActions = {
+	goToBackground(actionContext, payload, done) {
+		actionContext.dispatch('GO_TO_BACKGROUND');
 	},
 	
-	goToMethodology() {
-		dispatcher.dispatch({
-			type: 'GO_TO_METHODOLOGY'
-		});
+	goToMethodology(actionContext, payload, done) {
+		actionContext.dispatch('GO_TO_METHODOLOGY');
 	},
 	
-	goToMeasurement() {
-		dispatcher.dispatch({
-			type: 'GO_TO_MEASUREMENT'
-		});
+	goToMeasurement(actionContext, payload, done) {
+		actionContext.dispatch('GO_TO_MEASUREMENT');
 	},
 	
-	goToConclusion() {
-		dispatcher.dispatch({
-			type: 'GO_TO_CONCLUSION'
-		});
+	goToConclusion(actionContext, payload, done) {
+		actionContext.dispatch('GO_TO_CONCLUSION');
 	},
 	
-	nextStep() {
-		dispatcher.dispatch({
-			type: 'NEXT_STEP'
-		});
+	nextStep(actionContext, payload, done) {
+		actionContext.dispatch('NEXT_STEP');
 	},
 	
-	previousStep() {
-		dispatcher.dispatch({
-			type: 'PREVIOUS_STEP'
-		});
+	previousStep(actionContext, payload, done) {
+		actionContext.dispatch('PREVIOUS_STEP');
 	}
 };
 

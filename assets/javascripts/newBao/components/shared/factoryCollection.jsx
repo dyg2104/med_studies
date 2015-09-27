@@ -1,5 +1,5 @@
 const React          = require('react');
-const BaseComponent  = require('../shared/BaseComponent.jsx');
+const BaseComponent  = require('./BaseComponent.jsx');
 const newActions     = require('../../actions/newActions.es.js');
 
 module.exports = function(Component) {
@@ -12,7 +12,7 @@ module.exports = function(Component) {
 		handleClick(e) {
 			e.preventDefault();
 			let setKey = this.getSetKey();
-			newActions.updateSize(setKey);
+			this.context.executeAction(newActions.updateSize, {key: setKey});
 		}
 	
 		render() {

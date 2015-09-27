@@ -1,8 +1,5 @@
 const React        = require('react');
 
-const uiStore      = require('./stores/uiStore.es.js');
-const newStore     = require('./stores/newStore.es.js');
-
 const Background   = require('./components/background/NewBackground.jsx');
 const Methodology  = require('./components/methodology/NewMethodology.jsx');
 const Measurement  = require('./components/measurement/NewMeasurement.jsx');
@@ -13,69 +10,62 @@ const uiActions    = require('./actions/uiActions.es.js');
 class NewWrapper extends React.Component {
 	constructor(props) {
 		super(props);	
-		let ui = uiStore.getUI();
-		let study = newStore.getStudy();
 		
-		this.state = {
-			step: ui.step,
-			study: study
-		};
-		
-		this._onChange = this._onChange.bind(this);
+		this.goToBackground = this.goToBackground.bind(this);
+		this.goToMethodology = this.goToMethodology.bind(this);
+		this.goToMeasurement = this.goToMeasurement.bind(this);
+		this.goToConclusion = this.goToConclusion.bind(this);
+	}	
+	
+	goToBackground() {
+		this.context.executeAction(uiActions.goToBackground);
 	}
 	
-	componentDidMount() {
-		uiStore.addChangeListener(this._onChange);
-		newStore.addChangeListener(this._onChange);
+	goToMethodology() {
+		this.context.executeAction(uiActions.goToMethodology);	
 	}
 	
-	componentWillUnmount() {
-		uiStore.removeChangeListener(this._onChange);
-		newStore.removeChangeListener(this._onChange);
+	goToMeasurement() {
+		this.context.executeAction(uiActions.goToMeasurement);
 	}
 	
-	_onChange() {
-		let ui = uiStore.getUI();
-		let study = newStore.getStudy();
-		
-		this.setState({
-			step: ui.step, 
-			study: study
-		});
+	goToConclusion() {
+		this.context.executeAction(uiActions.goToConclusion);
 	}
 	
 	render() {
+		let props = this.props;
 		let subForm;
 		
-		switch(this.state.step) {
+		switch(props.step) {
 			case 1:
-				subForm = <Background study={this.state.study} />;
+				subForm = <Background study={props.study} />;
 				break;
 			case 2:
-				subForm = <Methodology study={this.state.study} />;
+				subForm = <Methodology study={props.study} />;
 				break;
 			case 3:
-				subForm = <Measurement study={this.state.study} />;
+				subForm = <Measurement study={props.study} />;
 				break;
 			case 4:
-				subForm = <Conclusion study={this.state.study} />;
-				break; 
+				subForm = <Conclusion study={props.study} />;
+				break;
 		}
 		
 		return (
 			<div>
 				<div>
 					<div>
-						<a href="#" onClick={uiActions.goToBackground}>Background</a>
+						<a href="#" onClick={this.goToBackground}>Background</a>
 					</div>
 					<div>
-						<a href="#" onClick={uiActions.goToMethodology}>Methodology</a>
+						<a href="#" onClick={this.goToMethodology}>Methodology</a>
 					</div>
 					<div>
-						<a href="#" onClick={uiActions.goToMeasurement}>Measurement</a>
+						<a href="#" onClick={this.goToMeasurement}>Measurement</a>
 					</div>
 					<div>
-						<a href="#" onClick={uiActions.goToConclusion}>Conclusion</a>
+						<a href="#" onClick={this.goToConclusion}>Conclusion</a>
 					</div>
 				</div>
 				<div>
@@ -83,7 +73,13 @@ class NewWrapper extends React.Component {
 				</div>
 			</div>
 		);
+		
 	}
 }
+
+NewWrapper.contextTypes = {
+    getStore     : React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
 
 export default NewWrapper;

@@ -12,4 +12,9 @@ class NewConclusion extends React.Component {
 	}
 }
 
+NewConclusion.contextTypes = {
+    getStore     : React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
+
 export default NewConclusion;

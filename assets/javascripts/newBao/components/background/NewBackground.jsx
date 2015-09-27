@@ -6,6 +6,11 @@ const uiActions       = require('../../actions/uiActions.es.js');
 class NewBackground extends React.Component {
 	constructor(props) {
 		super(props);
+		this.nextStep = this.nextStep.bind(this);
+	}
+	
+	nextStep() {
+		this.context.executeAction(uiActions.nextStep);
 	}
 	
 	render() {
@@ -58,10 +63,15 @@ class NewBackground extends React.Component {
 					getKey="references" 
 					setKey="references" 
 					title="References" />
-			<a href="#" onClick={uiActions.nextStep}>Next</a>
+				<a href="#" onClick={this.nextStep}>Next</a>
 			</div>
 		);
 	}
 }
+
+NewBackground.contextTypes = {
+    getStore     : React.PropTypes.func.isRequired,
+    executeAction: React.PropTypes.func.isRequired
+};
 
 export default NewBackground;
