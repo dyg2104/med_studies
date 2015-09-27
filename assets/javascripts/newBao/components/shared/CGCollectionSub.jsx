@@ -3,13 +3,8 @@ const BaseComponent        = require('./BaseComponent.jsx');
 const TextField            = require('./TextField.jsx');
 const factoryCGCollection  = require('./factoryCGCollection.jsx');
 
-const Before               = require('./Before.jsx');
-const After                = require('./After.jsx');
-const Difference           = require('./Difference.jsx');
-
-const Befores              = factoryCGCollection(Before);
-const Afters               = factoryCGCollection(After);
-const Differences          = factoryCGCollection(Difference);
+const DataSDDifference     = require('./DataSDDifference.jsx');
+const DataSDDifferences    = factoryCGCollection(DataSDDifference);
 
 class CGCollectionSub extends BaseComponent {
 	constructor(props) {
@@ -40,24 +35,12 @@ class CGCollectionSub extends BaseComponent {
 					parentSetKey={setKey}
 					setKey="type"
 					title="Type" />
-				<Befores 
+				<DataSDDifferences 
 					formObj={subValue} 
 					getKey="controlGroups" 
 					parentSetKey={setKey}
 					setKey="controlGroups"
-					title="Befores" />
-				<Afters 
-					formObj={subValue} 
-					getKey="controlGroups" 
-					parentSetKey={setKey}
-					setKey="controlGroups"
-					title="Afters" />
-				<Differences 
-					formObj={subValue} 
-					getKey="controlGroups" 
-					parentSetKey={setKey}
-					setKey="controlGroups"
-					title="Differences" />
+					title="Data SDs" />
 			</div>
 		);
 	}
