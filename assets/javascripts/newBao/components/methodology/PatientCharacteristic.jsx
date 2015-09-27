@@ -34,7 +34,13 @@ class PatientCharacteristic extends BaseComponent {
 					getKey="type"
 					parentSetKey={setKey}
 					setKey="type"
-					title="Type" />				
+					title="Type" />
+				<DataSDs 
+					formObj={patientCharacteristic} 
+					getKey="controlGroups"
+					parentSetKey={setKey}
+					setKey="controlGroups"
+					title="Data SDs" />
 			</div>
 		);
 	}
