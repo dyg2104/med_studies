@@ -1,7 +1,7 @@
 const React              = require('react');
+const TextField          = require('../shared/TextField.jsx');
 const factoryCollection  = require('../shared/factoryCollection.jsx');
 
-const TextField          = require('../shared/TextField.jsx');
 const CGCollectionSub    = require('../shared/CGCollectionSub.jsx');
 const Medications        = factoryCollection(CGCollectionSub);
 const AdverseEvents      = factoryCollection(CGCollectionSub);
