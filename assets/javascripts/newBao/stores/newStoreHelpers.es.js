@@ -1,5 +1,5 @@
 const helpers = {
-	storeValue(keys, value, tree) {
+	storeValue(keys, value, tree, store) {
 		let key = keys.shift();
 		let leaf = tree[key];
 		
@@ -16,18 +16,27 @@ const helpers = {
 			let jsonString = JSON.stringify(leaf.default);
 			let fallback = JSON.parse(jsonString);
 			leaf.value = [fallback];
-			this.storeValue(keys, value, leaf.value);
+			
+			if (leaf.defaultSize) {
+				let size = store.getControlGroupsSize();
+				for (let i = 1; i < size; i++) {
+					fallback = JSON.parse(jsonString);
+					leaf.value.push(fallback);
+				}
+			}
+			
+			this.storeValue(keys, value, leaf.value, store);
 		} else if (leaf.type === 'array') {
-			this.storeValue(keys, value, leaf.value);
+			this.storeValue(keys, value, leaf.value, store);
 		}
 		
 		if (leaf.type === 'object' && !leaf.value) {
 			let jsonString = JSON.stringify(leaf.default);
 			let fallback = JSON.parse(jsonString);
 			leaf.value = fallback;
-			this.storeValue(keys, value, leaf.value);
+			this.storeValue(keys, value, leaf.value, store);
 		} else if (leaf.type === 'object') {
-			this.storeValue(keys, value, leaf.value);
+			this.storeValue(keys, value, leaf.value, store);
 		}
 	},
 	

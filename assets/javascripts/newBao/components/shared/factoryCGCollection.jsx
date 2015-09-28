@@ -1,5 +1,7 @@
 const React            = require('react');
+const NewStore         = require('../../stores/NewStore.es.js');
 const BaseComponent    = require('./BaseComponent.jsx');
+const connectToStores  = require('fluxible-addons-react/connectToStores');
 
 module.exports = function(Component) {
 	class CGCollection extends BaseComponent {
@@ -10,10 +12,9 @@ module.exports = function(Component) {
 		render() {
 			let nodes = [];
 			let array = this.getValue();
-			let arraySize = array && array.length ? array.length : 1;
 			let setKey = this.getSetKey();
 			
-			for(let i = 0; i < arraySize; i++) {
+			for(let i = 0; i < this.props.controlGroupsSize; i++) {
 				nodes.push(
 					<Component
 						key={i}
@@ -33,5 +34,11 @@ module.exports = function(Component) {
 	    }
 	};
 	
-	return CGCollection;
+	return connectToStores(CGCollection, [NewStore], (context) => {
+		let newStore = context.getStore(NewStore);
+		
+		return {
+			controlGroupsSize: newStore.getControlGroupsSize()
+		}
+	});
 }

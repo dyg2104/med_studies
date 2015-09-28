@@ -205,6 +205,7 @@ class NewStore extends BaseStore {
 										},
 										validation: null
 									},
+									defaultSize: 'true',
 									validation: null
 								},
 								totalData: {
@@ -278,6 +279,7 @@ class NewStore extends BaseStore {
 										},
 										validation: null
 									},
+									defaultSize: 'true',
 									validation: null
 								},
 								totalData: {
@@ -409,6 +411,7 @@ class NewStore extends BaseStore {
 										},
 										validation: null
 									},
+									defaultSize: 'true',
 									validation: null
 								},
 								totalData: {
@@ -572,6 +575,7 @@ class NewStore extends BaseStore {
 										},
 										validation: null
 									},
+									defaultSize: 'true',
 									validation: null
 								},
 								totalData: {
@@ -735,6 +739,7 @@ class NewStore extends BaseStore {
 										},
 										validation: null
 									},
+									defaultSize: 'true',
 									validation: null
 								},
 								totalData: {
@@ -835,14 +840,14 @@ class NewStore extends BaseStore {
 	}
 	
 	updateField(payload, actionName) {
-		let key = payload.key;
-		let value = payload.value;
-		helpers.storeValue(key.split(':'), value, this._study);
+		let {key, value} = payload;
+		let self = this;
+		helpers.storeValue(key.split(':'), value, this._study, self);
 		this.emit('change');
 	}
 	
 	updateSize(payload, actionName) {
-		let key = payload.key;
+		let {key} = payload;
 		helpers.increaseSize(key.split(':'), this._study);
 		this.emit('change');
 	}
